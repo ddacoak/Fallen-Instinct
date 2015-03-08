@@ -2,7 +2,7 @@
 using System.Collections;
 
 // Possible movement directions
-public enum MOVEMENTDIRECTION {UP,DOWN,LEFT,RIGHT,NONE};
+public enum MOVEDIRECTION {UP,DOWN,LEFT,RIGHT,NONE};
 // Weapons
 public enum WEAPON {SWORD,BULLET,LASTWEAPON};
 
@@ -30,20 +30,6 @@ public class PlayerMove : MonoBehaviour
 	void Update () 
     {
 		if (RoomManager.Instance.Pause) return;
-
-        //Throw box
-        if ((Input.GetKeyUp(KeyCode.K)) && (player.collider2D))
-        {
-            if (Input.GetKeyUp(KeyCode.J))
-            { 
-                
-            }
-
-            if (Input.GetKeyUp(KeyCode.L))
-            {
-
-            }
-        }
 
 		// Inventory and map screen interaction WORK IN PROGRESS
 		if (Input.GetKeyUp (KeyCode.P)) 
@@ -145,7 +131,7 @@ public class PlayerMove : MonoBehaviour
     {
         //MELEE ATTACK
         //----------
-		if (Input.GetKeyUp (KeyCode.I)) 
+		if (Input.GetKeyDown (KeyCode.I)) 
         {
 			GameObject b;
 
@@ -181,43 +167,43 @@ public class PlayerMove : MonoBehaviour
 	    }
         //----------
 
-            //DISTANCE ATTACK
-            //----------
-            if (Input.GetKeyUp(KeyCode.O))
-            {
-                GameObject v;
+	        //DISTANCE ATTACK
+	        //----------
+	        if (Input.GetKeyDown(KeyCode.O))
+	        {
+	            GameObject v;
 
-                switch (weapon)
-                {
-                    case WEAPON.BULLET: v = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
-                        break;
-                    default:
-                        v = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
-                        break;
-                }
+	            switch (weapon)
+	            {
+	                case WEAPON.BULLET: v = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+	                    break;
+	                default:
+	                    v = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+	                    break;
+	            }
 
-                FixedMove fm2 = v.GetComponent("FixedMove") as FixedMove;
-                fm2.movementDirection = lookingTo;
+	            FixedMove fm2 = v.GetComponent("FixedMove") as FixedMove;
+	            fm2.movementDirection = lookingTo;
 
-                switch (lookingTo)
-                {
-                    case MOVEMENTDIRECTION.UP:
-                        v.transform.position += new Vector3(0, 0.32f, 0);
-                        v.transform.Rotate(0, 0, 90);
-                        break;
-                    case MOVEMENTDIRECTION.DOWN:
-                        v.transform.position += new Vector3(0, -0.32F, 0);
-                        v.transform.Rotate(0, 0, -90);
-                        break;
-                    case MOVEMENTDIRECTION.LEFT:
-                        v.transform.position += new Vector3(-0.32f, 0, 0);
-                        v.transform.Rotate(0, 0, 180);
-                        break;
-                    case MOVEMENTDIRECTION.RIGHT:
-                        v.transform.position += new Vector3(0.32f, 0, 0);
-                        break;
-            }
-        }
-        //----------
+	            switch (lookingTo)
+	            {
+	                case MOVEMENTDIRECTION.UP:
+	                    v.transform.position += new Vector3(0, 0.32f, 0);
+	                    v.transform.Rotate(0, 0, 90);
+	                    break;
+	                case MOVEMENTDIRECTION.DOWN:
+	                    v.transform.position += new Vector3(0, -0.32F, 0);
+	                    v.transform.Rotate(0, 0, -90);
+	                    break;
+	                case MOVEMENTDIRECTION.LEFT:
+	                    v.transform.position += new Vector3(-0.32f, 0, 0);
+	                    v.transform.Rotate(0, 0, 180);
+	                    break;
+	                case MOVEMENTDIRECTION.RIGHT:
+	                    v.transform.position += new Vector3(0.32f, 0, 0);
+	                    break;
+	        }
+	    }
+	    //----------
 	}
 }
