@@ -5,7 +5,13 @@ public class PlayerDetection : MonoBehaviour
 {
 	public GameObject box;
 	public GameObject carrito;
+
 	private bool taking = false;
+
+    void Update()
+    { 
+
+    }
 
 	void OnTriggerStay2D(Collider2D other)
 	{
@@ -17,6 +23,8 @@ public class PlayerDetection : MonoBehaviour
 				Debug.Log("Taking");
 				box.transform.position = transform.position;
 				taking = true;
+                if (taking == true)
+                    box.transform.position = transform.position;
 			}
 			if (Input.GetKey(KeyCode.E) && taking == true)
 			{
