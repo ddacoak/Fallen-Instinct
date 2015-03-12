@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Cepos : MonoBehaviour {
+public class Cepos : MonoBehaviour 
+{
+    public Texture open;
+    public Texture close;
 
-	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+    {
+        renderer.material.mainTexture = open;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.name == "Player")
+        {
+            renderer.material.mainTexture = close;
+        }
+    }
 }

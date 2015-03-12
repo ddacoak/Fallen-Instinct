@@ -7,8 +7,8 @@ public enum MOVEMENTDIRECTION { UP, DOWN, LEFT, RIGHT, NONE };
 public class PlayerMovement: MonoBehaviour
 {
 	public Texture idle;
-	public Texture idleLeft;
-	public Texture idleRight;
+    public Texture idleLeft;
+    public Texture idleRight;
 
     public MOVEMENTDIRECTION movementDirection { get; private set; }
     MOVEMENTDIRECTION lookingTo;
@@ -31,12 +31,12 @@ public class PlayerMovement: MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.C))
-            speed = 3;
-        else if (Input.GetKey(KeyCode.V))
+        if (Input.GetKey(KeyCode.LeftShift))
+            speed = 3.5f;
+        else if (Input.GetKey(KeyCode.LeftControl))
             speed = 1;
         else
-            speed = 2;
+            speed = 2.5f;
 
         Movement();
         Attack();
