@@ -50,7 +50,7 @@ public class PlayerMovement: MonoBehaviour
             }
 
         if (Input.GetKey(KeyCode.LeftShift))
-            speed = 3.5f;
+            speed = 4.5f;
         else if (Input.GetKey(KeyCode.LeftControl))
             speed = 1;
         else
