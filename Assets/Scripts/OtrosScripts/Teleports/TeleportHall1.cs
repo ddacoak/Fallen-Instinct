@@ -9,7 +9,7 @@ public class TeleportHall1 : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            player.transform.position = new Vector3(-4.91f, 23.41f, -0.4f);
+            player.transform.position = new Vector3(-3.154f, 47.208f, -0.4f);
         }
     }
 }
