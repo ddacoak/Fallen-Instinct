@@ -10,6 +10,8 @@ public class Life : MonoBehaviour {
 	public ALIGMENT aligment;
 	public int life = 100;
 	public int maxLife = 300;
+    
+    public GameObject player;
 
 	public GameObject createWhenDestroyed=null;
 
@@ -32,6 +34,10 @@ public class Life : MonoBehaviour {
 					Instantiate(createWhenDestroyed,gameObject.transform.position,gameObject.transform.rotation);
 				}
 			}
+            if (player)
+            {
+                Destroy(gameObject, 3);
+            }
 		} 
 	}
 }

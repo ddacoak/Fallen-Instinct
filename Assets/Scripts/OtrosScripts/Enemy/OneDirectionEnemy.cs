@@ -26,11 +26,11 @@ public class OneDirectionEnemy : MonoBehaviour
 		//Stop movement if I am dead
 		if (RoomManager.Instance.Pause || myLife.life<=0) return;
 
-		if (movementDirection==ENEMYDIRECTION.LEFTRIGHT) {
+		/*if (movementDirection==ENEMYDIRECTION.LEFTRIGHT) {
 			transform.position += new Vector3(currentDirectionIncrement,0,0);
 		} else {
 			transform.position += new Vector3(0,currentDirectionIncrement,0);
-		}
+		}*/
 	
 		currentLength += Mathf.Abs(currentDirectionIncrement);
 
