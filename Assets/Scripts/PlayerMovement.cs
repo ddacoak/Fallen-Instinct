@@ -9,6 +9,12 @@ public class PlayerMovement: MonoBehaviour
 	public Texture idle;
 	public Texture idleLeft;
 	public Texture idleRight;
+    public Texture walkFront;
+    public Texture walkLeft;
+    public Texture walkRight;
+
+    private float spriteCounter = 0;
+    private bool walk = false;
 
     public MOVEMENTDIRECTION movementDirection { get; private set; }
     MOVEMENTDIRECTION lookingTo;
@@ -31,6 +37,18 @@ public class PlayerMovement: MonoBehaviour
 
     void Update()
     {
+        spriteCounter++;
+
+        if (spriteCounter >= 20 && walk == false)
+        {
+            walk = true;
+            spriteCounter = 0;
+        }else if (spriteCounter >= 20 && walk == true)
+            {
+                walk = false;
+                spriteCounter = 0;
+            }
+
         if (Input.GetKey(KeyCode.LeftShift))
             speed = 3.5f;
         else if (Input.GetKey(KeyCode.LeftControl))
@@ -53,49 +71,74 @@ public class PlayerMovement: MonoBehaviour
         {
             movement = new Vector3(-root, root, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.UP;
-            renderer.material.mainTexture = idle;
+            if (walk == false)
+                renderer.material.mainTexture = idle;
+            else if (walk == true)
+                renderer.material.mainTexture = walkFront;
         }
         else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
         {
             movement = new Vector3(root, root, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.UP;
-            renderer.material.mainTexture = idle;
+            if (walk == false)
+                renderer.material.mainTexture = idle;
+            else if (walk == true)
+                renderer.material.mainTexture = walkFront;
         }
         else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
         {
             movement = new Vector3(-root, -root, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.DOWN;
-            renderer.material.mainTexture = idle;
+            if (walk == false)
+                renderer.material.mainTexture = idle;
+            else if (walk == true)
+                renderer.material.mainTexture = walkFront; 
         }
         else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
         {
             movement = new Vector3(root, -root, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.DOWN;
-            renderer.material.mainTexture = idle;
+            if (walk == false)
+                renderer.material.mainTexture = idle;
+            else if (walk == true)
+                renderer.material.mainTexture = walkFront;
         }
         else if (Input.GetKey(KeyCode.W))
         {
             movement = new Vector3(0, speed, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.UP;
-            renderer.material.mainTexture = idle;
+            if (walk == false)
+                renderer.material.mainTexture = idle;
+            else if (walk == true)
+                renderer.material.mainTexture = walkFront;
         }
         else if (Input.GetKey(KeyCode.A))
         {
             movement = new Vector3(-speed, 0, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.LEFT;
-            renderer.material.mainTexture = idleLeft;
+            if (walk == false)
+                renderer.material.mainTexture = idleLeft;
+            else if (walk == true)
+                renderer.material.mainTexture = walkLeft;
         }
         else if (Input.GetKey(KeyCode.S))
         {
             movement = new Vector3(0, -speed, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.DOWN;
-            renderer.material.mainTexture = idle;
+            if (walk == false)
+                renderer.material.mainTexture = idle;
+            else if (walk == true)
+                renderer.material.mainTexture = walkFront;
         }
         else if (Input.GetKey(KeyCode.D))
         {
             movement = new Vector3(speed, 0, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.RIGHT;
-            renderer.material.mainTexture = idleRight;
+            
+            if(walk==false)
+                renderer.material.mainTexture = idleRight;
+            else if (walk==true)
+                renderer.material.mainTexture = walkRight;
         }
         else
         {
