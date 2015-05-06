@@ -14,7 +14,7 @@ public class FixedMove : MonoBehaviour {
 
 	void Start () {
 		if (rotating) {
-			rigidbody2D.AddTorque(5f);
+			GetComponent<Rigidbody2D>().AddTorque(5f);
 		}
 
 	}
@@ -24,16 +24,16 @@ public class FixedMove : MonoBehaviour {
 
 		switch(movementDirection) {
 			case MOVEMENTDIRECTION.UP: 								
-				gameObject.rigidbody2D.AddForce(Vector3.up * speed);				
+				gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * speed);				
 				break;
 			case MOVEMENTDIRECTION.DOWN: 
-				gameObject.rigidbody2D.AddForce(Vector3.down * speed);			                             
+				gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.down * speed);			                             
 				break;
 			case MOVEMENTDIRECTION.LEFT: 
-				gameObject.rigidbody2D.AddForce(Vector3.left * speed);			                             
+				gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.left * speed);			                             
 				break;
 			case MOVEMENTDIRECTION.RIGHT: 
-				gameObject.rigidbody2D.AddForce(Vector3.right * speed);		
+				gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.right * speed);		
 				break;
 			}
 	}

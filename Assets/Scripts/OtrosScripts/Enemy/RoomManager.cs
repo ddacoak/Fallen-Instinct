@@ -50,14 +50,14 @@ public class RoomManager   {
 		//Deactivate the previous room and the "p" map mark
 		GameObject maproom = maprooms[j_pos,i_pos]; 
 		if (maproom!=null) 
-			maproom.transform.FindChild("p").renderer.enabled = false;
+			maproom.transform.FindChild("p").GetComponent<Renderer>().enabled = false;
 		SetRoomActive(j_pos,i_pos,false);
 		i_pos = i; j_pos = j; 
 		//Activate the new room and also set as active in the map
 		SetRoomActive(j,i,true); 
 		maproom = maprooms[j,i];
 		maproom.SetActive(true);
-		maproom.transform.FindChild("p").renderer.enabled = true;
+		maproom.transform.FindChild("p").GetComponent<Renderer>().enabled = true;
 
 	}
 
@@ -108,7 +108,7 @@ public class RoomManager   {
 					if (!CanGo(MOVEMENTDIRECTION.LEFT, j,i)) maproom.transform.FindChild("left").gameObject.SetActive(false);
 					if (!CanGo(MOVEMENTDIRECTION.RIGHT, j,i)) maproom.transform.FindChild("right").gameObject.SetActive(false);
 					room.SetActive(false);
-					maproom.transform.FindChild("p").renderer.enabled = false;
+					maproom.transform.FindChild("p").GetComponent<Renderer>().enabled = false;
 					maproom.SetActive(false);
 				} else {
 					maproom.SetActive(false);

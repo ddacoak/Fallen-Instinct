@@ -13,19 +13,19 @@ public class alphaRandomAdditive : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		colorAlpha = renderer.material.GetColor("_TintColor");
+		colorAlpha = GetComponent<Renderer>().material.GetColor("_TintColor");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
-		colorAlpha = renderer.material.GetColor("_TintColor");
+		colorAlpha = GetComponent<Renderer>().material.GetColor("_TintColor");
 
 		if(Random.Range(1,time) == 1)
 
 			colorAlpha.a = Random.Range(rand1, rand2) * (Time.deltaTime * 100);
 			//Debug.Log ("colorAlpha.a = " + Time.deltaTime.ToString());
 		
-		renderer.material.SetColor("_TintColor", colorAlpha);
+		GetComponent<Renderer>().material.SetColor("_TintColor", colorAlpha);
 	}
 }

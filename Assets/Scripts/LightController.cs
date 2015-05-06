@@ -22,7 +22,7 @@ public class LightController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		colorAlpha = renderer.material.GetColor("_Color");
+		colorAlpha = GetComponent<Renderer>().material.GetColor("_Color");
 
 
 		if (enabled == false) {
@@ -65,7 +65,7 @@ public class LightController : MonoBehaviour {
 		//if(enabled) Debug.Log ("enabled");
 		//else Debug.Log ("disabled");
 
-		renderer.material.SetColor("_Color", colorAlpha);
+		GetComponent<Renderer>().material.SetColor("_Color", colorAlpha);
 
 	}
 }

@@ -11,7 +11,7 @@ public class Alpha : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		colorAlpha = transform.renderer.material.color;
+		colorAlpha = transform.GetComponent<Renderer>().material.color;
 	}
 	
 	// Update is called once per frame
@@ -20,6 +20,6 @@ public class Alpha : MonoBehaviour {
 		if (colorAlpha.a > 0)
 			colorAlpha.a -= Time.deltaTime / 5;
 
-		transform.renderer.material.color = colorAlpha;
+		transform.GetComponent<Renderer>().material.color = colorAlpha;
 	}
 }

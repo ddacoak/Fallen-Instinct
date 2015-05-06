@@ -19,7 +19,7 @@ public class PlayerLightController : MonoBehaviour {
 		enabled = false;
 		turningOn = false;
 
-		colorAlpha = transform.FindChild("playerLight1").renderer.material.GetColor("_Color");
+		colorAlpha = transform.FindChild("playerLight1").GetComponent<Renderer>().material.GetColor("_Color");
 
 		alphaBase = 0;
 	}
@@ -82,12 +82,12 @@ public class PlayerLightController : MonoBehaviour {
 			{
 				if (Random.Range (1, time) == 1)
 				{
-					child.renderer.material.SetColor ("_Color", new Color (colorAlpha.r, colorAlpha.g, colorAlpha.b,
+					child.GetComponent<Renderer>().material.SetColor ("_Color", new Color (colorAlpha.r, colorAlpha.g, colorAlpha.b,
 					                                                       Random.Range ((0.5f + childCounter) * colorAlpha.a, colorAlpha.a)));
 				} 
 			}
 			else
-				child.renderer.material.SetColor ("_Color", colorAlpha);
+				child.GetComponent<Renderer>().material.SetColor ("_Color", colorAlpha);
 
 			childCounter += 0.1f;
 		}
