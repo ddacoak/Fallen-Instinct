@@ -4,13 +4,13 @@ using System.Collections;
 public class HeroGui : MonoBehaviour 
 {
 	Life myLife;
-	PlayerMove pm;
+	PlayerMovement pm;
 	GameObject h1,h2,h3;
 	GameObject[] weaponsgui;
 
 	void Start () 
     {
-		pm = gameObject.GetComponent("PlayerMove") as PlayerMove;
+		pm = gameObject.GetComponent("PlayerMove") as PlayerMovement;
 		myLife = gameObject.GetComponent("Life") as Life;
 		h1 = GameObject.Find("heart100");
 		h2 = GameObject.Find("heart200");
