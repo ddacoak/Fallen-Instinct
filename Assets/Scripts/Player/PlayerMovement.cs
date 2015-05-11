@@ -7,12 +7,8 @@ public enum WEAPON {SWORD, BULLET};
 
 public class PlayerMovement: MonoBehaviour
 {
-	public Texture idle;
-	public Texture idleLeft;
-	public Texture idleRight;
-    public Texture walkFront;
-    public Texture walkLeft;
-    public Texture walkRight;
+	Animator anim;
+	private int valorCambio;
 
     private float spriteCounter = 0;
     private bool walk = false;
@@ -29,7 +25,9 @@ public class PlayerMovement: MonoBehaviour
 	
 	void Start () 
 	{
-        //transform.position = new Vector3(0, 0, -1);
+		anim = GetComponent<Animator> ();
+
+		//transform.position = new Vector3(0, 0, -1);
         movement = Vector3.zero;
 
         movementDirection = MOVEMENTDIRECTION.DOWN;
@@ -38,18 +36,6 @@ public class PlayerMovement: MonoBehaviour
 
     void Update()
     {
-        spriteCounter++;
-
-        if (spriteCounter >= 20 && walk == false)
-        {
-            walk = true;
-            spriteCounter = 0;
-        }else if (spriteCounter >= 20 && walk == true)
-            {
-                walk = false;
-                spriteCounter = 0;
-            }
-
         if (Input.GetKey(KeyCode.LeftShift))
             speed = 4.5f;
         else if (Input.GetKey(KeyCode.LeftControl))
@@ -72,79 +58,57 @@ public class PlayerMovement: MonoBehaviour
         {
             movement = new Vector3(-root, root, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.UP;
-            /*if (walk == false)
-                GetComponent<Renderer>().material.mainTexture = idle;
-            else if (walk == true)
-                GetComponent<Renderer>().material.mainTexture = walkFront;*/
         }
         else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
         {
             movement = new Vector3(root, root, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.UP;
-            /*if (walk == false)
-                GetComponent<Renderer>().material.mainTexture = idle;
-            else if (walk == true)
-                GetComponent<Renderer>().material.mainTexture = walkFront;*/
         }
         else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
         {
             movement = new Vector3(-root, -root, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.DOWN;
-            /*if (walk == false)
-                GetComponent<Renderer>().material.mainTexture = idle;
-            else if (walk == true)
-                GetComponent<Renderer>().material.mainTexture = walkFront;*/ 
         }
         else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
         {
             movement = new Vector3(root, -root, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.DOWN;
-            /*if (walk == false)
-                GetComponent<Renderer>().material.mainTexture = idle;
-            else if (walk == true)
-                GetComponent<Renderer>().material.mainTexture = walkFront;*/
         }
         else if (Input.GetKey(KeyCode.W))
         {
             movement = new Vector3(0, speed, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.UP;
-            /*if (walk == false)
-                GetComponent<Renderer>().material.mainTexture = idle;
-            else if (walk == true)
-                GetComponent<Renderer>().material.mainTexture = walkFront;*/
         }
         else if (Input.GetKey(KeyCode.A))
         {
             movement = new Vector3(-speed, 0, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.LEFT;
-            /*if (walk == false)
-                GetComponent<Renderer>().material.mainTexture = idleLeft;
-            else if (walk == true)
-                GetComponent<Renderer>().material.mainTexture = walkLeft;*/
+
+			valorCambio = 4;
+			anim.SetInteger("Transition", valorCambio);
+
         }
         else if (Input.GetKey(KeyCode.S))
         {
             movement = new Vector3(0, -speed, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.DOWN;
-            /*if (walk == false)
-                GetComponent<Renderer>().material.mainTexture = idle;
-            else if (walk == true)
-                GetComponent<Renderer>().material.mainTexture = walkFront;*/
         }
         else if (Input.GetKey(KeyCode.D))
         {
             movement = new Vector3(speed, 0, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.RIGHT;
-            
-            /*if(walk==false)
-                GetComponent<Renderer>().material.mainTexture = idleRight;
-            else if (walk==true)
-                GetComponent<Renderer>().material.mainTexture = walkRight;*/
+
+			valorCambio = 6;
+			anim.SetInteger("Transition", valorCambio);
+
         }
         else
         {
             isMoving = false;
             movementDirection = MOVEMENTDIRECTION.NONE;
+
+			valorCambio = 5;
+			anim.SetInteger("Transition", valorCambio);
         }
 
         if (movementDirection != MOVEMENTDIRECTION.NONE) lookingTo = movementDirection;
