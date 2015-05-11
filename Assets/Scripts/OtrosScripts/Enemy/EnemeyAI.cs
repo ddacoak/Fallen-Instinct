@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemeyAI : MonoBehaviour 
 {
-    private float speed = 0.5f;
+    public float speed = 0.5f;
 	public float range = 3.0f;
     public GameObject player;
 	

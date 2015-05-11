@@ -72,74 +72,74 @@ public class PlayerMovement: MonoBehaviour
         {
             movement = new Vector3(-root, root, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.UP;
-            if (walk == false)
+            /*if (walk == false)
                 GetComponent<Renderer>().material.mainTexture = idle;
             else if (walk == true)
-                GetComponent<Renderer>().material.mainTexture = walkFront;
+                GetComponent<Renderer>().material.mainTexture = walkFront;*/
         }
         else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
         {
             movement = new Vector3(root, root, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.UP;
-            if (walk == false)
+            /*if (walk == false)
                 GetComponent<Renderer>().material.mainTexture = idle;
             else if (walk == true)
-                GetComponent<Renderer>().material.mainTexture = walkFront;
+                GetComponent<Renderer>().material.mainTexture = walkFront;*/
         }
         else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
         {
             movement = new Vector3(-root, -root, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.DOWN;
-            if (walk == false)
+            /*if (walk == false)
                 GetComponent<Renderer>().material.mainTexture = idle;
             else if (walk == true)
-                GetComponent<Renderer>().material.mainTexture = walkFront; 
+                GetComponent<Renderer>().material.mainTexture = walkFront;*/ 
         }
         else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
         {
             movement = new Vector3(root, -root, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.DOWN;
-            if (walk == false)
+            /*if (walk == false)
                 GetComponent<Renderer>().material.mainTexture = idle;
             else if (walk == true)
-                GetComponent<Renderer>().material.mainTexture = walkFront;
+                GetComponent<Renderer>().material.mainTexture = walkFront;*/
         }
         else if (Input.GetKey(KeyCode.W))
         {
             movement = new Vector3(0, speed, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.UP;
-            if (walk == false)
+            /*if (walk == false)
                 GetComponent<Renderer>().material.mainTexture = idle;
             else if (walk == true)
-                GetComponent<Renderer>().material.mainTexture = walkFront;
+                GetComponent<Renderer>().material.mainTexture = walkFront;*/
         }
         else if (Input.GetKey(KeyCode.A))
         {
             movement = new Vector3(-speed, 0, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.LEFT;
-            if (walk == false)
+            /*if (walk == false)
                 GetComponent<Renderer>().material.mainTexture = idleLeft;
             else if (walk == true)
-                GetComponent<Renderer>().material.mainTexture = walkLeft;
+                GetComponent<Renderer>().material.mainTexture = walkLeft;*/
         }
         else if (Input.GetKey(KeyCode.S))
         {
             movement = new Vector3(0, -speed, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.DOWN;
-            if (walk == false)
+            /*if (walk == false)
                 GetComponent<Renderer>().material.mainTexture = idle;
             else if (walk == true)
-                GetComponent<Renderer>().material.mainTexture = walkFront;
+                GetComponent<Renderer>().material.mainTexture = walkFront;*/
         }
         else if (Input.GetKey(KeyCode.D))
         {
             movement = new Vector3(speed, 0, 0) * Time.deltaTime;
             movementDirection = MOVEMENTDIRECTION.RIGHT;
             
-            if(walk==false)
+            /*if(walk==false)
                 GetComponent<Renderer>().material.mainTexture = idleRight;
             else if (walk==true)
-                GetComponent<Renderer>().material.mainTexture = walkRight;
+                GetComponent<Renderer>().material.mainTexture = walkRight;*/
         }
         else
         {
