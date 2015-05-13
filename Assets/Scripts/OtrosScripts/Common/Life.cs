@@ -12,6 +12,7 @@ public class Life : MonoBehaviour {
 	public int maxLife = 300;
     
     public GameObject player;
+	private float damageFeedback = 0;
 
 	public GameObject createWhenDestroyed=null;
 
@@ -23,6 +24,13 @@ public class Life : MonoBehaviour {
 	public void Hit(int power) 
     {
 		life -= power;
+
+		if (player) 
+		{
+			Debug.Log("Auch!");
+			PlayerDamage();
+		}
+
 		if (life<=0) {
 			//Player will not die for now
 			if (name!="Player") 
@@ -36,8 +44,31 @@ public class Life : MonoBehaviour {
 			}
             if (player)
             {
-                Destroy(gameObject, 3);
+				Destroy(gameObject, 3);
             }
 		} 
+	}
+
+	public void PlayerDamage()
+	{
+		damageFeedback++;
+
+		if(damageFeedback <= 2)
+		{
+			GetComponent<Renderer> ().material.color = new Color(1, 0, 0, 1);
+		}
+		if(damageFeedback <= 32)
+		{
+			GetComponent<Renderer> ().material.color = new Color(1, 1, 1, 1);
+		} 
+		if(damageFeedback <= 64)
+		{
+			GetComponent<Renderer> ().material.color = new Color(1, 0, 0, 1);
+		}
+		if(damageFeedback <= 96)
+		{
+			GetComponent<Renderer> ().material.color = new Color(1, 1, 1, 1);
+			damageFeedback = 0;
+		}
 	}
 }

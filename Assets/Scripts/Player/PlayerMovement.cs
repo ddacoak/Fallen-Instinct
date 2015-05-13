@@ -22,7 +22,7 @@ public class PlayerMovement: MonoBehaviour
 
     private Vector3 movement;
     public float speed = 1;
-	
+
 	void Start () 
 	{
 		anim = GetComponent<Animator> ();
@@ -36,9 +36,9 @@ public class PlayerMovement: MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(/*KeyCode.LeftShift*/KeyCode.C))
             speed = 4.5f;
-        else if (Input.GetKey(KeyCode.LeftControl))
+		else if (Input.GetKey(/*KeyCode.LeftControl*/KeyCode.V))
             speed = 1;
         else
             speed = 2.5f;
