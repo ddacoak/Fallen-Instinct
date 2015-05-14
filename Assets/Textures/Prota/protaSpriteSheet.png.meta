@@ -1,0 +1,495 @@
+fileFormatVersion: 2
+guid: 8a94192bae1d4e9438602680ba582aef
+timeCreated: 1431640136
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: protaSpriteSheet_0
+    21300002: protaSpriteSheet_1
+    21300004: protaSpriteSheet_2
+    21300006: protaSpriteSheet_3
+    21300008: protaSpriteSheet_4
+    21300010: protaSpriteSheet_5
+    21300012: protaSpriteSheet_6
+    21300014: protaSpriteSheet_7
+    21300016: protaSpriteSheet_8
+    21300018: protaSpriteSheet_9
+    21300020: protaSpriteSheet_10
+    21300022: protaSpriteSheet_11
+    21300024: protaSpriteSheet_12
+    21300026: protaSpriteSheet_13
+    21300028: protaSpriteSheet_14
+    21300030: protaSpriteSheet_15
+    21300032: protaSpriteSheet_16
+    21300034: protaSpriteSheet_17
+    21300036: protaSpriteSheet_18
+    21300038: protaSpriteSheet_19
+    21300040: protaSpriteSheet_20
+    21300042: protaSpriteSheet_21
+    21300044: protaSpriteSheet_22
+    21300046: protaSpriteSheet_23
+    21300048: protaSpriteSheet_24
+    21300050: protaSpriteSheet_25
+    21300052: protaSpriteSheet_26
+    21300054: protaSpriteSheet_27
+    21300056: protaSpriteSheet_28
+    21300058: protaSpriteSheet_29
+    21300060: protaSpriteSheet_30
+    21300062: protaSpriteSheet_31
+    21300064: protaSpriteSheet_32
+    21300066: protaSpriteSheet_33
+    21300068: protaSpriteSheet_34
+    21300070: protaSpriteSheet_35
+    21300072: protaSpriteSheet_36
+    21300074: protaSpriteSheet_37
+    21300076: protaSpriteSheet_38
+    21300078: protaSpriteSheet_39
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: protaSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 321
+        width: 30
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 321
+        width: 30
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 321
+        width: 30
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 323
+        width: 30
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 323
+        width: 30
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 323
+        width: 30
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 257
+        width: 26
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 257
+        width: 26
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 257
+        width: 26
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 257
+        width: 26
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 257
+        width: 26
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 257
+        width: 26
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 197
+        width: 28
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 197
+        width: 27
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 197
+        width: 26
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 198
+        width: 27
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 198
+        width: 29
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 198
+        width: 27
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 197
+        width: 26
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 198
+        width: 25
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 134
+        width: 25
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 133
+        width: 26
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 134
+        width: 27
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 134
+        width: 29
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 134
+        width: 27
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 133
+        width: 26
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 133
+        width: 27
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 133
+        width: 28
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 71
+        width: 41
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 73
+        width: 47
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 72
+        width: 45
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 72
+        width: 44
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 73
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 73
+        width: 42
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 7
+        width: 42
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 7
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_36
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 6
+        width: 44
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_37
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 6
+        width: 45
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_38
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 7
+        width: 47
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: protaSpriteSheet_39
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 5
+        width: 41
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

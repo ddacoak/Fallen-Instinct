@@ -8,6 +8,6 @@ public class GoBack : MonoBehaviour
 	void Update () 
     {
         if (player == null)
-            Application.LoadLevel("Menu");
+            Application.LoadLevel("PlayerTest");
 	}
 }
