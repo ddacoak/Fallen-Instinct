@@ -28,7 +28,7 @@ public class Life : MonoBehaviour {
 		if (player) 
 		{
 			Debug.Log("Auch!");
-			PlayerDamage();
+			//PlayerDamage();
 		}
 
 		if (life<=0) {
@@ -48,9 +48,10 @@ public class Life : MonoBehaviour {
             }
 		} 
 	}
-
+	
 	public void PlayerDamage()
 	{
+		Debug.Log ("Damage Feedback");
 		damageFeedback++;
 
 		if(damageFeedback <= 2)
@@ -69,6 +70,7 @@ public class Life : MonoBehaviour {
 		{
 			GetComponent<Renderer> ().material.color = new Color(1, 1, 1, 1);
 			damageFeedback = 0;
+			return;
 		}
 	}
 }
