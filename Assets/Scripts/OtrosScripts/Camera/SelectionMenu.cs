@@ -11,36 +11,48 @@ public class SelectionMenu : MonoBehaviour
 
 	void Update () 
 	{
-		if (selection.transform.position == new Vector3 (0, 1.5f, 0)) 
+		if (selection.transform.position == playButton.transform.position) 
 		{
-			if (Input.GetKeyDown (KeyCode.W)) 
-				selection.transform.position = new Vector3 (0,0,0);
-		}
-
-		if (selection.transform.position == new Vector3 (0, -3, 0)) 
-		{
+			Debug.Log("Play");
 			if (Input.GetKeyDown (KeyCode.S)) 
-				selection.transform.position = new Vector3 (0,0,0);
+				selection.transform.position = optionsButton.transform.position;
+
+			if (Input.GetKeyDown (KeyCode.E))
+				Application.LoadLevel ("Loading");
 		}
 
-		if (Input.GetKeyDown (KeyCode.W)) 
+		if (selection.transform.position == optionsButton.transform.position) 
 		{
-			selection.transform.position += new Vector3 (0, 1.5f, 0);
-		} else if (Input.GetKeyDown (KeyCode.S)) 
-		{
-			selection.transform.position += new Vector3 (0, -1.5f, 0);
+			Debug.Log("Options");
+			if (Input.GetKeyDown (KeyCode.W)) 
+				selection.transform.position = playButton.transform.position;
+			else if (Input.GetKeyDown (KeyCode.S)) 
+				selection.transform.position = creditsButton.transform.position;
+
+			if (Input.GetKeyDown (KeyCode.E))
+				Application.LoadLevel("Credits");
 		}
 
-		if (Input.GetKeyDown (KeyCode.E) && selection.transform.position == new Vector3 (0, 1.5f, 0))
-			Application.LoadLevel ("Loading");
+		if (selection.transform.position == creditsButton.transform.position) 
+		{
+			Debug.Log("Credits");
+			if (Input.GetKeyDown (KeyCode.W)) 
+				selection.transform.position = optionsButton.transform.position;
+			else if (Input.GetKeyDown (KeyCode.S)) 
+				selection.transform.position = exitButton.transform.position;
 
-        if (Input.GetKeyDown(KeyCode.E) && selection.transform.position == new Vector3(0, 0, 0))
-            Application.LoadLevel("Loading");
+			if (Input.GetKeyDown (KeyCode.E))
+				Application.LoadLevel("Credits");
+		}
 
-        if (Input.GetKeyDown(KeyCode.E) && selection.transform.position == new Vector3(0, -1.5f, 0))
-            Application.LoadLevel("Credits");
+		if (selection.transform.position == exitButton.transform.position) 
+		{
+			Debug.Log("Exit");
+			if (Input.GetKeyDown (KeyCode.W)) 
+				selection.transform.position = creditsButton.transform.position;
 
-        if (Input.GetKeyDown(KeyCode.E) && selection.transform.position == new Vector3(0, 3, 0))
-            Application.Quit();
+			if (Input.GetKeyDown (KeyCode.E))
+				Application.Quit();
+		}
 	}
 }
