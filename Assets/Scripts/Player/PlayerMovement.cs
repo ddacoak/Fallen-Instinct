@@ -5,8 +5,6 @@ using System.Collections;
 public enum MOVEMENTDIRECTION { UP, DOWN, LEFT, RIGHT, NONE };
 public enum WEAPON {SWORD, BULLET};
 
-
-
 public class PlayerMovement: MonoBehaviour
 {
 	Animator anim;
@@ -160,18 +158,18 @@ public class PlayerMovement: MonoBehaviour
             switch (lookingTo)
             {
                 case MOVEMENTDIRECTION.UP:
-                    b.transform.position += new Vector3(0, 1, 0);
+                    b.transform.position += new Vector3(0, 1.2f, 0);
                     break;
                 case MOVEMENTDIRECTION.DOWN:
-                    b.transform.position += new Vector3(0, -1, 0);
+                    b.transform.position += new Vector3(0, -1.2f, 0);
                     b.transform.Rotate(0, 0, 180);
                     break;
                 case MOVEMENTDIRECTION.LEFT:
-                    b.transform.position += new Vector3(-0.32f, 0, 0);
+                    b.transform.position += new Vector3(-0.64f, 0, 0);
                     b.transform.Rotate(0, 0, 90);
                     break;
                 case MOVEMENTDIRECTION.RIGHT:
-                    b.transform.position += new Vector3(0.32f, 0, 0);
+                    b.transform.position += new Vector3(0.64f, 0, 0);
                     break;
             }
         }
