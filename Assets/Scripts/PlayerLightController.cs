@@ -29,7 +29,7 @@ public class PlayerLightController : MonoBehaviour {
 			enabled = !enabled;
 		if (!inLight) {
 			if(enabled)
-				objectiveAlpha = 5f;
+				objectiveAlpha = 4.3f;
 		}
 
 		if (!enabled)
