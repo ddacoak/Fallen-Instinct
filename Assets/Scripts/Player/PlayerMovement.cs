@@ -5,6 +5,8 @@ using System.Collections;
 public enum MOVEMENTDIRECTION { UP, DOWN, LEFT, RIGHT, NONE };
 public enum WEAPON {SWORD, BULLET};
 
+
+
 public class PlayerMovement: MonoBehaviour
 {
 	Animator anim;
@@ -23,6 +25,8 @@ public class PlayerMovement: MonoBehaviour
     private Vector3 movement;
     public float speed = 1;
 
+	public GameObject blackPlane;
+
 	void Start () 
 	{
 		anim = GetComponent<Animator> ();
@@ -32,6 +36,8 @@ public class PlayerMovement: MonoBehaviour
 
         movementDirection = MOVEMENTDIRECTION.DOWN;
         lookingTo = MOVEMENTDIRECTION.DOWN;
+
+		blackPlane.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, 1);
 	}
 
     void Update()

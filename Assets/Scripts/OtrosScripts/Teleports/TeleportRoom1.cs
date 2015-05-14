@@ -3,13 +3,54 @@ using System.Collections;
 
 public class TeleportRoom1 : MonoBehaviour 
 {
-    public GameObject player;
+	public GameObject player;
+	private bool teleporting = false;
+	public GameObject blackPlane;
+	
+	private float framesCounter = 0;
 
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.name == "Player")
-        {
-            player.transform.position = new Vector3(0.01f, 3.79f, -0.4f);
-        }
-    }
+	private bool fadeIn = false;
+	
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		framesCounter = 0;
+		
+		if (other.name == "Player")
+		{
+			teleporting = true;
+			fadeIn = true;
+			blackPlane = other.GetComponent<PlayerMovement>().blackPlane;
+			
+			
+		}
+	}
+	
+	void Update()
+	{
+		if (fadeIn) {	
+			if (teleporting) {
+					
+				framesCounter += Time.deltaTime * 2;
+					
+				blackPlane.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, framesCounter);
+					
+				if (blackPlane.GetComponent<Renderer> ().material.color.a >= 1) {  
+					framesCounter = 4f;
+					blackPlane.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, 1);
+					player.transform.position = new Vector3 (0.01f, 3.79f, -0.4f);
+					teleporting = false;
+				}
+			}
+				
+			if (!teleporting) {
+				framesCounter -= Time.deltaTime * 2;
+				blackPlane.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, framesCounter);
+			}
+				
+			if (blackPlane.GetComponent<Renderer> ().material.color.a <= 0) {
+				blackPlane.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, 0);
+				fadeIn = false;
+			}
+		}
+	}
 }

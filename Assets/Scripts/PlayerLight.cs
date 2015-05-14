@@ -32,7 +32,9 @@ public class PlayerLight : MonoBehaviour
 			if (colorAlpha > 1) colorAlpha = 1;
 			else if (colorAlpha < 0.05f) colorAlpha = 0.05f;
 
-			other.transform.FindChild("playerLight").GetComponent<PlayerLightController>().alphaExternalController = colorAlpha;
+			other.transform.FindChild("PlayerLight").GetComponent<PlayerLightController>().objectiveAlpha = colorAlpha * 5f;
+			other.transform.FindChild("PlayerLight").GetComponent<PlayerLightController>().inLight = true;
+
 		}
 	}
 
@@ -40,7 +42,9 @@ public class PlayerLight : MonoBehaviour
 	{
 		if (other.tag == "Player") 
 		{
-			other.transform.FindChild("playerLight").GetComponent<PlayerLightController>().alphaExternalController = 1.0f;
+			other.transform.FindChild("PlayerLight").GetComponent<PlayerLightController>().objectiveAlpha = 5f;
+			other.transform.FindChild("PlayerLight").GetComponent<PlayerLightController>().inLight = false;
+
 		}
 	}
 }

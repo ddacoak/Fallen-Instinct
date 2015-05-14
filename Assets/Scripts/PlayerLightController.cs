@@ -3,96 +3,42 @@ using System.Collections;
 
 public class PlayerLightController : MonoBehaviour {
 	
-	private bool enabled;
-	private bool turningOn;
-	
-	public Color colorAlpha;
+	private bool enabled = true;
+	public bool inLight = false;
 
-	public float alphaBase;
-	public float alphaExternalController;
+	public float objectiveAlpha;
+	private float randomAlpha;
 
-	public int time;
+	public float lightOscilation = 5;
+	public float lightFadeSpeed = 0.04f;
+
+	public float minimumLight = 0.5f;
+
+	[HideInInspector] public Light light;
 	
 	// Use this for initialization
 	void Start () 
 	{
-		enabled = false;
-		turningOn = false;
-
-		colorAlpha = transform.FindChild("playerLight1").GetComponent<Renderer>().material.GetColor("_Color");
-
-		alphaBase = 0;
+		light = transform.GetComponent<Light> ();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		// Light disabled
-		if (enabled == false) 
-		{
-
-			// Enable light
-			if (Input.GetKeyDown (KeyCode.L)) 
-			{
-				enabled = true;
-				turningOn = true;
-			}
-
-			// Turn lights off
-			if (alphaBase > 0)
-				alphaBase -= 0.1f;
-			else
-				alphaBase = 0f;
-
-		}
-		// Light enabled
-		else 
-		{
-			// Disable light
-			if (Input.GetKeyDown (KeyCode.L)) {
-				enabled = false;
-				turningOn = false;
-			}
-			// Light alpha lerp (increment alpha slowly)
-			if (turningOn)
-			{
-				//while(colorAlpha.a < 1.0f) colorAlpha.a += 0.05f;
-				if (alphaBase < alphaExternalController) 
-					alphaBase += 0.05f;
-				else
-				{
-					alphaBase = alphaExternalController;
-					turningOn = false;
-				}
-			}
+		if (Input.GetKeyUp (KeyCode.L))
+			enabled = !enabled;
+		if (!inLight) {
+			if(enabled)
+				objectiveAlpha = 5f;
 		}
 
-		// Controls the maximum amount of alpha
-		if (enabled && !turningOn) 
-			alphaBase = Mathf.Lerp(alphaBase, alphaExternalController, 0.2f);
-			
+		if (!enabled)
+			objectiveAlpha = 0;
 
 
-		float childCounter = 0;
-		foreach (Transform child in transform) 
-		{
-			colorAlpha.a = Mathf.Lerp(colorAlpha.a, alphaBase, 0.75f);
-
-			if (enabled && !turningOn) 
-			{
-				if (Random.Range (1, time) == 1)
-				{
-					child.GetComponent<Renderer>().material.SetColor ("_Color", new Color (colorAlpha.r, colorAlpha.g, colorAlpha.b,
-					                                                       Random.Range ((0.5f + childCounter) * colorAlpha.a, colorAlpha.a)));
-				} 
-			}
-			else
-				child.GetComponent<Renderer>().material.SetColor ("_Color", colorAlpha);
-
-			childCounter += 0.1f;
-		}
-
-		//Debug.Log (colorAlpha.a);
+		randomAlpha = Random.Range (objectiveAlpha * (100 - lightOscilation) /100, objectiveAlpha * (100 + lightOscilation) /100);
+		if(enabled) if (randomAlpha < minimumLight) randomAlpha = minimumLight;
+		light.intensity = Mathf.Lerp (light.intensity, randomAlpha, lightFadeSpeed);
 
 	}
 }
