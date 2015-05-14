@@ -67,12 +67,18 @@ public class PlayerMovement: MonoBehaviour
             //movement = new Vector3(-root, root, 0) * Time.deltaTime;
 			rigidBody.velocity = (new Vector2(-root,root));
             movementDirection = MOVEMENTDIRECTION.UP;
+
+			valorCambio = 10;
+			anim.SetInteger("Transition", valorCambio);
         }
         else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
         {
             //movement = new Vector3(root, root, 0) * Time.deltaTime;
 			rigidBody.velocity = (new Vector2(root,root));
             movementDirection = MOVEMENTDIRECTION.UP;
+
+			valorCambio = 10;
+			anim.SetInteger("Transition", valorCambio);
         }
         else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
         {
@@ -91,6 +97,9 @@ public class PlayerMovement: MonoBehaviour
             //movement = new Vector3(0, speed, 0) * Time.deltaTime;
 			rigidBody.velocity = (new Vector2(0,speed));
             movementDirection = MOVEMENTDIRECTION.UP;
+
+			valorCambio = 10;
+			anim.SetInteger("Transition", valorCambio);
         }
         else if (Input.GetKey(KeyCode.A))
         {
@@ -98,7 +107,9 @@ public class PlayerMovement: MonoBehaviour
 			rigidBody.velocity = (new Vector2(-speed,0));
             movementDirection = MOVEMENTDIRECTION.LEFT;
 
-			valorCambio = 4;
+			valorCambio = 21;
+			if (Input.GetKey(KeyCode.C))
+				valorCambio = 22;
 			anim.SetInteger("Transition", valorCambio);
 
         }
@@ -114,7 +125,9 @@ public class PlayerMovement: MonoBehaviour
 			rigidBody.velocity = (new Vector2(speed,0));
             movementDirection = MOVEMENTDIRECTION.RIGHT;
 
-			valorCambio = 6;
+			valorCambio = 31;
+			if (Input.GetKey(KeyCode.C))
+				valorCambio = 32;
 			anim.SetInteger("Transition", valorCambio);
 
         }
@@ -125,7 +138,7 @@ public class PlayerMovement: MonoBehaviour
 			isMoving = false;
             movementDirection = MOVEMENTDIRECTION.NONE;
 
-			valorCambio = 5;
+			valorCambio = 0;
 			anim.SetInteger("Transition", valorCambio);
         }
 
