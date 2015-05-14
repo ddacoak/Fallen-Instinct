@@ -27,6 +27,8 @@ public class PlayerMovement: MonoBehaviour
 
 	public GameObject blackPlane;
 
+	private Rigidbody2D rigidBody;
+
 	void Start () 
 	{
 		anim = GetComponent<Animator> ();
@@ -38,6 +40,8 @@ public class PlayerMovement: MonoBehaviour
         lookingTo = MOVEMENTDIRECTION.DOWN;
 
 		blackPlane.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, 1);
+
+		rigidBody = transform.GetComponent<Rigidbody2D> ();
 	}
 
     void Update()
@@ -53,7 +57,7 @@ public class PlayerMovement: MonoBehaviour
         Attack();
     }
 
-    void Movement()
+    void Movement()   //if(rigidBody.velocity.magnitude > maxspeed) 
     {
         bool isMoving = true;
 
@@ -62,32 +66,38 @@ public class PlayerMovement: MonoBehaviour
 
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
         {
-            movement = new Vector3(-root, root, 0) * Time.deltaTime;
+            //movement = new Vector3(-root, root, 0) * Time.deltaTime;
+			rigidBody.velocity = (new Vector2(-root,root));
             movementDirection = MOVEMENTDIRECTION.UP;
         }
         else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
         {
-            movement = new Vector3(root, root, 0) * Time.deltaTime;
+            //movement = new Vector3(root, root, 0) * Time.deltaTime;
+			rigidBody.velocity = (new Vector2(root,root));
             movementDirection = MOVEMENTDIRECTION.UP;
         }
         else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
         {
-            movement = new Vector3(-root, -root, 0) * Time.deltaTime;
+            //movement = new Vector3(-root, -root, 0) * Time.deltaTime;
+			rigidBody.velocity = (new Vector2(-root,-root));
             movementDirection = MOVEMENTDIRECTION.DOWN;
         }
         else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
         {
-            movement = new Vector3(root, -root, 0) * Time.deltaTime;
+            //movement = new Vector3(root, -root, 0) * Time.deltaTime;
+			rigidBody.velocity = (new Vector2(root,-root));
             movementDirection = MOVEMENTDIRECTION.DOWN;
         }
         else if (Input.GetKey(KeyCode.W))
         {
-            movement = new Vector3(0, speed, 0) * Time.deltaTime;
+            //movement = new Vector3(0, speed, 0) * Time.deltaTime;
+			rigidBody.velocity = (new Vector2(0,speed));
             movementDirection = MOVEMENTDIRECTION.UP;
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            movement = new Vector3(-speed, 0, 0) * Time.deltaTime;
+            //movement = new Vector3(-speed, 0, 0) * Time.deltaTime;
+			rigidBody.velocity = (new Vector2(-speed,0));
             movementDirection = MOVEMENTDIRECTION.LEFT;
 
 			valorCambio = 4;
@@ -96,12 +106,14 @@ public class PlayerMovement: MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            movement = new Vector3(0, -speed, 0) * Time.deltaTime;
+            //movement = new Vector3(0, -speed, 0) * Time.deltaTime;
+			rigidBody.velocity = (new Vector2(0,-speed));
             movementDirection = MOVEMENTDIRECTION.DOWN;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            movement = new Vector3(speed, 0, 0) * Time.deltaTime;
+            //movement = new Vector3(speed, 0, 0) * Time.deltaTime;
+			rigidBody.velocity = (new Vector2(speed,0));
             movementDirection = MOVEMENTDIRECTION.RIGHT;
 
 			valorCambio = 6;
@@ -110,7 +122,9 @@ public class PlayerMovement: MonoBehaviour
         }
         else
         {
-            isMoving = false;
+			rigidBody.velocity =  Vector2.zero;
+
+			isMoving = false;
             movementDirection = MOVEMENTDIRECTION.NONE;
 
 			valorCambio = 5;
@@ -119,7 +133,7 @@ public class PlayerMovement: MonoBehaviour
 
         if (movementDirection != MOVEMENTDIRECTION.NONE) lookingTo = movementDirection;
 
-        transform.Translate(movement);
+        //transform.Translate(movement);
         movement = Vector2.zero;
     }
 
