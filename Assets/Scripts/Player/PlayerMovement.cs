@@ -45,7 +45,7 @@ public class PlayerMovement: MonoBehaviour
     void Update()
     {
         if (Input.GetKey(/*KeyCode.LeftShift*/KeyCode.C))
-            speed = 4.5f;
+            speed = 5f;
 		else if (Input.GetKey(/*KeyCode.LeftControl*/KeyCode.V))
             speed = 1;
         else
@@ -68,7 +68,7 @@ public class PlayerMovement: MonoBehaviour
 			rigidBody.velocity = (new Vector2(-root,root));
             movementDirection = MOVEMENTDIRECTION.UP;
 
-			valorCambio = 10;
+			valorCambio = 2;
 			anim.SetInteger("Transition", valorCambio);
         }
         else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))

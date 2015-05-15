@@ -37,7 +37,7 @@ public class TeleportRoom1 : MonoBehaviour
 				if (blackPlane.GetComponent<Renderer> ().material.color.a >= 1) {  
 					framesCounter = 4f;
 					blackPlane.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, 1);
-					player.transform.position = new Vector3 (0.01f, 3.79f, -0.4f);
+					player.transform.position = new Vector3 (-1.24f, 26.88f, -0.4f);
 					teleporting = false;
 				}
 			}

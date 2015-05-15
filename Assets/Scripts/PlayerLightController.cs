@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerLightController : MonoBehaviour {
 	
-	private bool enabled = true;
+	private bool enabled = false;
 	public bool inLight = false;
 
 	public float objectiveAlpha;
