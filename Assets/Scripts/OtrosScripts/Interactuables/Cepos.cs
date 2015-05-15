@@ -11,12 +11,16 @@ public class Cepos : MonoBehaviour
 
 	public GameObject player;
 
+	public AudioClip cepo;
+	AudioSource audio;
+
 	//Damage
 	public int power = 100;
 
 	void Start () 
 	{
 		anim = GetComponent<Animator> ();
+		audio = GetComponent<AudioSource>();
 	}
 
 	void Update () 
@@ -27,6 +31,7 @@ public class Cepos : MonoBehaviour
 		{
 			valorCambio = 1;
 			anim.SetInteger("Detect", valorCambio);
+			audio.PlayOneShot(cepo, 1);
 		}
 
 		/*if (valorCambio == 1)
