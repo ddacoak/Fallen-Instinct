@@ -27,9 +27,13 @@ public class PlayerMovement: MonoBehaviour
 
 	private Rigidbody2D rigidBody;
 
+	public AudioClip attack;
+	AudioSource audio;
+
 	void Start () 
 	{
 		anim = GetComponent<Animator> ();
+		audio = GetComponent<AudioSource>();
 
 		//transform.position = new Vector3(0, 0, -1);
         movement = Vector3.zero;
@@ -155,6 +159,11 @@ public class PlayerMovement: MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             GameObject b;
+
+			audio.PlayOneShot(attack, 1);
+
+			valorCambio = 40;
+			anim.SetInteger("Transition", valorCambio);
 
             switch (weapon)
             {

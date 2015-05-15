@@ -29,20 +29,11 @@ public class Cepos : MonoBehaviour
 			anim.SetInteger("Detect", valorCambio);
 		}
 
-		//DetectCollision (other:gameObject);
+		/*if (valorCambio == 1)
+		{
+
+		}*/
 	}
 
-	/*void DetectCollision(GameObject other) 
-	{
-		Life otherLife = other.GetComponent("Life") as Life;
-
-		if (valorCambio == 1)
-		{
-			Life myLife = gameObject.GetComponent("Life") as Life;
-			//If I am alive, and the other object is not a weapon attack and the other object 
-			//aligment is different to mine does damage
-			if (myLife.life>0 && otherLife.type!=TYPE.WEAPON &&	otherLife.aligment!=myLife.aligment)
-				otherLife.Hit(power);
-		}
-	}*/
+		
 }

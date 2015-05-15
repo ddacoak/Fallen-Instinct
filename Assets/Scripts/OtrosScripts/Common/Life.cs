@@ -12,9 +12,17 @@ public class Life : MonoBehaviour {
 	public int maxLife = 300;
     
     public GameObject player;
-	private float damageFeedback = 0;
+	public GameObject blood;
 
 	public GameObject createWhenDestroyed=null;
+
+	public AudioClip hurt;
+	AudioSource audio;
+
+	void Start()
+	{
+		audio = GetComponent<AudioSource>();
+	}
 
 	public void IncrementLife(int qty) {
 		life+=qty;
@@ -27,9 +35,10 @@ public class Life : MonoBehaviour {
 
 		if (player) 
 		{
-			Debug.Log("Auch!");
-			//PlayerDamage();
+			audio.PlayOneShot(hurt, 1);
+			Instantiate(blood, new Vector3(player.transform.position.x, player.transform.position.y - 1, player.transform.position.z), Quaternion.identity);
 		}
+
 
 		if (life<=0) {
 			//Player will not die for now
@@ -45,32 +54,8 @@ public class Life : MonoBehaviour {
             if (player)
             {
 				Destroy(gameObject, 3);
+				Application.LoadLevel("Menu");
             }
 		} 
-	}
-	
-	public void PlayerDamage()
-	{
-		Debug.Log ("Damage Feedback");
-		damageFeedback++;
-
-		if(damageFeedback <= 2)
-		{
-			GetComponent<Renderer> ().material.color = new Color(1, 0, 0, 1);
-		}
-		if(damageFeedback <= 32)
-		{
-			GetComponent<Renderer> ().material.color = new Color(1, 1, 1, 1);
-		} 
-		if(damageFeedback <= 64)
-		{
-			GetComponent<Renderer> ().material.color = new Color(1, 0, 0, 1);
-		}
-		if(damageFeedback <= 96)
-		{
-			GetComponent<Renderer> ().material.color = new Color(1, 1, 1, 1);
-			damageFeedback = 0;
-			return;
-		}
 	}
 }
