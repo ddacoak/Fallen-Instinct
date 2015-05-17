@@ -37,7 +37,7 @@ public class TeleportHall1 : MonoBehaviour
 				if (blackPlane.GetComponent<Renderer> ().material.color.a >= 1) {  
 					framesCounter = 4f;
 					blackPlane.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, 1);
-					player.transform.position = new Vector3(-4.95f, 22.8f, -0.4f);
+					player.transform.position = new Vector3(-4.95f, 24.0f, -0.4f);
 					teleporting = false;
 				}
 			}

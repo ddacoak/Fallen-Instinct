@@ -13,6 +13,7 @@ public class Cepos : MonoBehaviour
 
 	public AudioClip cepo;
 	AudioSource audio;
+	private bool playAudio = true;
 
 	//Damage
 	public int power = 100;
@@ -25,19 +26,25 @@ public class Cepos : MonoBehaviour
 
 	void Update () 
 	{
-		float viewDistance = Vector3.Distance(playerShadow.transform.position, transform.position);
 
-		if (viewDistance <= range) 
+	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		if(other.tag == "Player")
 		{
+			Debug.Log("enteredcepo");
+
 			valorCambio = 1;
 			anim.SetInteger("Detect", valorCambio);
-			audio.PlayOneShot(cepo, 1);
+
+			if(playAudio)
+			{
+				audio.PlayOneShot(cepo,1);
+				playAudio = false;
+			}
+
 		}
-
-		/*if (valorCambio == 1)
-		{
-
-		}*/
 	}
 
 		
