@@ -33,12 +33,13 @@ public class EnemeyAI : MonoBehaviour
         {
 			footprintsCounter++;
 
-			valorCambio = 1;
 			anim.SetInteger("Transition", valorCambio);
 
             if (player.transform.position.x >= transform.position.x)
 			{
-                transform.position += new Vector3(speed,0,0) * Time.deltaTime;
+				valorCambio = 2;
+
+				transform.position += new Vector3(speed,0,0) * Time.deltaTime;
 				if (footprintsCounter >= 100)
 				{
 					Instantiate(footprints1, new Vector3(transform.position.x, transform.position.y - 0.70f, transform.position.z), Quaternion.identity);
@@ -47,7 +48,9 @@ public class EnemeyAI : MonoBehaviour
 			}
             else if (player.transform.position.x <= transform.position.x)
 			{
-                transform.position += new Vector3(-speed, 0, 0) * Time.deltaTime;
+				valorCambio = 1;
+
+				transform.position += new Vector3(-speed, 0, 0) * Time.deltaTime;
 				if (footprintsCounter >= 100)
 				{
 					Instantiate(footprints1, new Vector3(transform.position.x, transform.position.y - 0.70f, transform.position.z), Quaternion.identity);

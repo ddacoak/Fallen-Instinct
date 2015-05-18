@@ -21,7 +21,10 @@ public class PlayerMovement: MonoBehaviour
     public GameObject sword;
 
     private Vector3 movement;
-    public float speed = 1;
+    private float speed;
+	public float speedWalk = 3.5f;
+	public float speedSneak = 1f;
+	public float speedRun = 8f;
 
 	public GameObject blackPlane;
 
@@ -48,12 +51,16 @@ public class PlayerMovement: MonoBehaviour
 
     void Update()
     {
+		transform.position = new Vector3 (transform.position.x,
+		                                 transform.position.y,
+		                                 transform.position.y / 100.0f - 1.0f);
+
         if (Input.GetKey(/*KeyCode.LeftShift*/KeyCode.C))
-            speed = 5f;
+            speed = speedRun;
 		else if (Input.GetKey(/*KeyCode.LeftControl*/KeyCode.V))
-            speed = 1;
+            speed = speedSneak;
         else
-            speed = 2.5f;
+            speed = speedWalk;
 
         Movement();
         Attack();

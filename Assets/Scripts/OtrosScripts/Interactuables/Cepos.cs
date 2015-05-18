@@ -13,7 +13,7 @@ public class Cepos : MonoBehaviour
 
 	public AudioClip cepo;
 	AudioSource audio;
-	private bool playAudio = true;
+	private bool hurt = true;
 
 	//Damage
 	public int power = 100;
@@ -38,10 +38,11 @@ public class Cepos : MonoBehaviour
 			valorCambio = 1;
 			anim.SetInteger("Detect", valorCambio);
 
-			if(playAudio)
+			if(hurt)
 			{
 				audio.PlayOneShot(cepo,1);
-				playAudio = false;
+				player.GetComponent<Life>().life -= 100;
+				hurt = false;
 			}
 
 		}
