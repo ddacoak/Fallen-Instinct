@@ -21,12 +21,16 @@ public class EnemeyAI : MonoBehaviour
 
 	void Update () 
     {
-        float viewDistance = Vector3.Distance(player.transform.position, transform.position);
+		transform.position = new Vector3 (transform.position.x,
+		                                  transform.position.y,
+		                                  transform.position.y / 100.0f - 1.0f);
+
+		float viewDistance = Vector3.Distance(player.transform.position, transform.position);
 
 		if(viewDistance>=range)
 		{
 			valorCambio = 0;
-			anim.SetInteger("Transition", valorCambio);
+
 		}
 
         if (viewDistance <= range)
@@ -76,6 +80,12 @@ public class EnemeyAI : MonoBehaviour
 					footprintsCounter = 0;
 				}
 			}
+
+
+			Debug.Log(transform.position.y);
+			Debug.Log(player.transform.position.y);
+			anim.SetInteger("Transition", valorCambio);
         }
+		anim.SetInteger("Transition", valorCambio);
 	}
 }
