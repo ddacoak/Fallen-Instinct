@@ -15,7 +15,7 @@ public class LayerController : MonoBehaviour {
 			for (int i = 0; i < props.Length; i++)
 				props[i].transform.localPosition = new Vector3(props[i].transform.localPosition.x, 
 				                                               props[i].transform.localPosition.y, 
-				                                               props[i].transform.localPosition.y / 100.0f - 1.0f);
+				                                               props[i].transform.localPosition.y / 100.0f - 0.995f);
 			activate = false;
 
 		}
