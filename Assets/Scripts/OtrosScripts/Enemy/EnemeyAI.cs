@@ -80,10 +80,6 @@ public class EnemeyAI : MonoBehaviour
 					footprintsCounter = 0;
 				}
 			}
-
-
-			Debug.Log(transform.position.y);
-			Debug.Log(player.transform.position.y);
 			anim.SetInteger("Transition", valorCambio);
         }
 		anim.SetInteger("Transition", valorCambio);

@@ -13,7 +13,19 @@ public class Bullet : MonoBehaviour {
 	public bool destroyOnHitWall=true;
 	//Destroy automatically after some time
 	public int timeToLive = -1;
+	private bool hit = true;
+	private float framesCounter;
 
+	/*void Update (){
+		if (!hit) {
+			framesCounter ++;
+			if (framesCounter >= 60) {
+				hit = true;
+				framesCounter = 0;
+			}
+		}
+		Debug.Log (framesCounter);
+	}*/
 
 	void FixedUpdate() {
 		if (RoomManager.Instance.Pause) return;
@@ -44,8 +56,12 @@ public class Bullet : MonoBehaviour {
 			Life myLife = gameObject.GetComponent("Life") as Life;
 			//If I am alive, and the other object is not a weapon attack and the other object 
 			//aligment is different to mine does damage
-			if (myLife.life>0 && otherLife.type!=TYPE.WEAPON &&	otherLife.aligment!=myLife.aligment)
-				otherLife.Hit(power);
+			//if(hit)
+			//{
+				if (myLife.life>0 && otherLife.type!=TYPE.WEAPON &&	otherLife.aligment!=myLife.aligment)
+					otherLife.Hit(power);
+				//hit = false;
+			//}
 			
 		}
 	}
