@@ -16,7 +16,14 @@ public class BlackPLaneBehaviour : MonoBehaviour {
 		if (initialFade) {
 			framesCounter -= Time.deltaTime * 2;
 			transform.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, framesCounter);
-			if(transform.GetComponent<Renderer> ().material.color.a <= 0) initialFade = false;
+			if(transform.GetComponent<Renderer> ().material.color.a <= 0.0f)
+			{ 
+				initialFade = false;
+				//transform.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, 0);
+				transform.GetComponent<MeshRenderer>().enabled = false;
+			}
+
 		}
+		Debug.Log (transform.GetComponent<Renderer> ().material.color.a);
 	}
 }
