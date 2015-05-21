@@ -24,6 +24,5 @@ public class BlackPLaneBehaviour : MonoBehaviour {
 			}
 
 		}
-		Debug.Log (transform.GetComponent<Renderer> ().material.color.a);
 	}
 }

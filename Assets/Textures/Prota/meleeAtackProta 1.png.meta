@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 89325cb1c9b44814f80c54ba6e0d0bfd
-timeCreated: 1431659992
+timeCreated: 1432216897
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -68,30 +68,30 @@ TextureImporter:
         serializedVersion: 2
         x: 29
         y: 132
-        width: 48
+        width: 68
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_2
       rect:
         serializedVersion: 2
         x: 11
         y: 68
-        width: 60
+        width: 86
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_3
       rect:
         serializedVersion: 2
-        x: 39
+        x: 32
         y: 4
-        width: 38
+        width: 65
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
