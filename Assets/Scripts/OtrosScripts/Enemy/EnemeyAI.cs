@@ -14,13 +14,24 @@ public class EnemeyAI : MonoBehaviour
 	public GameObject footprints3;
 	private float footprintsCounter = 0f;
 
+	private float growlCounter = 0;
+	public AudioClip growl;
+	AudioSource audio;
+
 	void Start()
 	{
 		anim = GetComponent<Animator> ();
+		audio = GetComponent<AudioSource>();
 	}
 
 	void Update () 
     {
+		/*growlCounter++;
+		if (growlCounter >= 100) 
+		{
+			audio.PlayOneShot(growl,1);
+			growlCounter = 0;
+		}*/
 		transform.position = new Vector3 (transform.position.x,
 		                                  transform.position.y,
 		                                  transform.position.y / 100.0f - 1.0f);
@@ -74,6 +85,15 @@ public class EnemeyAI : MonoBehaviour
             else if (player.transform.position.y <= transform.position.y)
 			{
                 transform.position += new Vector3(0, -speed, 0) * Time.deltaTime;
+				if (footprintsCounter >= 100)
+				{
+					Instantiate(footprints1, new Vector3(transform.position.x, transform.position.y - 0.70f, transform.position.z), Quaternion.identity);
+					footprintsCounter = 0;
+				}
+			}
+			else if (player.transform.position.y == transform.position.y)
+			{
+				transform.position += new Vector3(0, -speed, 0) * Time.deltaTime;
 				if (footprintsCounter >= 100)
 				{
 					Instantiate(footprints1, new Vector3(transform.position.x, transform.position.y - 0.70f, transform.position.z), Quaternion.identity);

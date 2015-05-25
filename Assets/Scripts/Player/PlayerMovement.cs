@@ -55,9 +55,9 @@ public class PlayerMovement: MonoBehaviour
 		                                 transform.position.y,
 		                                 transform.position.y / 100.0f - 1.0f);
 
-        if (Input.GetKey(/*KeyCode.LeftShift*/KeyCode.C))
+        if (Input.GetKey(KeyCode.C))
             speed = speedRun;
-		else if (Input.GetKey(/*KeyCode.LeftControl*/KeyCode.V))
+		else if (Input.GetKey(KeyCode.V))
             speed = speedSneak;
         else
             speed = speedWalk;
@@ -75,7 +75,6 @@ public class PlayerMovement: MonoBehaviour
 
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
         {
-            //movement = new Vector3(-root, root, 0) * Time.deltaTime;
 			rigidBody.velocity = (new Vector2(-root,root));
             movementDirection = MOVEMENTDIRECTION.UP;
 
@@ -84,7 +83,6 @@ public class PlayerMovement: MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
         {
-            //movement = new Vector3(root, root, 0) * Time.deltaTime;
 			rigidBody.velocity = (new Vector2(root,root));
             movementDirection = MOVEMENTDIRECTION.UP;
 
@@ -93,19 +91,16 @@ public class PlayerMovement: MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
         {
-            //movement = new Vector3(-root, -root, 0) * Time.deltaTime;
 			rigidBody.velocity = (new Vector2(-root,-root));
             movementDirection = MOVEMENTDIRECTION.DOWN;
         }
         else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
         {
-            //movement = new Vector3(root, -root, 0) * Time.deltaTime;
 			rigidBody.velocity = (new Vector2(root,-root));
             movementDirection = MOVEMENTDIRECTION.DOWN;
         }
         else if (Input.GetKey(KeyCode.W))
         {
-            //movement = new Vector3(0, speed, 0) * Time.deltaTime;
 			rigidBody.velocity = (new Vector2(0,speed));
             movementDirection = MOVEMENTDIRECTION.UP;
 
@@ -114,7 +109,6 @@ public class PlayerMovement: MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            //movement = new Vector3(-speed, 0, 0) * Time.deltaTime;
 			rigidBody.velocity = (new Vector2(-speed,0));
             movementDirection = MOVEMENTDIRECTION.LEFT;
 
@@ -126,13 +120,11 @@ public class PlayerMovement: MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            //movement = new Vector3(0, -speed, 0) * Time.deltaTime;
 			rigidBody.velocity = (new Vector2(0,-speed));
             movementDirection = MOVEMENTDIRECTION.DOWN;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            //movement = new Vector3(speed, 0, 0) * Time.deltaTime;
 			rigidBody.velocity = (new Vector2(speed,0));
             movementDirection = MOVEMENTDIRECTION.RIGHT;
 
@@ -155,7 +147,6 @@ public class PlayerMovement: MonoBehaviour
 
         if (movementDirection != MOVEMENTDIRECTION.NONE) lookingTo = movementDirection;
 
-        //transform.Translate(movement);
         movement = Vector2.zero;
     }
 
