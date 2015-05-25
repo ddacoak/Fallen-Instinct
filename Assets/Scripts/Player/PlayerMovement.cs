@@ -49,7 +49,7 @@ public class PlayerMovement: MonoBehaviour
 		rigidBody = transform.GetComponent<Rigidbody2D> ();
 	}
 
-    void Update()
+    void FixedUpdate()
     {
 		transform.position = new Vector3 (transform.position.x,
 		                                 transform.position.y,
