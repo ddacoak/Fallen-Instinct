@@ -40,7 +40,7 @@ public class SelectionMenu : MonoBehaviour
 				selection.transform.position = exitButton.transform.position;
 				pressed = true;
 			}
-			if (Input.GetKeyDown (KeyCode.E))
+			if (Input.GetKeyDown (KeyCode.Return) || Input.GetKeyDown (KeyCode.Space))
 				Application.LoadLevel ("Loading");
 		}
 
@@ -57,7 +57,7 @@ public class SelectionMenu : MonoBehaviour
 				selection.transform.position = creditsButton.transform.position;
 				pressed = true;
 			}
-			if (Input.GetKeyDown (KeyCode.E))
+			if (Input.GetKeyDown (KeyCode.Return) || Input.GetKeyDown (KeyCode.Space))
 				Application.LoadLevel("Credits");
 		}
 
@@ -75,7 +75,7 @@ public class SelectionMenu : MonoBehaviour
 				pressed = true;
 			}
 
-			if (Input.GetKeyDown (KeyCode.E))
+			if (Input.GetKeyDown (KeyCode.Return) || Input.GetKeyDown (KeyCode.Space))
 				Application.LoadLevel("Credits");
 		}
 
@@ -94,7 +94,7 @@ public class SelectionMenu : MonoBehaviour
 				pressed = true;
 			}
 
-			if (Input.GetKeyDown (KeyCode.E))
+			if (Input.GetKeyDown (KeyCode.Return) || Input.GetKeyDown (KeyCode.Space))
 				Application.Quit();
 		}
 	}
