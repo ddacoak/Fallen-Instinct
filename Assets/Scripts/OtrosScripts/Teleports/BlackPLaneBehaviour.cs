@@ -3,11 +3,12 @@ using System.Collections;
 
 public class BlackPLaneBehaviour : MonoBehaviour {
 
-	private bool initialFade = true;
+	public bool initialFade = true;
 	private float framesCounter = 4;
 
 	// Use this for initialization
 	void Start () {
+
 		
 	}
 	
