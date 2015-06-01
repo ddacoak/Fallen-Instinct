@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 89325cb1c9b44814f80c54ba6e0d0bfd
-timeCreated: 1433002611
+timeCreated: 1433169821
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,6 +12,10 @@ TextureImporter:
     21300010: meleeAtackProta 1_5
     21300012: meleeAtackProta 1_6
     21300014: meleeAtackProta 1_7
+    21300016: meleeAtackProta 1_8
+    21300018: meleeAtackProta 1_10
+    21300020: meleeAtackProta 1_12
+    21300022: meleeAtackProta 1_14
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -60,19 +64,9 @@ TextureImporter:
     - name: meleeAtackProta 1_0
       rect:
         serializedVersion: 2
-        x: 12
+        x: 14
         y: 448
-        width: 71
-        height: 64
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: meleeAtackProta 1_1
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 384
-        width: 67
+        width: 96
         height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -80,19 +74,9 @@ TextureImporter:
     - name: meleeAtackProta 1_2
       rect:
         serializedVersion: 2
-        x: 12
-        y: 320
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: meleeAtackProta 1_3
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 256
-        width: 61
+        x: 14
+        y: 384
+        width: 96
         height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -100,19 +84,9 @@ TextureImporter:
     - name: meleeAtackProta 1_4
       rect:
         serializedVersion: 2
-        x: 12
-        y: 192
-        width: 62
-        height: 64
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: meleeAtackProta 1_5
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 128
-        width: 66
+        x: 14
+        y: 320
+        width: 96
         height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -120,19 +94,49 @@ TextureImporter:
     - name: meleeAtackProta 1_6
       rect:
         serializedVersion: 2
-        x: 12
-        y: 64
-        width: 70
+        x: 14
+        y: 256
+        width: 96
         height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: meleeAtackProta 1_7
+    - name: meleeAtackProta 1_8
       rect:
         serializedVersion: 2
-        x: 12
+        x: 14
+        y: 192
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: meleeAtackProta 1_10
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 128
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: meleeAtackProta 1_12
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 64
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: meleeAtackProta 1_14
+      rect:
+        serializedVersion: 2
+        x: 14
         y: 0
-        width: 70
+        width: 96
         height: 64
       alignment: 0
       pivot: {x: .5, y: .5}

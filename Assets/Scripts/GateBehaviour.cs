@@ -9,10 +9,10 @@ public class GateBehaviour : MonoBehaviour {
 
 	public float speed;
 	private float min;
-	private float max;
-	private float currentY;
+	public float max = 0.7f;
+	public float currentY;
 
-	private bool open = false;
+	public bool open = false;
 
 	// Use this for initialization
 	void Start () {

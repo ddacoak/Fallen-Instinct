@@ -12,6 +12,8 @@ public class Teleporter : MonoBehaviour
 
 	private bool fadeIn = false;
 
+	public GameObject puerta;
+
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		framesCounter = 0;
@@ -33,6 +35,8 @@ public class Teleporter : MonoBehaviour
 				framesCounter += Time.deltaTime * 2;
 				
 				blackPlane.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, framesCounter);
+
+
 				
 				if (blackPlane.GetComponent<Renderer> ().material.color.a >= 1) {  
 					framesCounter = 4f;
@@ -46,7 +50,14 @@ public class Teleporter : MonoBehaviour
 				framesCounter -= Time.deltaTime * 2;
 				blackPlane.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, framesCounter);
 			}
-			
+
+			if (blackPlane.GetComponent<Renderer> ().material.color.a > 0.8f) {
+				puerta.GetComponent<GateBehaviour>().gate.transform.localPosition = new Vector3 (puerta.GetComponent<GateBehaviour>().gate.transform.localPosition.x, 
+				                                                                                 puerta.GetComponent<GateBehaviour>().max,
+				                                                                                 puerta.GetComponent<GateBehaviour>().gate.transform.localPosition.z);
+				puerta.GetComponent<GateBehaviour>().open = false;
+			}
+
 			if (blackPlane.GetComponent<Renderer> ().material.color.a <= 0) {
 				blackPlane.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, 0);
 				fadeIn = false;
