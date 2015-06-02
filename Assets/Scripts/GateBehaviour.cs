@@ -14,11 +14,16 @@ public class GateBehaviour : MonoBehaviour {
 
 	public bool open = false;
 
+	public AudioClip gateMoving;
+	public AudioClip gateClosed;
+	AudioSource audio;
+
 	// Use this for initialization
 	void Start () {
 		min = 0.0f;
 		max = 0.7f;
 		currentY = gate.transform.localPosition.y;
+		audio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -38,7 +43,7 @@ public class GateBehaviour : MonoBehaviour {
 
 		gate.transform.localPosition = new Vector3(gate.transform.localPosition.x, currentY, gate.transform.localPosition.z);
 
-		Debug.Log (currentY);
+		//Debug.Log (currentY);
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -46,6 +51,7 @@ public class GateBehaviour : MonoBehaviour {
 		if (other.tag == "Player") {
 			Debug.Log("Collides");
 			open = true;
+			audio.PlayOneShot(gateMoving,1);
 		}
 	}
 
@@ -54,6 +60,7 @@ public class GateBehaviour : MonoBehaviour {
 		if (other.tag == "Player") {
 			Debug.Log("Out");
 			open = false;
+			audio.PlayOneShot(gateMoving,1);
 		}
 	}
 }
