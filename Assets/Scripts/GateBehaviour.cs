@@ -33,12 +33,14 @@ public class GateBehaviour : MonoBehaviour {
 		if (open) {
 			if (gate.transform.localPosition.y <= max)
 				currentY += speed;
+			else audio.Stop();
 		}
 
 
 		else {
 			if (gate.transform.localPosition.y >= min)
 				currentY -= speed;
+			else audio.Stop();
 		}
 
 		gate.transform.localPosition = new Vector3(gate.transform.localPosition.x, currentY, gate.transform.localPosition.z);
@@ -51,6 +53,7 @@ public class GateBehaviour : MonoBehaviour {
 		if (other.tag == "Player") {
 			Debug.Log("Collides");
 			open = true;
+			audio.Stop();
 			audio.PlayOneShot(gateMoving,1);
 		}
 	}
@@ -60,6 +63,7 @@ public class GateBehaviour : MonoBehaviour {
 		if (other.tag == "Player") {
 			Debug.Log("Out");
 			open = false;
+			audio.Stop();
 			audio.PlayOneShot(gateMoving,1);
 		}
 	}
