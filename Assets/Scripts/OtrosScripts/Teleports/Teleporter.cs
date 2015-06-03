@@ -23,7 +23,7 @@ public class Teleporter : MonoBehaviour
 			if (blackPlane.GetComponent<MeshRenderer>().enabled == false) blackPlane.GetComponent<MeshRenderer>().enabled = true;
 			teleporting = true;
 			fadeIn = true;
-			blackPlane = other.GetComponent<PlayerMovement>().blackPlane;
+			blackPlane = other.GetComponent<NewPlayerMovement>().blackPlane;
 		}
 	}
 

@@ -11,7 +11,7 @@ public class Cepos : MonoBehaviour
 	public GameObject player;
 
 	public AudioClip cepo;
-	private AudioClip hurtSound;
+	public AudioClip hurtSound;
 	AudioSource audio;
 
 	private bool hurt = true;
@@ -19,9 +19,6 @@ public class Cepos : MonoBehaviour
 	private bool modifyPlayer = false;
 	public float speed;
 	public GameObject bloodPs;
-
-	//Damage
-	public int power = 100;
 
 	private int freePlayer = 600;
 	private int freeCounter = 0;
@@ -32,7 +29,6 @@ public class Cepos : MonoBehaviour
 	{
 		anim = GetComponent<Animator> ();
 		audio = GetComponent<AudioSource>();
-		hurtSound = player.GetComponent<Life>().hurt;
 	}
 
 	void Update () 
@@ -93,7 +89,7 @@ public class Cepos : MonoBehaviour
 				anim.SetInteger("Detect", valorCambio);
 				audio.PlayOneShot(cepo,1);
 				audio.PlayOneShot(hurtSound,1);
-				player.GetComponent<Life>().life -= 100;
+				NewPlayerMovement.life -= 100;
 				modifyPlayer = true;
 				hurt = false;
 				Instantiate(bloodPs, new Vector3 (transform.position.x, 

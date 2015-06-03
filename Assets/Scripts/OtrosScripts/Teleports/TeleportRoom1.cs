@@ -19,7 +19,7 @@ public class TeleportRoom1 : MonoBehaviour
 		{
 			teleporting = true;
 			fadeIn = true;
-			blackPlane = other.GetComponent<PlayerMovement>().blackPlane;
+			blackPlane = other.GetComponent<NewPlayerMovement>().blackPlane;
 			
 			
 		}
