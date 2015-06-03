@@ -169,33 +169,45 @@ public class NewPlayerMovement : MonoBehaviour
 			rigidBody.velocity = (new Vector2 (-root, root));
 			movementDirection = MOVEMENTDIRECTION.UP;
 
-			valorCambio = 2;
+			valorCambio = 11;
+			if (Input.GetKey(KeyCode.C))
+				valorCambio = 11;
 			anim.SetInteger("Transition", valorCambio);
 		} else if (Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.D)) 
 		{
 			rigidBody.velocity = (new Vector2 (root, root));
 			movementDirection = MOVEMENTDIRECTION.UP;
 
-			valorCambio = 10;
+			valorCambio = 11;
+			if (Input.GetKey(KeyCode.C))
+				valorCambio = 11;
 			anim.SetInteger("Transition", valorCambio);
 		} else if (Input.GetKey (KeyCode.S) && Input.GetKey (KeyCode.A)) 
 		{
 			rigidBody.velocity = (new Vector2 (-root, -root));
 			movementDirection = MOVEMENTDIRECTION.DOWN;
 
-
+			valorCambio = 1;
+			if (Input.GetKey(KeyCode.C))
+				valorCambio = 1;
+			anim.SetInteger("Transition", valorCambio);
 		} else if (Input.GetKey (KeyCode.S) && Input.GetKey (KeyCode.D)) 
 		{
 			rigidBody.velocity = (new Vector2 (root, -root));
 			movementDirection = MOVEMENTDIRECTION.DOWN;
 
-
+			valorCambio = 1;
+			if (Input.GetKey(KeyCode.C))
+				valorCambio = 1;
+			anim.SetInteger("Transition", valorCambio);
 		} else if (Input.GetKey (KeyCode.W)) 
 		{
 			rigidBody.velocity = (new Vector2 (0, speed));
 			movementDirection = MOVEMENTDIRECTION.UP;
 
-			valorCambio = 10;
+			valorCambio = 11;
+			if (Input.GetKey(KeyCode.C))
+				valorCambio = 11;
 			anim.SetInteger("Transition", valorCambio);
 		} else if (Input.GetKey (KeyCode.A)) 
 		{
@@ -211,16 +223,19 @@ public class NewPlayerMovement : MonoBehaviour
 			rigidBody.velocity = (new Vector2 (0, -speed));
 			movementDirection = MOVEMENTDIRECTION.DOWN;
 
-			valorCambio = 31;
+			valorCambio = 1;
 			if (Input.GetKey(KeyCode.C))
-				valorCambio = 32;
+				valorCambio = 1;
 			anim.SetInteger("Transition", valorCambio);
 		} else if (Input.GetKey (KeyCode.D)) 
 		{
 			rigidBody.velocity = (new Vector2 (speed, 0));
 			movementDirection = MOVEMENTDIRECTION.RIGHT;
 
-
+			valorCambio = 31;
+			if (Input.GetKey(KeyCode.C))
+				valorCambio = 32;
+			anim.SetInteger("Transition", valorCambio);
 		} else 
 		{
 			rigidBody.velocity = Vector2.zero;
@@ -228,36 +243,58 @@ public class NewPlayerMovement : MonoBehaviour
 			isMoving = false;
 			movementDirection = MOVEMENTDIRECTION.NONE;
 
-			valorCambio = 0;
-			anim.SetInteger("Transition", valorCambio);
+			switch (lookingTo)
+			{
+			case MOVEMENTDIRECTION.UP:
+				valorCambio = 10;
+				anim.SetInteger("Transition", valorCambio);
+				break;
+			case MOVEMENTDIRECTION.DOWN:
+				valorCambio = 0;
+				anim.SetInteger("Transition", valorCambio);
+				break;
+			case MOVEMENTDIRECTION.LEFT:
+				valorCambio = 20;
+				anim.SetInteger("Transition", valorCambio);
+				break;
+			case MOVEMENTDIRECTION.RIGHT:
+				valorCambio = 30;
+				anim.SetInteger("Transition", valorCambio);
+				break;
+			}
 		}
 		
 		if (movementDirection != MOVEMENTDIRECTION.NONE)
 			lookingTo = movementDirection;
-		
+
 		movement = Vector2.zero;
 	}
 
 	void Attack()
 	{
 		audio.PlayOneShot(attack, 1);
-		
-		valorCambio = 40;
-		anim.SetInteger("Transition", valorCambio);
 
 		switch (lookingTo)
 		{
 		case MOVEMENTDIRECTION.UP:
-			Instantiate (attackObject, new Vector3(attackPosition.x, attackPosition.y + 1.2f, attackPosition.z), transform.rotation);
+			Instantiate (attackObject, new Vector3(attackPosition.x, attackPosition.y, attackPosition.z), transform.rotation);
+			valorCambio = 50;
+			anim.SetInteger("Transition", valorCambio);
 			break;
 		case MOVEMENTDIRECTION.DOWN:
-			Instantiate (attackObject, new Vector3(attackPosition.x, attackPosition.y - 1.2f, attackPosition.z), transform.rotation);
+			Instantiate (attackObject, new Vector3(attackPosition.x, attackPosition.y - 0.67f, attackPosition.z), transform.rotation);
+			valorCambio = 40;
+			anim.SetInteger("Transition", valorCambio);
 			break;
 		case MOVEMENTDIRECTION.LEFT:
-			Instantiate (attackObject, new Vector3(attackPosition.x - 0.64f, attackPosition.y, attackPosition.z), transform.rotation);
+			Instantiate (attackObject, new Vector3(attackPosition.x - 0.67f, attackPosition.y, attackPosition.z), transform.rotation);
+			valorCambio = 40;
+			anim.SetInteger("Transition", valorCambio);
 			break;
 		case MOVEMENTDIRECTION.RIGHT:
-			Instantiate (attackObject, new Vector3(attackPosition.x + 0.64f, attackPosition.y, attackPosition.z), transform.rotation);
+			Instantiate (attackObject, new Vector3(attackPosition.x + 0.67f, attackPosition.y, attackPosition.z), transform.rotation);
+			valorCambio = 50;
+			anim.SetInteger("Transition", valorCambio);
 			break;
 		}
 
