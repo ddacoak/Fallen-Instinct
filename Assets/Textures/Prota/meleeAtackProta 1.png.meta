@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 89325cb1c9b44814f80c54ba6e0d0bfd
-timeCreated: 1433362000
+timeCreated: 1433378452
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -68,160 +68,160 @@ TextureImporter:
     - name: meleeAtackProta 1_0
       rect:
         serializedVersion: 2
-        x: 54
-        y: 449
-        width: 26
-        height: 60
+        x: 14
+        y: 448
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_1
       rect:
         serializedVersion: 2
-        x: 112
-        y: 449
-        width: 26
-        height: 60
+        x: 82
+        y: 448
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_2
       rect:
         serializedVersion: 2
-        x: 39
-        y: 388
-        width: 38
-        height: 53
+        x: 14
+        y: 384
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_3
       rect:
         serializedVersion: 2
-        x: 115
-        y: 388
-        width: 38
-        height: 53
+        x: 82
+        y: 384
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_4
       rect:
         serializedVersion: 2
-        x: 28
-        y: 324
-        width: 48
-        height: 53
+        x: 14
+        y: 320
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_5
       rect:
         serializedVersion: 2
-        x: 116
-        y: 324
-        width: 48
-        height: 53
+        x: 82
+        y: 320
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_6
       rect:
         serializedVersion: 2
-        x: 25
-        y: 260
-        width: 45
-        height: 53
+        x: 14
+        y: 256
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_7
       rect:
         serializedVersion: 2
-        x: 122
-        y: 260
-        width: 45
-        height: 53
+        x: 82
+        y: 256
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_8
       rect:
         serializedVersion: 2
-        x: 32
-        y: 196
-        width: 42
-        height: 53
+        x: 14
+        y: 192
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_9
       rect:
         serializedVersion: 2
-        x: 118
-        y: 196
-        width: 41
-        height: 53
+        x: 82
+        y: 192
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_10
       rect:
         serializedVersion: 2
-        x: 36
-        y: 132
-        width: 41
-        height: 53
+        x: 14
+        y: 128
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_11
       rect:
         serializedVersion: 2
-        x: 115
-        y: 132
-        width: 40
-        height: 53
+        x: 82
+        y: 128
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_12
       rect:
         serializedVersion: 2
-        x: 41
-        y: 68
-        width: 40
-        height: 53
+        x: 14
+        y: 64
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_13
       rect:
         serializedVersion: 2
-        x: 111
-        y: 68
-        width: 40
-        height: 53
+        x: 82
+        y: 64
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_14
       rect:
         serializedVersion: 2
-        x: 42
-        y: 4
-        width: 40
-        height: 53
+        x: 14
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: meleeAtackProta 1_15
       rect:
         serializedVersion: 2
-        x: 110
-        y: 4
-        width: 40
-        height: 53
+        x: 82
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

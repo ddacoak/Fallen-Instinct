@@ -65,16 +65,16 @@ public class NewPlayerMovement : MonoBehaviour
 
 	private Vector3 otherSlot1 = new Vector3(-1.27f, 1.31f, -8.4f);
 	private Vector3 otherSlot2 = new Vector3(-0.16f, 1.31f, -8.4f);
-	private Vector3 otherSlot3 = new Vector3(0.95f, 1.31f, -8.4f);
-	private Vector3 otherSlot4 = new Vector3(2.06f, 1.31f, -8.4f);
+	private Vector3 otherSlot3 = new Vector3(0.98f, 1.31f, -8.4f);
+	private Vector3 otherSlot4 = new Vector3(2.12f, 1.31f, -8.4f);
 	private Vector3 otherSlot5 = new Vector3(-1.27f, -0.02f, -8.4f);
 	private Vector3 otherSlot6 = new Vector3(-0.16f, -0.02f, -8.4f);
-	private Vector3 otherSlot7 = new Vector3(0.95f, -0.02f, -8.4f);
-	private Vector3 otherSlot8 = new Vector3(2.06f, -0.02f, -8.4f);
+	private Vector3 otherSlot7 = new Vector3(0.98f, -0.02f, -8.4f);
+	private Vector3 otherSlot8 = new Vector3(2.12f, -0.02f, -8.4f);
 	private Vector3 otherSlot9 = new Vector3(-1.27f, -1.35f, -8.4f);
 	private Vector3 otherSlot10 = new Vector3(-0.16f, -1.35f, -8.4f);
-	private Vector3 otherSlot11 = new Vector3(0.95f, -1.35f, -8.4f);
-	private Vector3 otherSlot12 = new Vector3(2.06f, -1.35f, -8.4f);
+	private Vector3 otherSlot11 = new Vector3(0.98f, -1.35f, -8.4f);
+	private Vector3 otherSlot12 = new Vector3(2.12f, -1.35f, -8.4f);
 
 	private Vector3 equipedSlot1 = new Vector3(-3.547f, 1.42f, -8.4f);
 	private Vector3 equipedSlot2 = new Vector3(-4.295f, -0.157f, -8.4f);
