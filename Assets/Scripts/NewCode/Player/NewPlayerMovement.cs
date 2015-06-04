@@ -60,8 +60,9 @@ public class NewPlayerMovement : MonoBehaviour
 	public GameObject inventory;
 	public GameObject inventorySelection;
 	private bool inventoryBoolean = false;
-	private bool pressed = false;
-	private float framesCounter = 1;
+
+	public GameObject candilTexture;
+	public GameObject playerLight;
 
 	private Vector3 otherSlot1 = new Vector3(-1.27f, 1.31f, -8.4f);
 	private Vector3 otherSlot2 = new Vector3(-0.16f, 1.31f, -8.4f);
@@ -104,7 +105,7 @@ public class NewPlayerMovement : MonoBehaviour
 		rigidBody = transform.GetComponent<Rigidbody2D> ();
 		inventorySelection.transform.position = otherSlot1 + this.gameObject.transform.position;
 
-
+		playerLight.SetActive(false);
 	}
 
 	void Update () 
@@ -291,12 +292,12 @@ public class NewPlayerMovement : MonoBehaviour
 		switch (lookingTo)
 		{
 		case MOVEMENTDIRECTION.UP:
-			Instantiate (attackObject, new Vector3(attackPosition.x, attackPosition.y, attackPosition.z), transform.rotation);
+			Instantiate (attackObject, new Vector3(attackPosition.x, attackPosition.y + 0.67f, attackPosition.z), transform.rotation);
 			valorCambio = 50;
 			anim.SetInteger("Transition", valorCambio);
 			break;
 		case MOVEMENTDIRECTION.DOWN:
-			Instantiate (attackObject, new Vector3(attackPosition.x, attackPosition.y - 0.67f, attackPosition.z), transform.rotation);
+			Instantiate (attackObject, new Vector3(attackPosition.x, attackPosition.y - 1.4f, attackPosition.z), transform.rotation);
 			valorCambio = 40;
 			anim.SetInteger("Transition", valorCambio);
 			break;
@@ -397,6 +398,12 @@ public class NewPlayerMovement : MonoBehaviour
 
 		if (inventoryBoolean == true) 
 		{
+			if(Candil.candil == true)
+			{
+				candilTexture.transform.position = specialSlot1 + this.gameObject.transform.position;
+				//playerLight.SetActive(true);
+			}
+
 			if(inventorySelection.transform.position == otherSlot1 + this.gameObject.transform.position)
 			{
 				if (Input.GetKeyDown (KeyCode.D)) 
