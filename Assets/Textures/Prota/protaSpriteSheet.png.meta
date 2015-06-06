@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8a94192bae1d4e9438602680ba582aef
-timeCreated: 1433364399
+timeCreated: 1433517586
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -546,7 +546,7 @@ TextureImporter:
         serializedVersion: 2
         x: 320
         y: 320
-        width: 31
+        width: 32
         height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -554,9 +554,9 @@ TextureImporter:
     - name: protaSpriteSheet_39
       rect:
         serializedVersion: 2
-        x: 351
+        x: 352
         y: 320
-        width: 33
+        width: 32
         height: 64
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -606,7 +606,7 @@ TextureImporter:
         serializedVersion: 2
         x: 320
         y: 257
-        width: 31
+        width: 32
         height: 63
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -614,9 +614,9 @@ TextureImporter:
     - name: protaSpriteSheet_51
       rect:
         serializedVersion: 2
-        x: 351
+        x: 352
         y: 257
-        width: 33
+        width: 32
         height: 63
       alignment: 0
       pivot: {x: .5, y: .5}
