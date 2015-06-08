@@ -10,6 +10,9 @@ public class EnemyAI : MonoBehaviour
 	public GameObject player;
 
 	private Rigidbody2D rigidBody;
+
+	Animator anim;
+	private int valorCambio;
 	//-------------
 
 	//LIFE
@@ -20,6 +23,7 @@ public class EnemyAI : MonoBehaviour
 	void Start()
 	{
 		rigidBody = transform.GetComponent<Rigidbody2D> ();
+		anim = GetComponent<Animator> ();
 	}
 
 	void Update () 
@@ -31,6 +35,7 @@ public class EnemyAI : MonoBehaviour
 		//MOVEMENT
 		//-------------
 		Movement ();
+		anim.SetInteger("Transition", valorCambio);
 		//-------------
 
 		//LIFE
@@ -42,29 +47,34 @@ public class EnemyAI : MonoBehaviour
 	void Movement()
 	{
 		float viewDistance = Vector3.Distance(player.transform.position, transform.position);
-		
+		valorCambio = 0;
+
 		if (viewDistance <= range) 
 		{
 			if (player.transform.position.x >= transform.position.x)
 			{
 				//rigidBody.velocity = (new Vector2(speed, 0));
 				transform.position += new Vector3(speed,0,0) * Time.deltaTime;
+				valorCambio = 2;
 			}
 			else if (player.transform.position.x <= transform.position.x)
 			{
 				//rigidBody.velocity = (new Vector2(-speed, 0));
 				transform.position += new Vector3(-speed, 0, 0) * Time.deltaTime;
+				valorCambio = 1;
 			}
 			
 			if (player.transform.position.y >= transform.position.y)
 			{
 				//rigidBody.velocity = (new Vector2(0, speed));
 				transform.position += new Vector3(0, speed, 0) * Time.deltaTime;
+				valorCambio = 1;
 			}
 			else if (player.transform.position.y <= transform.position.y)
 			{
 				//rigidBody.velocity = (new Vector2(0, -speed));
 				transform.position += new Vector3(0, -speed, 0) * Time.deltaTime;
+				valorCambio = 1;
 			}
 		}//else
 			//rigidBody.velocity =  Vector2.zero;
