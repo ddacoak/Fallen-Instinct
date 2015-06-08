@@ -6,7 +6,7 @@ public class EnemyAI : MonoBehaviour
 	//MOVEMENT
 	//-------------
 	public float speed = 0.5f;
-	public float range = 10.0f;
+	private float range = 7.5f;
 	public GameObject player;
 
 	private Rigidbody2D rigidBody;
@@ -90,7 +90,7 @@ public class EnemyAI : MonoBehaviour
 	{
 		if (other.tag == "PlayerAttack") 
 		{
-			life -= 50;
+			life -= 75;
 		}
 	}
 }

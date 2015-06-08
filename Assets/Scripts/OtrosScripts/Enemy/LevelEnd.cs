@@ -18,7 +18,7 @@ public class LevelEnd : MonoBehaviour {
 		
 		if(viewDistance <= range)
 		{
-			Application.LoadLevel("Menu");
+			Application.LoadLevel("Mall 2");
 		}
 	
 	}

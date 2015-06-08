@@ -12,7 +12,6 @@ public class EnemyAttack : MonoBehaviour
 	private GameObject playerLife;
 	private int attackCounter = 0;
 	public static bool hurt = false;
-	private float rangeAttack = 10.0f;
 	//-------------
 	
 	void Start () 

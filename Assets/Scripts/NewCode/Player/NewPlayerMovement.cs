@@ -54,42 +54,7 @@ public class NewPlayerMovement : MonoBehaviour
 	public GameObject knife;
 	public GameObject sword;
 	//-------------
-
-	//INVENTORY	
-	//-------------
-	public GameObject inventory;
-	public GameObject inventorySelection;
-	private bool inventoryBoolean = false;
-
-	public GameObject candilTexture;
-	public GameObject playerLight;
-
-	private Vector3 otherSlot1 = new Vector3(-1.27f, 1.31f, -8.4f);
-	private Vector3 otherSlot2 = new Vector3(-0.16f, 1.31f, -8.4f);
-	private Vector3 otherSlot3 = new Vector3(0.98f, 1.31f, -8.4f);
-	private Vector3 otherSlot4 = new Vector3(2.12f, 1.31f, -8.4f);
-	private Vector3 otherSlot5 = new Vector3(-1.27f, -0.02f, -8.4f);
-	private Vector3 otherSlot6 = new Vector3(-0.16f, -0.02f, -8.4f);
-	private Vector3 otherSlot7 = new Vector3(0.98f, -0.02f, -8.4f);
-	private Vector3 otherSlot8 = new Vector3(2.12f, -0.02f, -8.4f);
-	private Vector3 otherSlot9 = new Vector3(-1.27f, -1.35f, -8.4f);
-	private Vector3 otherSlot10 = new Vector3(-0.16f, -1.35f, -8.4f);
-	private Vector3 otherSlot11 = new Vector3(0.98f, -1.35f, -8.4f);
-	private Vector3 otherSlot12 = new Vector3(2.12f, -1.35f, -8.4f);
-
-	private Vector3 equipedSlot1 = new Vector3(-3.547f, 1.42f, -8.4f);
-	private Vector3 equipedSlot2 = new Vector3(-4.295f, -0.157f, -8.4f);
-	private Vector3 equipedSlot3 = new Vector3(-2.83f, -0.157f, -8.4f);
-	private Vector3 equipedSlot4 = new Vector3(-3.547f, -1.512f, -8.4f);
-
-	private Vector3 specialSlot1 = new Vector3(-2.384f, -3.303f, -8.4f);
-	private Vector3 specialSlot2 = new Vector3(-1.134f, -3.303f, -8.4f);
-	private Vector3 specialSlot3 = new Vector3(0.102f, -3.303f, -8.4f);
-	private Vector3 specialSlot4 = new Vector3(1.283f, -3.303f, -8.4f);
-	private Vector3 specialSlot5 = new Vector3(2.515f, -3.303f, -8.4f);
-	private Vector3 specialSlot6 = new Vector3(3.673f, -3.303f, -8.4f);
-	//-------------
-
+	
 	void Start () 
 	{		
 		anim = GetComponent<Animator> ();
@@ -103,9 +68,6 @@ public class NewPlayerMovement : MonoBehaviour
 		lookingTo = MOVEMENTDIRECTION.DOWN;
 		
 		rigidBody = transform.GetComponent<Rigidbody2D> ();
-		inventorySelection.transform.position = otherSlot1 + this.gameObject.transform.position;
-
-		playerLight.SetActive(false);
 	}
 
 	void Update () 
@@ -114,62 +76,57 @@ public class NewPlayerMovement : MonoBehaviour
 		                                  transform.position.y,
 		                                  transform.position.y / 100.0f - 1.0f);
 
-		if (inventoryBoolean == false)
+		attackPosition = this.gameObject.transform.position;
+
+		//MOVEMENT
+		//-------------
+		Movement();
+	
+		if (Input.GetKey(KeyCode.C))
+			speed = speedRun;
+		else if (Input.GetKey(KeyCode.V))
+			speed = speedSneak;
+		else
+			speed = speedWalk;
+		//-------------
+
+		//ATTACK
+		//-------------
+		attackObject.transform.position = transform.position;
+
+		if (Input.GetKeyDown (KeyCode.I) && attackingCounter == false)
 		{
-			attackPosition = this.gameObject.transform.position;
-
-			//MOVEMENT
-			//-------------
-			Movement();
-		
-			if (Input.GetKey(KeyCode.C))
-				speed = speedRun;
-			else if (Input.GetKey(KeyCode.V))
-				speed = speedSneak;
-			else
-				speed = speedWalk;
-			//-------------
-
-			//ATTACK
-			//-------------
-			attackObject.transform.position = transform.position;
-
-			if (Input.GetKeyDown (KeyCode.I) && attackingCounter == false)
+			attackingCounter = true;
+			attacking = true;
+			if (attacking == true) 
 			{
-				attackingCounter = true;
-				attacking = true;
-				if (attacking == true) 
-				{
-					Attack();
-				}
-				attackCounter++;
+				Attack();
 			}
+			attackCounter++;
+		}
 
-			if (attackingCounter == true)
+		if (attackingCounter == true)
+		{
+			attackCounter++;
+			if (attackCounter >= 15)
 			{
-				attackCounter++;
-				if (attackCounter >= 15)
-				{
-					attackingCounter = false;
-					attackCounter = 0;
-				}
+				attackingCounter = false;
+				attackCounter = 0;
 			}
-			//-------------
-
-			//LIFE
-			//-------------
-			Life ();
-			//-------------
-
-			//INTERFACE
-			//-------------
-			Interface ();
-			//-------------
-		}	
-		//INVENTORY
+		}
 		//-------------
-		Inventory ();
+
+		//LIFE
 		//-------------
+		Life ();
+		//-------------
+
+		//INTERFACE
+		//-------------
+		Interface ();
+		//-------------
+	
+
 	}
 
 	void Movement()
@@ -376,423 +333,5 @@ public class NewPlayerMovement : MonoBehaviour
 			heart100.SetActive (true);
 		else
 			heart100.SetActive (false);
-	}
-
-	void Inventory()
-	{
-		if(Input.GetKeyDown(KeyCode.Space) && inventoryBoolean == false)
-		{
-			inventory.SetActive(true);
-			inventorySelection.SetActive(true);
-			inventoryBoolean = true;
-			return;
-		}
-
-		if(Input.GetKeyDown(KeyCode.Space) && inventoryBoolean == true)
-		{
-			inventory.SetActive(false);
-			inventorySelection.SetActive(false);
-			inventoryBoolean = false;
-			return;
-		}
-
-		if (inventoryBoolean == true) 
-		{
-			if(Candil.candil == true)
-			{
-				candilTexture.transform.position = specialSlot1 + this.gameObject.transform.position;
-				//playerLight.SetActive(true);
-			}
-
-			if(inventorySelection.transform.position == otherSlot1 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = otherSlot2 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = equipedSlot1 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = specialSlot2 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = otherSlot5 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == otherSlot2 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = otherSlot3 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = otherSlot1 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = specialSlot3 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = otherSlot6 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == otherSlot3 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = otherSlot4 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = otherSlot2 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = specialSlot4 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = otherSlot7 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == otherSlot4 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = equipedSlot1 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = otherSlot3 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = specialSlot5 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = otherSlot8 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == otherSlot5 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = otherSlot6 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = equipedSlot3 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = otherSlot1 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = otherSlot9 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == otherSlot6 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = otherSlot7 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = otherSlot5 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = otherSlot2 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = otherSlot10 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == otherSlot7 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = otherSlot8 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = otherSlot6 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = otherSlot3 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = otherSlot11 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == otherSlot8 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = equipedSlot2 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = otherSlot7 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = otherSlot4 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = otherSlot12 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == otherSlot9 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = otherSlot10 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = equipedSlot4 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = otherSlot5 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = specialSlot2 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == otherSlot10 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = otherSlot11 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = otherSlot9 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = otherSlot6 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = specialSlot3 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == otherSlot11 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = otherSlot12 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = otherSlot10 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = otherSlot7 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = specialSlot4 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == otherSlot12 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = equipedSlot4 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = otherSlot11 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = otherSlot8 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = specialSlot5 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == equipedSlot1 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = otherSlot1 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = otherSlot4 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = specialSlot1 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = equipedSlot2 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == equipedSlot2 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = equipedSlot3 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = otherSlot8 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = equipedSlot1 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = equipedSlot4 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == equipedSlot3 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = otherSlot5 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = equipedSlot2 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = equipedSlot1 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = equipedSlot4 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == equipedSlot4 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = otherSlot9 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = otherSlot12 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = equipedSlot2 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = specialSlot1 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == specialSlot1 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = specialSlot2 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = specialSlot6 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = equipedSlot4 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = equipedSlot1 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == specialSlot2 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = specialSlot3 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = specialSlot1 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = otherSlot9 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = otherSlot1 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == specialSlot3 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = specialSlot4 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = specialSlot2 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = otherSlot10 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = otherSlot2 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == specialSlot4 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = specialSlot5 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = specialSlot3 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = otherSlot11 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = otherSlot3 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == specialSlot5 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = specialSlot6 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = specialSlot4 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.W)) 
-				{
-					inventorySelection.transform.position = otherSlot12 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.S)) 
-				{
-					inventorySelection.transform.position = otherSlot4 + this.gameObject.transform.position;
-				}
-				return;
-			}
-
-			if(inventorySelection.transform.position == specialSlot6 + this.gameObject.transform.position)
-			{
-				if (Input.GetKeyDown (KeyCode.D)) 
-				{
-					inventorySelection.transform.position = specialSlot1 + this.gameObject.transform.position;
-				} else if (Input.GetKeyDown (KeyCode.A)) 
-				{
-					inventorySelection.transform.position = specialSlot5 + this.gameObject.transform.position;
-				}
-				return;
-			}
-		}
 	}
 }
