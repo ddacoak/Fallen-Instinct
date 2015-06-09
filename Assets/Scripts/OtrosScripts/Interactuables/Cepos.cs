@@ -10,6 +10,9 @@ public class Cepos : MonoBehaviour
 	public float range = 0.5f;
 	public GameObject player;
 
+	private bool modifyEnemy = false;
+	private bool enemyHurt = true;
+
 	public AudioClip cepo;
 	public AudioClip hurtSound;
 	AudioSource audio;
@@ -101,6 +104,28 @@ public class Cepos : MonoBehaviour
 			}
 
 		}
+
+		/*if(other.tag == "Zombi")
+		{
+			Debug.Log("enteredcepo");
+			if(enemyHurt)
+			{
+				//valorCambio = 1;
+				//anim.SetInteger("Detect", valorCambio);
+				audio.PlayOneShot(cepo,1);
+				audio.PlayOneShot(hurtSound,1);
+				EnemyAI.life -= 50;
+				modifyEnemy = true;
+				hurt = false;
+				Instantiate(bloodPs, new Vector3 (transform.position.x, 
+				                                  transform.position.y + 1.2f
+				                                  , -1), Quaternion.Euler(0, 0, 0));
+				Instantiate(bloodPs, new Vector3 (transform.position.x, 
+				                                  transform.position.y + 1.2f
+				                                  , -1), Quaternion.Euler(0, 0, 0));
+			}
+			
+		}*/
 	}
 
 		
