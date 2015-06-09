@@ -5,7 +5,8 @@ public class EnemyAttack : MonoBehaviour
 {
 	public AudioClip playerHurt;
 	AudioSource audio;
-	public int damage;
+	private int damage = 100;
+	public GameObject hurtFeedback;
 
 	//ATTACK
 	//-------------
@@ -39,6 +40,7 @@ public class EnemyAttack : MonoBehaviour
 		{
 			if (attackCounter == 15)
 			{
+				hurtFeedback.SetActive(true);
 				NewPlayerMovement.life -= damage;
 				hurt = true;
 				audio.PlayOneShot(playerHurt, 1F);

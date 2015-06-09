@@ -38,7 +38,6 @@ public class NewPlayerMovement : MonoBehaviour
 
 	//LIFE
 	//-------------
-	public GameObject corpse;
 	private int maxLife = 600;
 	public static int life = 600;
 	//-------------
@@ -56,8 +55,6 @@ public class NewPlayerMovement : MonoBehaviour
 	public GameObject heart400;
 	public GameObject heart500;
 	public GameObject heart600;
-	public GameObject knife;
-	public GameObject sword;
 	//-------------
 	
 	void Start () 
@@ -82,13 +79,6 @@ public class NewPlayerMovement : MonoBehaviour
 		                                  transform.position.y / 100.0f - 1.0f);
 
 		attackPosition = this.gameObject.transform.position;
-
-		if (Input.GetKeyDown (KeyCode.P)) 
-		{
-			Candil.candil = true;
-			Candil.oilCounter = 100;
-			playerLight.SetActive(true);
-		}
 
 		//MOVEMENT
 		//-------------
@@ -131,6 +121,16 @@ public class NewPlayerMovement : MonoBehaviour
 		//LIFE
 		//-------------
 		Life ();
+		//-------------
+
+		//LIGHT
+		//-------------
+		if (Input.GetKeyDown (KeyCode.P)) 
+		{
+			Candil.candil = true;
+			Candil.oilCounter = 100;
+			playerLight.SetActive(true);
+		}
 		//-------------
 
 		//INTERFACE
@@ -292,7 +292,6 @@ public class NewPlayerMovement : MonoBehaviour
 		if (life <= 0) 
 		{
 			Destroy(gameObject);
-			Instantiate(corpse);
 		}
 
 		if (Input.GetKeyDown (KeyCode.G))
