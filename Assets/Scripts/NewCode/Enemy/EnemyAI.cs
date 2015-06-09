@@ -11,6 +11,8 @@ public class EnemyAI : MonoBehaviour
 
 	private Rigidbody2D rigidBody;
 
+	public  bool modifyPosCorrect = true;
+
 	Animator anim;
 	private int valorCambio;
 	//-------------
@@ -28,9 +30,16 @@ public class EnemyAI : MonoBehaviour
 
 	void Update () 
 	{
-		transform.position = new Vector3 (transform.position.x,
-		                                  transform.position.y,
-		                                  transform.position.y / 100.0f - 1.0f);
+		if (modifyPosCorrect) {
+			transform.position = new Vector3 (transform.position.x,
+                                  			  transform.position.y,
+		                                      transform.position.y / 100.0f - 1.0f);
+		} else {
+			transform.position = new Vector3 (transform.position.x,
+			                                  transform.position.y,
+			                                  transform.position.y / 100.0f + 1.0f);
+
+		}
 
 		//MOVEMENT
 		//-------------
