@@ -10,7 +10,7 @@ public class EnemyControllerMall2 : MonoBehaviour
 	public GameObject fourthArea;
 	public GameObject fifthArea;
 	
-	private float secondAreaTrigger  = 4.0f;
+	private float secondAreaTrigger  = 3.0f;
 	private float thirdAreaTrigger  = 10.0f;
 	private float fourthAreaTrigger  = 27.28f;
 	private float fifthAreaTrigger  = 35f;

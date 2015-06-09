@@ -5,20 +5,17 @@ public class Candil : MonoBehaviour
 {
 	public float range = 1.0f;
 	public GameObject player;
+	public GameObject playerLight;
 	public GameObject text;
 	public static bool candil = false;
-	
-	// Use this for initialization
-	void Start () 
-	{
-		
-	}
-	
-	// Update is called once per frame
+
+	public static int oilCounter = 100;
+
 	void Update () 
 	{
+		Debug.Log(oilCounter);
 		float viewDistance = Vector3.Distance(player.transform.position, transform.position);
-		
+
 		if (viewDistance <= range) 
 		{
 			if(Input.GetKeyDown(KeyCode.E))
@@ -27,6 +24,14 @@ public class Candil : MonoBehaviour
 				text.SetActive(true);
 				this.gameObject.SetActive(false);
 			}
+		}
+
+		if (PlayerLightController.enabled == true)
+			oilCounter--;
+
+		if(oilCounter <= 0)
+		{
+			playerLight.SetActive(false);
 		}
 	}
 }

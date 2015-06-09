@@ -22,6 +22,7 @@ public class Tutorial : MonoBehaviour
 	{
 		if (player.transform.position.x >= -6.5f && runTextBoolean == false) 
 		{
+			movementTutorial.SetActive(false);
 			runTutorial.SetActive(true);
 			runTextBoolean = true;
 		}
@@ -29,12 +30,14 @@ public class Tutorial : MonoBehaviour
 
 		if (player.transform.position.x >= -5.0f && attackTextBoolean == false) 
 		{
+			runTutorial.SetActive(false);
 			attackTutorial.SetActive(true);
 			attackTextBoolean = true;
 		}
 
 		if (player.transform.position.x >= -1.5f && interactTextBoolean == false) 
 		{
+			attackTutorial.SetActive(false);
 			interactTutorial.SetActive(true);
 			interactTextBoolean = true;
 		}

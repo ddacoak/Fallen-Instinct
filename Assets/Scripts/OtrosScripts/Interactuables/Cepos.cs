@@ -3,15 +3,12 @@ using System.Collections;
 
 public class Cepos : MonoBehaviour 
 {
-	Animator anim;
-	private int valorCambio = 0;
+	static Animator anim;
+	public static int valorCambio = 0;
 
 	public GameObject playerShadow;
 	public float range = 0.5f;
 	public GameObject player;
-
-	private bool modifyEnemy = false;
-	private bool enemyHurt = true;
 
 	public AudioClip cepo;
 	public AudioClip hurtSound;
@@ -37,27 +34,27 @@ public class Cepos : MonoBehaviour
 	void Update () 
 	{
 		if (modifyPlayer) {
-			if(player.GetComponent<Transform>().position.x < transform.position.x) 
-				player.GetComponent<Transform>().position = new Vector3 (player.GetComponent<Transform>().position.x + speed,
-				                                                         player.GetComponent<Transform>().position.y,
-				                                                         player.GetComponent<Transform>().position.z);
-			if(player.GetComponent<Transform>().position.x > transform.position.x) 
-				player.GetComponent<Transform>().position = new Vector3 (player.GetComponent<Transform>().position.x - speed,
-				                                                         player.GetComponent<Transform>().position.y,
-				                                                         player.GetComponent<Transform>().position.z);
-			if(player.GetComponent<Transform>().position.y < transform.position.y + 1.2) 
-				player.GetComponent<Transform>().position = new Vector3 (player.GetComponent<Transform>().position.x,
-				                                                         player.GetComponent<Transform>().position.y + speed,
-				                                                         player.GetComponent<Transform>().position.z);
-			if(player.GetComponent<Transform>().position.y > transform.position.y + 1.2) 
-				player.GetComponent<Transform>().position = new Vector3 (player.GetComponent<Transform>().position.x,
-				                                                         player.GetComponent<Transform>().position.y - speed,
-				                                                         player.GetComponent<Transform>().position.z);
+			if(player.transform.position.x < transform.position.x) 
+				player.transform.position = new Vector3 (player.transform.position.x + speed,
+				                                         player.transform.position.y,
+				                                         player.transform.position.z);
+			if(player.transform.position.x > transform.position.x) 
+				player.transform.position = new Vector3 (player.transform.position.x - speed,
+				                                         player.transform.position.y,
+				                                         player.transform.position.z);
+			if(player.transform.position.y < transform.position.y + 1.2) 
+				player.transform.position = new Vector3 (player.transform.position.x,
+				                                         player.transform.position.y + speed,
+				                                         player.transform.position.z);
+			if(player.transform.position.y > transform.position.y + 1.2) 
+				player.transform.position = new Vector3 (player.transform.position.x,
+				                                         player.transform.position.y - speed,
+				                                         player.transform.position.z);
 
-			if((player.GetComponent<Transform>().position.x <= transform.position.x + 0.2 && player.GetComponent<Transform>().position.x >= transform.position.x - 0.2)
-			   &&(player.GetComponent<Transform>().position.y <= (transform.position.y + 1.2) + 0.2 && player.GetComponent<Transform>().position.y >= (transform.position.y + 1.2) - 0.2)) 
+			if((player.transform.position.x <= transform.position.x + 0.2 && player.transform.position.x >= transform.position.x - 0.2)
+			   &&(player.transform.position.y <= (transform.position.y + 1.2) + 0.2 && player.transform.position.y >= (transform.position.y + 1.2) - 0.2)) 
 			{
-				player.GetComponent<Transform>().position = new Vector3 (transform.position.x, transform.position.y + 1.2f, player.GetComponent<Transform>().position.z);
+				player.transform.position = new Vector3 (transform.position.x, transform.position.y + 1.2f, player.transform.position.z);
 			}
 
 			if (freeCounter > 0) freeCounter -= counterLower;
@@ -77,6 +74,13 @@ public class Cepos : MonoBehaviour
 			}
 
 
+		}
+
+		if (EnemyAI.enemyHurt == true)
+		{
+			valorCambio = 1;
+			anim.SetInteger("Detect", valorCambio);
+			audio.PlayOneShot(cepo,1);
 		}
 			
 	}
@@ -104,29 +108,5 @@ public class Cepos : MonoBehaviour
 			}
 
 		}
-
-		/*if(other.tag == "Zombi")
-		{
-			Debug.Log("enteredcepo");
-			if(enemyHurt)
-			{
-				//valorCambio = 1;
-				//anim.SetInteger("Detect", valorCambio);
-				audio.PlayOneShot(cepo,1);
-				audio.PlayOneShot(hurtSound,1);
-				EnemyAI.life -= 50;
-				modifyEnemy = true;
-				hurt = false;
-				Instantiate(bloodPs, new Vector3 (transform.position.x, 
-				                                  transform.position.y + 1.2f
-				                                  , -1), Quaternion.Euler(0, 0, 0));
-				Instantiate(bloodPs, new Vector3 (transform.position.x, 
-				                                  transform.position.y + 1.2f
-				                                  , -1), Quaternion.Euler(0, 0, 0));
-			}
-			
-		}*/
 	}
-
-		
 }

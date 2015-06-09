@@ -43,6 +43,11 @@ public class NewPlayerMovement : MonoBehaviour
 	public static int life = 600;
 	//-------------
 
+	//LIGHT
+	//-------------
+	public GameObject playerLight;
+	//-------------
+
 	//INTERFACE	
 	//-------------
 	public GameObject heart100;
@@ -77,6 +82,13 @@ public class NewPlayerMovement : MonoBehaviour
 		                                  transform.position.y / 100.0f - 1.0f);
 
 		attackPosition = this.gameObject.transform.position;
+
+		if (Input.GetKeyDown (KeyCode.P)) 
+		{
+			Candil.candil = true;
+			Candil.oilCounter = 100;
+			playerLight.SetActive(true);
+		}
 
 		//MOVEMENT
 		//-------------

@@ -23,11 +23,24 @@ public class EnemyAI : MonoBehaviour
 	//-------------
 	public int life = 300;
 	//-------------
+
+	//CEPO
+	//-------------
+	public AudioClip cepo;
+	AudioSource audio;
+
+	private bool modifyEnemy = false;
+	public static bool enemyHurt = false;
+
+	public GameObject bloodPs;
+	public GameObject cepos;
+	//-------------
 	
 	void Start()
 	{
 		rigidBody = transform.GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
+		audio = GetComponent<AudioSource>();
 	}
 
 	void Update () 
@@ -147,6 +160,45 @@ public class EnemyAI : MonoBehaviour
 				transform.position += new Vector3(0.5f,0,0);
 				break;
 			}
+		}
+
+		if(other.tag == "Cepo")
+		{
+			TrappedZombi();
+			enemyHurt = true;
+		}
+	}
+
+	void TrappedZombi()
+	{
+		life -= 50;
+		Instantiate(bloodPs, new Vector3 (transform.position.x, 
+		                                  transform.position.y + 1.2f
+		                                  , -1), Quaternion.Euler(0, 0, 0));
+
+		if(this.gameObject.transform.position.x < cepos.transform.position.x) 
+			this.gameObject.transform.position = new Vector3 (this.gameObject.transform.position.x + speed,
+			                                         this.gameObject.transform.position.y,
+			                                         this.gameObject.transform.position.z);
+		if(this.gameObject.transform.position.x > cepos.transform.position.x) 
+			this.gameObject.transform.position = new Vector3 (this.gameObject.transform.position.x - speed,
+			                                         this.gameObject.transform.position.y,
+			                                         this.gameObject.transform.position.z);
+		if(this.gameObject.transform.position.y < cepos.transform.position.y + 1.2) 
+			this.gameObject.transform.position = new Vector3 (this.gameObject.transform.position.x,
+			                                         this.gameObject.transform.position.y + speed,
+			                                         this.gameObject.transform.position.z);
+		if(this.gameObject.transform.position.y > cepos.transform.position.y + 1.2) 
+			this.gameObject.transform.position = new Vector3 (this.gameObject.transform.position.x,
+			                                         this.gameObject.transform.position.y - speed,
+			                                         this.gameObject.transform.position.z);
+		
+		if((this.gameObject.transform.position.x <= cepos.transform.position.x + 0.2 && 
+		    this.gameObject.transform.position.x >= cepos.transform.position.x - 0.2) &&
+		   (this.gameObject.transform.position.y <= (cepos.transform.position.y + 1.2) + 0.2 && 
+		 this.gameObject.transform.position.y >= (cepos.transform.position.y + 1.2) - 0.2)) 
+		{
+			this.gameObject.transform.position = new Vector3 (transform.position.x, transform.position.y + 1.2f, this.gameObject.transform.position.z);
 		}
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerLightController : MonoBehaviour {
 	
-	private bool enabled = false;
+	public static bool enabled = false;
 	public bool inLight = false;
 
 	public float objectiveAlpha;
@@ -25,20 +25,23 @@ public class PlayerLightController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (Input.GetKeyUp (KeyCode.L))
-			enabled = !enabled;
-		if (!inLight) {
-			if(enabled)
-				objectiveAlpha = 4.3f;
+		if (Candil.candil == true) 
+		{
+			if (Input.GetKeyUp (KeyCode.L))
+				enabled = !enabled;
+			if (!inLight) {
+				if(enabled)
+					objectiveAlpha = 4.3f;
+			}
+			
+			if (!enabled)
+				objectiveAlpha = 0;
+			
+			
+			randomAlpha = Random.Range (objectiveAlpha * (100 - lightOscilation) /100, objectiveAlpha * (100 + lightOscilation) /100);
+			if(enabled) if (randomAlpha < minimumLight) randomAlpha = minimumLight;
+			light.intensity = Mathf.Lerp (light.intensity, randomAlpha, lightFadeSpeed);
 		}
-		
-		if (!enabled)
-			objectiveAlpha = 0;
-		
-		
-		randomAlpha = Random.Range (objectiveAlpha * (100 - lightOscilation) /100, objectiveAlpha * (100 + lightOscilation) /100);
-		if(enabled) if (randomAlpha < minimumLight) randomAlpha = minimumLight;
-		light.intensity = Mathf.Lerp (light.intensity, randomAlpha, lightFadeSpeed);
 	}
 }
 
