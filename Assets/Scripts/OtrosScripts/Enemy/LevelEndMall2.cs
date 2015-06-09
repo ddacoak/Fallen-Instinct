@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LevelEnd : MonoBehaviour {
+public class LevelEndMall2 : MonoBehaviour {
 
 	private float range = 2f;
 	public GameObject player;
@@ -18,7 +18,7 @@ public class LevelEnd : MonoBehaviour {
 		
 		if(viewDistance <= range)
 		{
-			Application.LoadLevel("Mall 2");
+			Application.LoadLevel("Menu");
 		}
 	
 	}

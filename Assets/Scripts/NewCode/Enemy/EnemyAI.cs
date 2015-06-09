@@ -6,7 +6,9 @@ public class EnemyAI : MonoBehaviour
 	//MOVEMENT
 	//-------------
 	public float speed = 0.5f;
-	private float range = 7.5f;
+	public float speed2 = 1f;
+	private float range = 5.0f;
+	private float range2 = 50.0f;
 	public GameObject player;
 
 	private Rigidbody2D rigidBody;
@@ -56,6 +58,7 @@ public class EnemyAI : MonoBehaviour
 	void Movement()
 	{
 		float viewDistance = Vector3.Distance(player.transform.position, transform.position);
+		float viewDistance2 = Vector3.Distance(player.transform.position, transform.position);
 		valorCambio = 0;
 
 		if (viewDistance <= range) 
@@ -85,8 +88,36 @@ public class EnemyAI : MonoBehaviour
 				transform.position += new Vector3(0, -speed, 0) * Time.deltaTime;
 				valorCambio = 1;
 			}
-		}//else
-			//rigidBody.velocity =  Vector2.zero;
+		}
+
+		if (viewDistance2 <= range2 && viewDistance >= range) 
+		{
+			if (player.transform.position.x >= transform.position.x)
+			{
+				//rigidBody.velocity = (new Vector2(speed, 0));
+				transform.position += new Vector3(speed2,0,0) * Time.deltaTime;
+				valorCambio = 2;
+			}
+			else if (player.transform.position.x <= transform.position.x)
+			{
+				//rigidBody.velocity = (new Vector2(-speed, 0));
+				transform.position += new Vector3(-speed2, 0, 0) * Time.deltaTime;
+				valorCambio = 1;
+			}
+			
+			if (player.transform.position.y >= transform.position.y)
+			{
+				//rigidBody.velocity = (new Vector2(0, speed));
+				transform.position += new Vector3(0, speed2, 0) * Time.deltaTime;
+				valorCambio = 1;
+			}
+			else if (player.transform.position.y <= transform.position.y)
+			{
+				//rigidBody.velocity = (new Vector2(0, -speed));
+				transform.position += new Vector3(0, -speed2, 0) * Time.deltaTime;
+				valorCambio = 1;
+			}
+		}
 	}
 
 	void Life()
@@ -100,6 +131,22 @@ public class EnemyAI : MonoBehaviour
 		if (other.tag == "PlayerAttack") 
 		{
 			life -= 75;
+
+			switch (NewPlayerMovement.lookingTo)
+			{
+			case MOVEMENTDIRECTION.UP:
+				transform.position += new Vector3(0,0.5f,0);
+				break;
+			case MOVEMENTDIRECTION.DOWN:
+				transform.position += new Vector3(0,-0.5f,0);
+				break;
+			case MOVEMENTDIRECTION.LEFT:
+				transform.position += new Vector3(-0.5f,0,0);
+				break;
+			case MOVEMENTDIRECTION.RIGHT:
+				transform.position += new Vector3(0.5f,0,0);
+				break;
+			}
 		}
 	}
 }

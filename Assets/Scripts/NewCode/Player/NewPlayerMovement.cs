@@ -283,7 +283,8 @@ public class NewPlayerMovement : MonoBehaviour
 			Instantiate(corpse);
 		}
 
-		//probar con mover rigid body
+		if (Input.GetKeyDown (KeyCode.G))
+			life = maxLife;
 
 		if(EnemyAttack.hurt == true)
 		{
