@@ -128,7 +128,7 @@ public class NewPlayerMovement : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.P)) 
 		{
 			Candil.candil = true;
-			Candil.oilCounter = 100;
+			Candil.oilCounter = 200;
 			playerLight.SetActive(true);
 		}
 		//-------------
@@ -308,9 +308,13 @@ public class NewPlayerMovement : MonoBehaviour
 				transform.position += new Vector3(0,0.5f,0);
 				break;
 			case MOVEMENTDIRECTION.LEFT:
+				valorCambio = 23;
+				anim.SetInteger("Transition", valorCambio);
 				transform.position += new Vector3(0.5f,0,0);
 				break;
 			case MOVEMENTDIRECTION.RIGHT:
+				valorCambio = 33;
+				anim.SetInteger("Transition", valorCambio);
 				transform.position += new Vector3(-0.5f,0,0);
 				break;
 			}

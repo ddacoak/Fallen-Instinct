@@ -5,6 +5,7 @@ public class HierbaMedicinal : MonoBehaviour
 {
 	public float range = 1.0f;
 	public GameObject player;
+	public GameObject curePS;
 
 	// Use this for initialization
 	void Start () 
@@ -23,6 +24,7 @@ public class HierbaMedicinal : MonoBehaviour
 			{
 				NewPlayerMovement.life += 100;
 				Destroy(this.gameObject);
+				Instantiate(curePS, player.transform.position, transform.rotation);
 			}
 		}
 	}
