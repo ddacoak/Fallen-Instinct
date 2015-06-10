@@ -155,7 +155,7 @@ public class NewPlayerMovement : MonoBehaviour
 
 			valorCambio = 11;
 			if (Input.GetKey(KeyCode.C))
-				valorCambio = 11;
+				valorCambio = 12;
 			anim.SetInteger("Transition", valorCambio);
 		} else if (Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.D)) 
 		{
@@ -164,7 +164,7 @@ public class NewPlayerMovement : MonoBehaviour
 
 			valorCambio = 11;
 			if (Input.GetKey(KeyCode.C))
-				valorCambio = 11;
+				valorCambio = 12;
 			anim.SetInteger("Transition", valorCambio);
 		} else if (Input.GetKey (KeyCode.S) && Input.GetKey (KeyCode.A)) 
 		{
@@ -173,7 +173,7 @@ public class NewPlayerMovement : MonoBehaviour
 
 			valorCambio = 1;
 			if (Input.GetKey(KeyCode.C))
-				valorCambio = 1;
+				valorCambio = 2;
 			anim.SetInteger("Transition", valorCambio);
 		} else if (Input.GetKey (KeyCode.S) && Input.GetKey (KeyCode.D)) 
 		{
@@ -182,7 +182,7 @@ public class NewPlayerMovement : MonoBehaviour
 
 			valorCambio = 1;
 			if (Input.GetKey(KeyCode.C))
-				valorCambio = 1;
+				valorCambio = 2;
 			anim.SetInteger("Transition", valorCambio);
 		} else if (Input.GetKey (KeyCode.W)) 
 		{
@@ -191,7 +191,7 @@ public class NewPlayerMovement : MonoBehaviour
 
 			valorCambio = 11;
 			if (Input.GetKey(KeyCode.C))
-				valorCambio = 11;
+				valorCambio = 12;
 			anim.SetInteger("Transition", valorCambio);
 		} else if (Input.GetKey (KeyCode.A)) 
 		{
@@ -209,7 +209,7 @@ public class NewPlayerMovement : MonoBehaviour
 
 			valorCambio = 1;
 			if (Input.GetKey(KeyCode.C))
-				valorCambio = 1;
+				valorCambio = 2;
 			anim.SetInteger("Transition", valorCambio);
 		} else if (Input.GetKey (KeyCode.D)) 
 		{
@@ -261,22 +261,22 @@ public class NewPlayerMovement : MonoBehaviour
 		switch (lookingTo)
 		{
 		case MOVEMENTDIRECTION.UP:
-			Instantiate (attackObject, new Vector3(attackPosition.x, attackPosition.y + 0.67f, attackPosition.z), transform.rotation);
-			valorCambio = 50;
+			Instantiate (attackObject, new Vector3(attackPosition.x, attackPosition.y + 0.25f, attackPosition.z), transform.rotation);
+			valorCambio = 70;
 			anim.SetInteger("Transition", valorCambio);
 			break;
 		case MOVEMENTDIRECTION.DOWN:
-			Instantiate (attackObject, new Vector3(attackPosition.x, attackPosition.y - 1.4f, attackPosition.z), transform.rotation);
-			valorCambio = 40;
+			Instantiate (attackObject, new Vector3(attackPosition.x, attackPosition.y - 1.0f, attackPosition.z), transform.rotation);
+			valorCambio = 60;
 			anim.SetInteger("Transition", valorCambio);
 			break;
 		case MOVEMENTDIRECTION.LEFT:
-			Instantiate (attackObject, new Vector3(attackPosition.x - 0.67f, attackPosition.y, attackPosition.z), transform.rotation);
+			Instantiate (attackObject, new Vector3(attackPosition.x - 1.0f, attackPosition.y-0.2f, attackPosition.z), transform.rotation);
 			valorCambio = 40;
 			anim.SetInteger("Transition", valorCambio);
 			break;
 		case MOVEMENTDIRECTION.RIGHT:
-			Instantiate (attackObject, new Vector3(attackPosition.x + 0.67f, attackPosition.y, attackPosition.z), transform.rotation);
+			Instantiate (attackObject, new Vector3(attackPosition.x + 1.0f, attackPosition.y-0.2f, attackPosition.z), transform.rotation);
 			valorCambio = 50;
 			anim.SetInteger("Transition", valorCambio);
 			break;

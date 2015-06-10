@@ -8,12 +8,12 @@ public class HurtFeedback : MonoBehaviour
 	void Update () 
 	{
 		lifeCounter++;
-		Debug.Log (lifeCounter);
-		if (lifeCounter >= 50)
+
+		/*if (lifeCounter >= 50)
 			GetComponent<MeshRenderer> ().material.color = new Color(1, 1, 1, 0.5f);
 		
 		if (lifeCounter >= 100)
-			GetComponent<MeshRenderer> ().material.color = new Color(1, 1, 1, 0.25f);
+			GetComponent<MeshRenderer> ().material.color = new Color(1, 1, 1, 0.25f);*/
 		
 		if (lifeCounter >= 150)
 			this.gameObject.SetActive (false);
