@@ -15,7 +15,7 @@ public class HurtFeedback : MonoBehaviour
 		if (lifeCounter >= 100)
 			GetComponent<MeshRenderer> ().material.color = new Color(1, 1, 1, 0.25f);*/
 		
-		if (lifeCounter >= 150)
+		if (lifeCounter >= 50)
 			this.gameObject.SetActive (false);
 	}
 }

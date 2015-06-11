@@ -291,7 +291,9 @@ public class NewPlayerMovement : MonoBehaviour
 
 		if (life <= 0) 
 		{
-			Destroy(gameObject);
+
+			Application.LoadLevel("Menu");
+			//Destroy(gameObject);
 		}
 
 		if (Input.GetKeyDown (KeyCode.G))
