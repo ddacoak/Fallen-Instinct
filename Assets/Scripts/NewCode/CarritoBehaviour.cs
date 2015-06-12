@@ -10,6 +10,10 @@ public class CarritoBehaviour : MonoBehaviour {
 	private GameObject spark;
 	private float framesCounter = 0;
 
+	private float playerMinSpeed = 0.03f;
+	private float enemyMinSpeed = 0.015f;
+	private float carritoMinSpeed;
+
 	public AudioClip shoppingCartSound;
 	AudioSource audio;
 
@@ -44,7 +48,7 @@ public class CarritoBehaviour : MonoBehaviour {
 		    curPos.y <= lastPos.y + 0.03f && curPos.y >= lastPos.y - 0.03f &&
 		    curPos.z <= lastPos.z + 0.03f && curPos.z >= lastPos.z - 0.03f) 
 		{
-			if(framesCounter >= 1)
+			if(framesCounter >= 0.5f)
 			{
 				//Debug.Log ("Not Moving");
 				instantiatePrefab = false;
@@ -74,5 +78,17 @@ public class CarritoBehaviour : MonoBehaviour {
 
 		lastPos = curPos;
 	}
+
+
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.tag == "Player") {
+			//carritoMinSpeed = playerMinSpeed;
+			Debug.Log ("touches PLAYER");
+
+		}
+		
+	}
 	
 }
+
+	

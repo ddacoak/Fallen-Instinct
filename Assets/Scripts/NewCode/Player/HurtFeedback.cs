@@ -14,7 +14,7 @@ public class HurtFeedback : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (framesCounter);
+		//Debug.Log (framesCounter);
 
 		if (framesCounter > 0.0f)
 			framesCounter -= Time.deltaTime /4;

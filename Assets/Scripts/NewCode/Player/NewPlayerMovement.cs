@@ -9,7 +9,7 @@ public class NewPlayerMovement : MonoBehaviour
 	public static MOVEMENTDIRECTION lookingTo;
 
 	Animator anim;
-	private int valorCambio;
+	public int valorCambio;
 
 	public GameObject blackPlane;
 	
@@ -80,6 +80,8 @@ public class NewPlayerMovement : MonoBehaviour
 		                                  transform.position.y / 100.0f - 1.0f);
 
 		attackPosition = this.gameObject.transform.position;
+
+		anim.SetInteger("Transition", valorCambio);
 
 		//MOVEMENT
 		//-------------
@@ -157,7 +159,7 @@ public class NewPlayerMovement : MonoBehaviour
 			valorCambio = 11;
 			if (Input.GetKey(KeyCode.C))
 				valorCambio = 12;
-			anim.SetInteger("Transition", valorCambio);
+
 		} else if (Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.D)) 
 		{
 			rigidBody.velocity = (new Vector2 (root, root));
@@ -166,7 +168,7 @@ public class NewPlayerMovement : MonoBehaviour
 			valorCambio = 11;
 			if (Input.GetKey(KeyCode.C))
 				valorCambio = 12;
-			anim.SetInteger("Transition", valorCambio);
+
 		} else if (Input.GetKey (KeyCode.S) && Input.GetKey (KeyCode.A)) 
 		{
 			rigidBody.velocity = (new Vector2 (-root, -root));
@@ -175,7 +177,7 @@ public class NewPlayerMovement : MonoBehaviour
 			valorCambio = 1;
 			if (Input.GetKey(KeyCode.C))
 				valorCambio = 2;
-			anim.SetInteger("Transition", valorCambio);
+
 		} else if (Input.GetKey (KeyCode.S) && Input.GetKey (KeyCode.D)) 
 		{
 			rigidBody.velocity = (new Vector2 (root, -root));
@@ -184,7 +186,7 @@ public class NewPlayerMovement : MonoBehaviour
 			valorCambio = 1;
 			if (Input.GetKey(KeyCode.C))
 				valorCambio = 2;
-			anim.SetInteger("Transition", valorCambio);
+
 		} else if (Input.GetKey (KeyCode.W)) 
 		{
 			rigidBody.velocity = (new Vector2 (0, speed));
@@ -193,7 +195,7 @@ public class NewPlayerMovement : MonoBehaviour
 			valorCambio = 11;
 			if (Input.GetKey(KeyCode.C))
 				valorCambio = 12;
-			anim.SetInteger("Transition", valorCambio);
+
 		} else if (Input.GetKey (KeyCode.A)) 
 		{
 			rigidBody.velocity = (new Vector2 (-speed, 0));
@@ -202,7 +204,7 @@ public class NewPlayerMovement : MonoBehaviour
 			valorCambio = 21;
 			if (Input.GetKey(KeyCode.C))
 				valorCambio = 22;
-			anim.SetInteger("Transition", valorCambio);
+
 		} else if (Input.GetKey (KeyCode.S)) 
 		{
 			rigidBody.velocity = (new Vector2 (0, -speed));
@@ -211,7 +213,7 @@ public class NewPlayerMovement : MonoBehaviour
 			valorCambio = 1;
 			if (Input.GetKey(KeyCode.C))
 				valorCambio = 2;
-			anim.SetInteger("Transition", valorCambio);
+
 		} else if (Input.GetKey (KeyCode.D)) 
 		{
 			rigidBody.velocity = (new Vector2 (speed, 0));
@@ -220,7 +222,7 @@ public class NewPlayerMovement : MonoBehaviour
 			valorCambio = 31;
 			if (Input.GetKey(KeyCode.C))
 				valorCambio = 32;
-			anim.SetInteger("Transition", valorCambio);
+
 		} else 
 		{
 			rigidBody.velocity = Vector2.zero;
@@ -232,19 +234,19 @@ public class NewPlayerMovement : MonoBehaviour
 			{
 			case MOVEMENTDIRECTION.UP:
 				valorCambio = 10;
-				anim.SetInteger("Transition", valorCambio);
+
 				break;
 			case MOVEMENTDIRECTION.DOWN:
 				valorCambio = 0;
-				anim.SetInteger("Transition", valorCambio);
+
 				break;
 			case MOVEMENTDIRECTION.LEFT:
 				valorCambio = 20;
-				anim.SetInteger("Transition", valorCambio);
+
 				break;
 			case MOVEMENTDIRECTION.RIGHT:
 				valorCambio = 30;
-				anim.SetInteger("Transition", valorCambio);
+
 				break;
 			}
 		}
@@ -264,22 +266,22 @@ public class NewPlayerMovement : MonoBehaviour
 		case MOVEMENTDIRECTION.UP:
 			Instantiate (attackObject, new Vector3(attackPosition.x, attackPosition.y + 0.25f, attackPosition.z), transform.rotation);
 			valorCambio = 70;
-			anim.SetInteger("Transition", valorCambio);
+
 			break;
 		case MOVEMENTDIRECTION.DOWN:
 			Instantiate (attackObject, new Vector3(attackPosition.x, attackPosition.y - 1.0f, attackPosition.z), transform.rotation);
 			valorCambio = 60;
-			anim.SetInteger("Transition", valorCambio);
+
 			break;
 		case MOVEMENTDIRECTION.LEFT:
 			Instantiate (attackObject, new Vector3(attackPosition.x - 1.0f, attackPosition.y-0.2f, attackPosition.z), transform.rotation);
 			valorCambio = 40;
-			anim.SetInteger("Transition", valorCambio);
+
 			break;
 		case MOVEMENTDIRECTION.RIGHT:
 			Instantiate (attackObject, new Vector3(attackPosition.x + 1.0f, attackPosition.y-0.2f, attackPosition.z), transform.rotation);
 			valorCambio = 50;
-			anim.SetInteger("Transition", valorCambio);
+
 			break;
 		}
 
@@ -305,22 +307,22 @@ public class NewPlayerMovement : MonoBehaviour
 			{
 			case MOVEMENTDIRECTION.UP:
 				valorCambio = 23;
-				anim.SetInteger("Transition", valorCambio);
+
 				transform.position += new Vector3(0,-0.5f,0);
 				break;
 			case MOVEMENTDIRECTION.DOWN:
 				valorCambio = 33;
-				anim.SetInteger("Transition", valorCambio);
+
 				transform.position += new Vector3(0,0.5f,0);
 				break;
 			case MOVEMENTDIRECTION.LEFT:
 				valorCambio = 23;
-				anim.SetInteger("Transition", valorCambio);
+
 				transform.position += new Vector3(0.5f,0,0);
 				break;
 			case MOVEMENTDIRECTION.RIGHT:
 				valorCambio = 33;
-				anim.SetInteger("Transition", valorCambio);
+
 				transform.position += new Vector3(-0.5f,0,0);
 				break;
 			}

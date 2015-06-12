@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Cepos : MonoBehaviour 
 {
@@ -16,6 +17,9 @@ public class Cepos : MonoBehaviour
 
 	private bool hurt = true;
 
+	public GameObject hurtFeedback;
+	private float imageAlpha;
+
 	private bool modifyPlayer = false;
 	public float speed;
 	public GameObject bloodPs;
@@ -25,15 +29,20 @@ public class Cepos : MonoBehaviour
 	private int counterLower = 5;
 	private int counterSpeed = 100;
 
+	private float framesCounter = 0;
+
 	void Start () 
 	{
 		anim = GetComponent<Animator> ();
 		audio = GetComponent<AudioSource>();
+
+		imageAlpha = hurtFeedback.GetComponent<HurtFeedback> ().framesCounter;
 	}
 
 	void Update () 
 	{
 		//Debug.Log (modifyPlayer);
+		Debug.Log (framesCounter);
 		if (modifyPlayer) {
 			if(player.transform.position.x < transform.position.x)
 			{
@@ -66,10 +75,34 @@ public class Cepos : MonoBehaviour
 				player.transform.position = new Vector3 (transform.position.x, transform.position.y + 1.2f, player.transform.position.z);
 			}
 
-			if (freeCounter > 0) freeCounter -= counterLower;
-			else freeCounter = 0;
+			if (freeCounter > 0)
+			{ 
+				freeCounter -= counterLower;
+				framesCounter += Time.deltaTime/4;
+				if(framesCounter >= 1.0f)
+				{
+					framesCounter = 0.0f;
+					hurt = true;
+				}
+			
+			}
+			else
+			{ 
+				freeCounter = 0;
+				framesCounter += Time.deltaTime/4;
+				if(framesCounter >= 1.0f)
+				{
+					framesCounter = 0.0f;
+					hurt = true;
+				}
 
-			if (Input.GetKeyDown (KeyCode.I)) freeCounter += counterSpeed;
+			}
+
+			if (Input.GetKeyDown (KeyCode.I))
+			{
+				player.gameObject.GetComponent<NewPlayerMovement>().valorCambio = 23;
+				freeCounter += counterSpeed;
+			}
 
 			//Debug.Log(valorCambio);
 
@@ -94,7 +127,7 @@ public class Cepos : MonoBehaviour
 			
 	}
 
-	void OnTriggerEnter2D(Collider2D other)
+	void OnTriggerStay2D(Collider2D other)
 	{
 		if(other.tag == "Player")
 		{
@@ -103,14 +136,16 @@ public class Cepos : MonoBehaviour
 			{
 				valorCambio = 1;
 				anim.SetInteger("Detect", valorCambio);
-				audio.PlayOneShot(cepo,1);
+				if(!modifyPlayer)audio.PlayOneShot(cepo,1);
 				audio.PlayOneShot(hurtSound,1);
 				NewPlayerMovement.life -= 100;
 				modifyPlayer = true;
+				hurtFeedback.GetComponent<HurtFeedback>().framesCounter = 1.0f;
 				hurt = false;
 				Instantiate(bloodPs, new Vector3 (transform.position.x, 
 				                                  transform.position.y + 1.2f
 				                                  , -1), Quaternion.Euler(0, 0, 0));
+				player.gameObject.GetComponent<NewPlayerMovement>().valorCambio = 23;
 			}
 
 		}
