@@ -3,9 +3,13 @@ using System.Collections;
 
 public class Box : MonoBehaviour {
 
+	public AudioClip attack;
+	AudioSource audio;
+
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+		audio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -17,6 +21,7 @@ public class Box : MonoBehaviour {
 	{
 		if (other.tag == "PlayerAttack") 
 		{
+			audio.PlayOneShot(attack, 1);
 			Destroy(this.gameObject);
 		}
 	}

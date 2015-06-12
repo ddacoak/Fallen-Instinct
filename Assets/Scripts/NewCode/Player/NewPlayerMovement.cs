@@ -257,7 +257,7 @@ public class NewPlayerMovement : MonoBehaviour
 
 	void Attack()
 	{
-		audio.PlayOneShot(attack, 1);
+		//audio.PlayOneShot(attack, 1);
 
 		switch (lookingTo)
 		{
