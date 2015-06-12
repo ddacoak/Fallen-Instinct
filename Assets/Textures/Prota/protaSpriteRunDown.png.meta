@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 312417e1dd61bf045ab53d99035630be
-timeCreated: 1433896402
+timeCreated: 1434071036
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -58,60 +58,60 @@ TextureImporter:
     - name: protaSpriteRunDown_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 6
-        width: 41
-        height: 45
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: protaSpriteRunDown_1
       rect:
         serializedVersion: 2
-        x: 75
-        y: 10
-        width: 38
-        height: 40
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: protaSpriteRunDown_2
       rect:
         serializedVersion: 2
-        x: 141
-        y: 12
-        width: 39
-        height: 37
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: protaSpriteRunDown_3
       rect:
         serializedVersion: 2
-        x: 204
-        y: 6
-        width: 41
-        height: 45
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: protaSpriteRunDown_4
       rect:
         serializedVersion: 2
-        x: 272
-        y: 10
-        width: 38
-        height: 40
+        x: 256
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: protaSpriteRunDown_5
       rect:
         serializedVersion: 2
-        x: 330
-        y: 13
-        width: 39
-        height: 37
+        x: 320
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
