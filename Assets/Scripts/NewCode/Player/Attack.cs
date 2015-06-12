@@ -27,6 +27,7 @@ public class Attack : MonoBehaviour
 	{
 		if (other.tag == "Zombi") {
 			NewPlayerMovement.missedAttack = false;
+			audio.PlayOneShot(attack, 1);
 			Destroy (this.gameObject);
 		} else
 			NewPlayerMovement.missedAttack = true;
