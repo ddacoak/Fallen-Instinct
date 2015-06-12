@@ -1,21 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class HurtFeedback : MonoBehaviour 
-{
-	private float lifeCounter = 0;
+public class HurtFeedback : MonoBehaviour {
+
+	public float framesCounter;
+	private Color color;
+
+	// Use this for initialization
+	void Start () {
+		color = GetComponent<Image>().color;
+	}
 	
-	void Update () 
-	{
-		lifeCounter++;
+	// Update is called once per frame
+	void Update () {
+		Debug.Log (framesCounter);
 
-		/*if (lifeCounter >= 50)
-			GetComponent<MeshRenderer> ().material.color = new Color(1, 1, 1, 0.5f);
-		
-		if (lifeCounter >= 100)
-			GetComponent<MeshRenderer> ().material.color = new Color(1, 1, 1, 0.25f);*/
-		
-		if (lifeCounter >= 50)
-			this.gameObject.SetActive (false);
+		if (framesCounter > 0.0f)
+			framesCounter -= Time.deltaTime /4;
+		else if (framesCounter <= 0)
+			framesCounter = 0.0f;
+
+		color.a = framesCounter;
+
+		GetComponent<Image>().color = color;
+
+
+
 	}
 }

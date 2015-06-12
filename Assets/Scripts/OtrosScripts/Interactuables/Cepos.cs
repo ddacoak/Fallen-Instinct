@@ -6,7 +6,7 @@ public class Cepos : MonoBehaviour
 	static Animator anim;
 	public static int valorCambio = 0;
 
-	public GameObject playerShadow;
+	//public GameObject playerShadow;
 	public float range = 0.5f;
 	public GameObject player;
 
@@ -33,26 +33,35 @@ public class Cepos : MonoBehaviour
 
 	void Update () 
 	{
+		//Debug.Log (modifyPlayer);
 		if (modifyPlayer) {
-			if(player.transform.position.x < transform.position.x) 
+			if(player.transform.position.x < transform.position.x)
+			{
 				player.transform.position = new Vector3 (player.transform.position.x + speed,
 				                                         player.transform.position.y,
 				                                         player.transform.position.z);
+			}
 			if(player.transform.position.x > transform.position.x) 
+			{
 				player.transform.position = new Vector3 (player.transform.position.x - speed,
 				                                         player.transform.position.y,
 				                                         player.transform.position.z);
-			if(player.transform.position.y < transform.position.y + 1.2) 
+			}
+			if(player.transform.position.y < transform.position.y + 1.2)
+			{
 				player.transform.position = new Vector3 (player.transform.position.x,
 				                                         player.transform.position.y + speed,
 				                                         player.transform.position.z);
-			if(player.transform.position.y > transform.position.y + 1.2) 
+			}
+			if(player.transform.position.y > transform.position.y + 1.2)
+			{
 				player.transform.position = new Vector3 (player.transform.position.x,
 				                                         player.transform.position.y - speed,
 				                                         player.transform.position.z);
+			}
 
-			if((player.transform.position.x <= transform.position.x + 0.2 && player.transform.position.x >= transform.position.x - 0.2)
-			   &&(player.transform.position.y <= (transform.position.y + 1.2) + 0.2 && player.transform.position.y >= (transform.position.y + 1.2) - 0.2)) 
+			if((player.transform.position.x <= transform.position.x + 0.3 && player.transform.position.x >= transform.position.x - 0.3)
+			   &&(player.transform.position.y <= (transform.position.y + 1.2) + 0.3 && player.transform.position.y >= (transform.position.y + 1.2) - 0.3)) 
 			{
 				player.transform.position = new Vector3 (transform.position.x, transform.position.y + 1.2f, player.transform.position.z);
 			}
@@ -62,7 +71,7 @@ public class Cepos : MonoBehaviour
 
 			if (Input.GetKeyDown (KeyCode.I)) freeCounter += counterSpeed;
 
-			Debug.Log(valorCambio);
+			//Debug.Log(valorCambio);
 
 			if(freeCounter >= freePlayer)
 			{ 
@@ -76,12 +85,12 @@ public class Cepos : MonoBehaviour
 
 		}
 
-		if (EnemyAI.enemyHurt == true)
+		/*if (EnemyAI.enemyHurt == true)
 		{
 			valorCambio = 1;
 			anim.SetInteger("Detect", valorCambio);
 			audio.PlayOneShot(cepo,1);
-		}
+		}*/
 			
 	}
 
@@ -89,7 +98,7 @@ public class Cepos : MonoBehaviour
 	{
 		if(other.tag == "Player")
 		{
-			Debug.Log("enteredcepo");
+			//Debug.Log("enteredcepo");
 			if(hurt)
 			{
 				valorCambio = 1;
@@ -99,9 +108,6 @@ public class Cepos : MonoBehaviour
 				NewPlayerMovement.life -= 100;
 				modifyPlayer = true;
 				hurt = false;
-				Instantiate(bloodPs, new Vector3 (transform.position.x, 
-				                                  transform.position.y + 1.2f
-				                                  , -1), Quaternion.Euler(0, 0, 0));
 				Instantiate(bloodPs, new Vector3 (transform.position.x, 
 				                                  transform.position.y + 1.2f
 				                                  , -1), Quaternion.Euler(0, 0, 0));

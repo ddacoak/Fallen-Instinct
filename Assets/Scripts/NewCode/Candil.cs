@@ -13,7 +13,7 @@ public class Candil : MonoBehaviour
 
 	void Update () 
 	{
-		Debug.Log(oilCounter);
+		//Debug.Log(oilCounter);
 		float viewDistance = Vector3.Distance(player.transform.position, transform.position);
 
 		if (viewDistance <= range) 

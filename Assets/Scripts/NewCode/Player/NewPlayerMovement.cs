@@ -304,9 +304,13 @@ public class NewPlayerMovement : MonoBehaviour
 			switch (lookingTo)
 			{
 			case MOVEMENTDIRECTION.UP:
+				valorCambio = 23;
+				anim.SetInteger("Transition", valorCambio);
 				transform.position += new Vector3(0,-0.5f,0);
 				break;
 			case MOVEMENTDIRECTION.DOWN:
+				valorCambio = 33;
+				anim.SetInteger("Transition", valorCambio);
 				transform.position += new Vector3(0,0.5f,0);
 				break;
 			case MOVEMENTDIRECTION.LEFT:
