@@ -3,11 +3,13 @@ using System.Collections;
 
 public class GoBackMall1 : MonoBehaviour 
 {
-    public GameObject player;
-	
 	void Update () 
-    {
-        if (player == null)
-            Application.LoadLevel("Mall 1");
+	{
+		if (NewPlayerMovement.dead == true) 
+		{
+			Application.LoadLevel ("Mall 1");
+			NewPlayerMovement.dead = false;
+			NewPlayerMovement.life = NewPlayerMovement.maxLife;
+		}
 	}
 }

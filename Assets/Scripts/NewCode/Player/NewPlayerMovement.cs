@@ -38,8 +38,9 @@ public class NewPlayerMovement : MonoBehaviour
 
 	//LIFE
 	//-------------
-	private int maxLife = 600;
+	public static int maxLife = 600;
 	public static int life = 600;
+	public static bool dead = false;
 	//-------------
 
 	//LIGHT
@@ -291,9 +292,8 @@ public class NewPlayerMovement : MonoBehaviour
 
 		if (life <= 0) 
 		{
-
-			Application.LoadLevel("Menu");
-			//Destroy(gameObject);
+			dead = true;
+			//Application.LoadLevel("Menu");
 		}
 
 		if (Input.GetKeyDown (KeyCode.G))
