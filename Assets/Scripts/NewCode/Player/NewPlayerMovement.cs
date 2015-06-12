@@ -33,6 +33,7 @@ public class NewPlayerMovement : MonoBehaviour
 	private int attackCounter = 0;
 	private bool attacking = false;
 	private bool attackingCounter = false;
+	public static bool missedAttack = true;
 	private Vector3 attackPosition;
 	//-------------
 
@@ -259,7 +260,8 @@ public class NewPlayerMovement : MonoBehaviour
 
 	void Attack()
 	{
-		//audio.PlayOneShot(attack, 1);
+		if (missedAttack == true)
+			audio.PlayOneShot(attack, 1);
 
 		switch (lookingTo)
 		{

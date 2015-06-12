@@ -21,8 +21,10 @@ public class Box : MonoBehaviour {
 	{
 		if (other.tag == "PlayerAttack") 
 		{
+			NewPlayerMovement.missedAttack = false;
 			audio.PlayOneShot(attack, 1);
-			Destroy(this.gameObject);
-		}
+			//Destroy(this.gameObject);
+		}else
+			NewPlayerMovement.missedAttack = true;
 	}
 }

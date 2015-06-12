@@ -25,9 +25,10 @@ public class Attack : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.tag == "Zombi") 
-		{
-			Destroy(this.gameObject);
-		}
+		if (other.tag == "Zombi") {
+			NewPlayerMovement.missedAttack = false;
+			Destroy (this.gameObject);
+		} else
+			NewPlayerMovement.missedAttack = true;
 	}	
 }
