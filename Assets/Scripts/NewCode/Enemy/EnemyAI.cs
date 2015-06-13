@@ -30,6 +30,8 @@ public class EnemyAI : MonoBehaviour
 	public int lifeMemory;
 	private bool dead = false;
 	private int deadCounter = 0;
+	private bool stunned = false;
+	private int stunnedCounter = 0;
 	//-------------
 
 	//CEPO
@@ -88,15 +90,6 @@ public class EnemyAI : MonoBehaviour
 				valorCambio = 4;
 			}
 
-			if (player.transform.position.y >= transform.position.y)
-			{
-				valorCambio = 3;
-			}
-			else if (player.transform.position.y <= transform.position.y)
-			{
-				valorCambio = 4;
-			}
-
 			if (attackCounter >= 10) 
 			{
 				attackCounter = 0;
@@ -108,6 +101,28 @@ public class EnemyAI : MonoBehaviour
 		//LIFE
 		//-------------
 		Life ();
+
+		if (stunned == true)
+		{
+			stunnedCounter++;
+
+			if (player.transform.position.x >= transform.position.x)
+			{
+				valorCambio = 6;
+			}
+			else if (player.transform.position.x <= transform.position.x)
+			{
+				valorCambio = 7;
+			}
+
+			if (stunnedCounter >= 20) 
+			{
+				stunned = false;
+
+				stunnedCounter = 0;
+			}
+				
+		}
 		//-------------
 
 		if (dead) valorCambio = 5;
@@ -124,28 +139,22 @@ public class EnemyAI : MonoBehaviour
 		{
 			if (player.transform.position.x >= transform.position.x)
 			{
-				//rigidBody.velocity = (new Vector2(speed, 0));
 				transform.position += new Vector3(speed,0,0) * Time.deltaTime;
 				valorCambio = 2;
 			}
 			else if (player.transform.position.x <= transform.position.x)
 			{
-				//rigidBody.velocity = (new Vector2(-speed, 0));
 				transform.position += new Vector3(-speed, 0, 0) * Time.deltaTime;
 				valorCambio = 1;
 			}
 			
 			if (player.transform.position.y >= transform.position.y)
 			{
-				//rigidBody.velocity = (new Vector2(0, speed));
 				transform.position += new Vector3(0, speed, 0) * Time.deltaTime;
-				valorCambio = 1;
 			}
 			else if (player.transform.position.y <= transform.position.y)
 			{
-				//rigidBody.velocity = (new Vector2(0, -speed));
 				transform.position += new Vector3(0, -speed, 0) * Time.deltaTime;
-				valorCambio = 1;
 			}
 
 		}
@@ -154,28 +163,22 @@ public class EnemyAI : MonoBehaviour
 		{
 			if (player.transform.position.x >= transform.position.x)
 			{
-				//rigidBody.velocity = (new Vector2(speed, 0));
 				transform.position += new Vector3(speed2,0,0) * Time.deltaTime;
 				valorCambio = 2;
 			}
 			else if (player.transform.position.x <= transform.position.x)
 			{
-				//rigidBody.velocity = (new Vector2(-speed, 0));
 				transform.position += new Vector3(-speed2, 0, 0) * Time.deltaTime;
 				valorCambio = 1;
 			}
 			
 			if (player.transform.position.y >= transform.position.y)
 			{
-				//rigidBody.velocity = (new Vector2(0, speed));
 				transform.position += new Vector3(0, speed2, 0) * Time.deltaTime;
-				valorCambio = 1;
 			}
 			else if (player.transform.position.y <= transform.position.y)
 			{
-				//rigidBody.velocity = (new Vector2(0, -speed));
 				transform.position += new Vector3(0, -speed2, 0) * Time.deltaTime;
-				valorCambio = 1;
 			}
 		}
 		if (dead) valorCambio = 5;
@@ -216,6 +219,9 @@ public class EnemyAI : MonoBehaviour
 		if (other.tag == "PlayerAttack") 
 		{
 			life -= 75;
+
+			stunned = true;
+
 
 			switch (NewPlayerMovement.lookingTo)
 			{
