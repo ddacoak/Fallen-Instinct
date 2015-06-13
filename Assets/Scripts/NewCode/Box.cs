@@ -19,17 +19,17 @@ public class Box : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		anim.SetInteger("Romper", valorCambio);
+		
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.tag == "PlayerAttack") 
 		{
-			Debug.Log ("canvia");
 			NewPlayerMovement.missedAttack = false;
 			audio.PlayOneShot(attack, 1);
 			valorCambio = 1;
+			anim.SetInteger("Romper", valorCambio);
 			//Destroy(this.gameObject);
 		}else
 			NewPlayerMovement.missedAttack = true;

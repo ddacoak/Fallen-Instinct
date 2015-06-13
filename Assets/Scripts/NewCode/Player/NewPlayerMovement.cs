@@ -260,7 +260,7 @@ public class NewPlayerMovement : MonoBehaviour
 
 	void Attack()
 	{
-		if (missedAttack == true)
+		//if (missedAttack == true)
 			audio.PlayOneShot(attack, 1);
 
 		switch (lookingTo)
