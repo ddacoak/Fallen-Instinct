@@ -19,9 +19,15 @@ public class EnemyAI : MonoBehaviour
 	private int valorCambio;
 	//-------------
 
+	//ATTACK
+	//-------------
+	private int attackCounter = 0;
+	//-------------
+
 	//LIFE
 	//-------------
 	public int life = 300;
+	private bool dead = false;
 	//-------------
 
 	//CEPO
@@ -29,6 +35,7 @@ public class EnemyAI : MonoBehaviour
 	public AudioClip cepo;
 	AudioSource audio;
 
+	private bool trapped = false;
 	private bool modifyEnemy = false;
 	public static bool enemyHurt = false;
 
@@ -53,19 +60,52 @@ public class EnemyAI : MonoBehaviour
 			transform.position = new Vector3 (transform.position.x,
 			                                  transform.position.y,
 			                                  transform.position.y / 100.0f + 1.0f);
-
 		}
 
 		//MOVEMENT
 		//-------------
-		Movement ();
-		anim.SetInteger("Transition", valorCambio);
+		if (dead == false)
+			Movement ();
+		//-------------
+
+		//ATTACK
+		//-------------
+		if (EnemyAttack.hurt2 == true)
+		{
+			attackCounter++;
+
+			if (player.transform.position.x >= transform.position.x)
+			{
+				valorCambio = 3;
+			}
+			else if (player.transform.position.x <= transform.position.x)
+			{
+				valorCambio = 4;
+			}
+
+			if (player.transform.position.y >= transform.position.y)
+			{
+				valorCambio = 3;
+			}
+			else if (player.transform.position.y <= transform.position.y)
+			{
+				valorCambio = 4;
+			}
+
+			if (attackCounter >= 10) 
+			{
+				attackCounter = 0;
+				EnemyAttack.hurt2 = false;
+			}
+		}
 		//-------------
 
 		//LIFE
 		//-------------
 		Life ();
 		//-------------
+
+		anim.SetInteger("Transition", valorCambio);
 	}
 
 	void Movement()
@@ -136,7 +176,11 @@ public class EnemyAI : MonoBehaviour
 	void Life()
 	{
 		if (life <= 0)
-			Destroy (this.gameObject);
+		{
+			valorCambio = 5;
+			dead = true;
+		}
+			//Destroy (this.gameObject);
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -171,34 +215,8 @@ public class EnemyAI : MonoBehaviour
 
 	void TrappedZombi()
 	{
+		trapped = true;
 		life -= 50;
-		Instantiate(bloodPs, new Vector3 (transform.position.x, 
-		                                  transform.position.y + 1.2f
-		                                  , -1), Quaternion.Euler(0, 0, 0));
-
-		if(this.gameObject.transform.position.x < cepos.transform.position.x) 
-			this.gameObject.transform.position = new Vector3 (this.gameObject.transform.position.x + speed,
-			                                         this.gameObject.transform.position.y,
-			                                         this.gameObject.transform.position.z);
-		if(this.gameObject.transform.position.x > cepos.transform.position.x) 
-			this.gameObject.transform.position = new Vector3 (this.gameObject.transform.position.x - speed,
-			                                         this.gameObject.transform.position.y,
-			                                         this.gameObject.transform.position.z);
-		if(this.gameObject.transform.position.y < cepos.transform.position.y + 1.2) 
-			this.gameObject.transform.position = new Vector3 (this.gameObject.transform.position.x,
-			                                         this.gameObject.transform.position.y + speed,
-			                                         this.gameObject.transform.position.z);
-		if(this.gameObject.transform.position.y > cepos.transform.position.y + 1.2) 
-			this.gameObject.transform.position = new Vector3 (this.gameObject.transform.position.x,
-			                                         this.gameObject.transform.position.y - speed,
-			                                         this.gameObject.transform.position.z);
-		
-		if((this.gameObject.transform.position.x <= cepos.transform.position.x + 0.2 && 
-		    this.gameObject.transform.position.x >= cepos.transform.position.x - 0.2) &&
-		   (this.gameObject.transform.position.y <= (cepos.transform.position.y + 1.2) + 0.2 && 
-		 this.gameObject.transform.position.y >= (cepos.transform.position.y + 1.2) - 0.2)) 
-		{
-			this.gameObject.transform.position = new Vector3 (transform.position.x, transform.position.y + 1.2f, this.gameObject.transform.position.z);
-		}
+		Instantiate(bloodPs, new Vector3 (transform.position.x, transform.position.y + 1.2f, -1), Quaternion.Euler(0, 0, 0));
 	}
 }

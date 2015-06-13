@@ -8,7 +8,7 @@ public class Cepos : MonoBehaviour
 	public static int valorCambio = 0;
 
 	//public GameObject playerShadow;
-	public float range = 0.5f;
+	public float range = 0.25f;
 	public GameObject player;
 
 	public AudioClip cepo;
@@ -41,8 +41,6 @@ public class Cepos : MonoBehaviour
 
 	void Update () 
 	{
-		//Debug.Log (modifyPlayer);
-		Debug.Log (framesCounter);
 		if (modifyPlayer) {
 			if(player.transform.position.x < transform.position.x)
 			{

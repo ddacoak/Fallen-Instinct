@@ -297,7 +297,6 @@ public class NewPlayerMovement : MonoBehaviour
 		if (life <= 0) 
 		{
 			dead = true;
-			//Application.LoadLevel("Menu");
 		}
 
 		if (Input.GetKeyDown (KeyCode.G))

@@ -27,9 +27,9 @@ public class Box : MonoBehaviour {
 		if (other.tag == "PlayerAttack") 
 		{
 			NewPlayerMovement.missedAttack = false;
-			audio.PlayOneShot(attack, 1);
-			valorCambio = 1;
-			anim.SetInteger("Romper", valorCambio);
+			//audio.PlayOneShot(attack, 1);
+			//valorCambio = 1;
+			//anim.SetInteger("Romper", valorCambio);
 			//Destroy(this.gameObject);
 		}else
 			NewPlayerMovement.missedAttack = true;
