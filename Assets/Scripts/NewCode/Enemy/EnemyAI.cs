@@ -28,6 +28,7 @@ public class EnemyAI : MonoBehaviour
 	//-------------
 	public int life = 300;
 	private bool dead = false;
+	private int deadCounter = 0;
 	//-------------
 
 	//CEPO
@@ -177,10 +178,12 @@ public class EnemyAI : MonoBehaviour
 	{
 		if (life <= 0)
 		{
+			deadCounter++;
 			valorCambio = 5;
 			dead = true;
+			if (deadCounter >= 30)
+				Destroy (this.gameObject);
 		}
-			//Destroy (this.gameObject);
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -192,16 +195,16 @@ public class EnemyAI : MonoBehaviour
 			switch (NewPlayerMovement.lookingTo)
 			{
 			case MOVEMENTDIRECTION.UP:
-				transform.position += new Vector3(0,0.5f,0);
+				transform.position += new Vector3(0,0.4f,0);
 				break;
 			case MOVEMENTDIRECTION.DOWN:
-				transform.position += new Vector3(0,-0.5f,0);
+				transform.position += new Vector3(0,-0.4f,0);
 				break;
 			case MOVEMENTDIRECTION.LEFT:
-				transform.position += new Vector3(-0.5f,0,0);
+				transform.position += new Vector3(-0.4f,0,0);
 				break;
 			case MOVEMENTDIRECTION.RIGHT:
-				transform.position += new Vector3(0.5f,0,0);
+				transform.position += new Vector3(0.4f,0,0);
 				break;
 			}
 		}

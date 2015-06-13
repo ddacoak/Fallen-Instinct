@@ -30,7 +30,7 @@ public class Box : MonoBehaviour {
 			//audio.PlayOneShot(attack, 1);
 			//valorCambio = 1;
 			//anim.SetInteger("Romper", valorCambio);
-			//Destroy(this.gameObject);
+			Destroy(this.gameObject);
 		}else
 			NewPlayerMovement.missedAttack = true;
 	}
