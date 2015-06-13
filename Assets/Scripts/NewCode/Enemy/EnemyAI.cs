@@ -27,6 +27,7 @@ public class EnemyAI : MonoBehaviour
 	//LIFE
 	//-------------
 	public int life = 300;
+	public int lifeMemory;
 	private bool dead = false;
 	private int deadCounter = 0;
 	//-------------
@@ -41,6 +42,8 @@ public class EnemyAI : MonoBehaviour
 	public static bool enemyHurt = false;
 
 	public GameObject bloodPs;
+	public GameObject bloodExplosionPs;
+	public GameObject zombiPartsPs;
 	public GameObject cepos;
 	//-------------
 	
@@ -49,6 +52,7 @@ public class EnemyAI : MonoBehaviour
 		rigidBody = transform.GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
 		audio = GetComponent<AudioSource>();
+		lifeMemory = life;
 	}
 
 	void Update () 
@@ -106,6 +110,7 @@ public class EnemyAI : MonoBehaviour
 		Life ();
 		//-------------
 
+		if (dead) valorCambio = 5;
 		anim.SetInteger("Transition", valorCambio);
 	}
 
@@ -142,6 +147,7 @@ public class EnemyAI : MonoBehaviour
 				transform.position += new Vector3(0, -speed, 0) * Time.deltaTime;
 				valorCambio = 1;
 			}
+
 		}
 
 		if (viewDistance2 <= range2 && viewDistance >= range) 
@@ -172,18 +178,37 @@ public class EnemyAI : MonoBehaviour
 				valorCambio = 1;
 			}
 		}
+		if (dead) valorCambio = 5;
 	}
 
 	void Life()
 	{
+		if (lifeMemory != life) 
+		{
+			Instantiate(bloodPs, new Vector3 (transform.position.x, 
+			                                  transform.position.y,
+			                                  -1), 
+			            					  Quaternion.Euler(0, 0, 0));
+
+			Instantiate(zombiPartsPs, new Vector3 (transform.position.x, 
+			                                  transform.position.y,
+			                                  -1), 
+			            					  Quaternion.Euler(0, 0, 0));
+		}
+
 		if (life <= 0)
 		{
 			deadCounter++;
 			valorCambio = 5;
+			if(!dead) Instantiate(bloodExplosionPs, new Vector3 (transform.position.x, 
+			                                                     transform.position.y,
+			                                                     -1), 
+			                      								 Quaternion.Euler(0, 0, 0));
 			dead = true;
-			if (deadCounter >= 30)
+			if (deadCounter >= 36)
 				Destroy (this.gameObject);
 		}
+		lifeMemory = life;
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -214,6 +239,7 @@ public class EnemyAI : MonoBehaviour
 			TrappedZombi();
 			enemyHurt = true;
 		}
+		if (dead) valorCambio = 5;
 	}
 
 	void TrappedZombi()
