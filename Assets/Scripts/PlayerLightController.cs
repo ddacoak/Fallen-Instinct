@@ -15,6 +15,8 @@ public class PlayerLightController : MonoBehaviour {
 	public float minimumLight = 0.5f;
 
 	[HideInInspector] public Light light;
+
+	public static bool gotIt = false;
 	
 	// Use this for initialization
 	void Start () 
@@ -25,8 +27,11 @@ public class PlayerLightController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		Debug.Log (Candil.candil);
 		if (Candil.candil == true) 
 		{
+			gotIt = true;
+
 			if (Input.GetKeyUp (KeyCode.L))
 				enabled = !enabled;
 			if (!inLight) {
@@ -41,6 +46,16 @@ public class PlayerLightController : MonoBehaviour {
 			randomAlpha = Random.Range (objectiveAlpha * (100 - lightOscilation) /100, objectiveAlpha * (100 + lightOscilation) /100);
 			if(enabled) if (randomAlpha < minimumLight) randomAlpha = minimumLight;
 			light.intensity = Mathf.Lerp (light.intensity, randomAlpha, lightFadeSpeed);
+
+			if (enabled == true)
+				Candil.oilCounter--;
+
+			/*if (Candil.oilCounter <= 0) 
+			{
+				Candil.oilCounter = Candil.fullCharge;
+				enabled = false;
+				Candil.candil = false;
+			}*/
 		}
 	}
 }

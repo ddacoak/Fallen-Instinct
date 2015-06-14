@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LevelEndMall3 : MonoBehaviour {
 
-	private float range = 2f;
+	private float range = 1f;
 	public GameObject player;
 
 	// Use this for initialization
@@ -18,7 +18,7 @@ public class LevelEndMall3 : MonoBehaviour {
 		
 		if(viewDistance <= range)
 		{
-			Application.LoadLevel("Mall 1");
+			Application.LoadLevel("Mall 4");
 		}
 	
 	}
