@@ -139,22 +139,22 @@ public class EnemyAI : MonoBehaviour
 
 		if (viewDistance <= range) 
 		{
-			if (player.transform.position.x > transform.position.x)
+			if (player.transform.position.x >= transform.position.x + rangeX)
 			{
 				transform.position += new Vector3(speed,0,0) * Time.deltaTime;
 				valorCambio = 2;
 			}
-			else if (player.transform.position.x < transform.position.x)
+			else if (player.transform.position.x < transform.position.x - rangeX)
 			{
 				transform.position += new Vector3(-speed, 0, 0) * Time.deltaTime;
 				valorCambio = 1;
 			}
-			if (rangeX >= player.transform.position.x - transform.position.x)
+			/*if (rangeX >= player.transform.position.x - transform.position.x)
 			{
 				transform.position += new Vector3(0, 0, 0) * Time.deltaTime;
-			}
+			}*/
 			
-			if (player.transform.position.y > transform.position.y)
+			if (player.transform.position.y >= transform.position.y)
 			{
 				transform.position += new Vector3(0, speed, 0) * Time.deltaTime;
 			}
@@ -162,11 +162,11 @@ public class EnemyAI : MonoBehaviour
 			{
 				transform.position += new Vector3(0, -speed, 0) * Time.deltaTime;
 			}
-			if (rangeY >= player.transform.position.y - transform.position.y)
+			/*if (rangeY >= player.transform.position.y - transform.position.y)
 			{
 				Debug.Log ("entra Y");
 				transform.position += new Vector3(0, 0, 0) * Time.deltaTime;
-			}
+			}*/
 		}
 
 		if (viewDistance2 <= range2 && viewDistance >= range) 
