@@ -88,7 +88,7 @@ public class NewPlayerMovement : MonoBehaviour
 		//-------------
 		Movement();
 	
-		if (Input.GetKey(KeyCode.C))
+		if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
 			speed = speedRun;
 		else if (Input.GetKey(KeyCode.V))
 			speed = speedSneak;
@@ -158,7 +158,7 @@ public class NewPlayerMovement : MonoBehaviour
 			movementDirection = MOVEMENTDIRECTION.UP;
 
 			valorCambio = 11;
-			if (Input.GetKey(KeyCode.C))
+			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
 				valorCambio = 12;
 
 		} else if (Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.D)) 
@@ -167,7 +167,7 @@ public class NewPlayerMovement : MonoBehaviour
 			movementDirection = MOVEMENTDIRECTION.UP;
 
 			valorCambio = 11;
-			if (Input.GetKey(KeyCode.C))
+			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
 				valorCambio = 12;
 
 		} else if (Input.GetKey (KeyCode.S) && Input.GetKey (KeyCode.A)) 
@@ -176,7 +176,7 @@ public class NewPlayerMovement : MonoBehaviour
 			movementDirection = MOVEMENTDIRECTION.DOWN;
 
 			valorCambio = 1;
-			if (Input.GetKey(KeyCode.C))
+			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
 				valorCambio = 2;
 
 		} else if (Input.GetKey (KeyCode.S) && Input.GetKey (KeyCode.D)) 
@@ -185,7 +185,7 @@ public class NewPlayerMovement : MonoBehaviour
 			movementDirection = MOVEMENTDIRECTION.DOWN;
 
 			valorCambio = 1;
-			if (Input.GetKey(KeyCode.C))
+			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
 				valorCambio = 2;
 
 		} else if (Input.GetKey (KeyCode.W)) 
@@ -194,7 +194,7 @@ public class NewPlayerMovement : MonoBehaviour
 			movementDirection = MOVEMENTDIRECTION.UP;
 
 			valorCambio = 11;
-			if (Input.GetKey(KeyCode.C))
+			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
 				valorCambio = 12;
 
 		} else if (Input.GetKey (KeyCode.A)) 
@@ -203,7 +203,7 @@ public class NewPlayerMovement : MonoBehaviour
 			movementDirection = MOVEMENTDIRECTION.LEFT;
 
 			valorCambio = 21;
-			if (Input.GetKey(KeyCode.C))
+			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
 				valorCambio = 22;
 
 		} else if (Input.GetKey (KeyCode.S)) 
@@ -212,7 +212,7 @@ public class NewPlayerMovement : MonoBehaviour
 			movementDirection = MOVEMENTDIRECTION.DOWN;
 
 			valorCambio = 1;
-			if (Input.GetKey(KeyCode.C))
+			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
 				valorCambio = 2;
 
 		} else if (Input.GetKey (KeyCode.D)) 
@@ -221,7 +221,7 @@ public class NewPlayerMovement : MonoBehaviour
 			movementDirection = MOVEMENTDIRECTION.RIGHT;
 
 			valorCambio = 31;
-			if (Input.GetKey(KeyCode.C))
+			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
 				valorCambio = 32;
 
 		} else 

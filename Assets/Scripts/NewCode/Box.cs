@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Box : MonoBehaviour {
-
+public class Box : MonoBehaviour 
+{
 	public AudioClip attack;
 	AudioSource audio;
+
+	private bool breakBoolean = false;
 
 	Animator anim;
 	public int valorCambio = 0;
@@ -26,11 +28,14 @@ public class Box : MonoBehaviour {
 	{
 		if (other.tag == "PlayerAttack") 
 		{
+			if (breakBoolean == false)
+				audio.PlayOneShot(attack, 1);
+			
 			NewPlayerMovement.missedAttack = false;
-			//audio.PlayOneShot(attack, 1);
-			//valorCambio = 1;
-			//anim.SetInteger("Romper", valorCambio);
-			Destroy(this.gameObject);
+			valorCambio = 1;
+			anim.SetInteger("Romper", valorCambio);
+			this.gameObject.GetComponent<Collider2D> ().isTrigger = true;
+			breakBoolean = true;
 		}else
 			NewPlayerMovement.missedAttack = true;
 	}
