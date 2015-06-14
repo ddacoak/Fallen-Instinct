@@ -72,7 +72,7 @@ public class SelectionMenu : MonoBehaviour
 
 			else
 			{
-				if (alphaStart > 0.0f) 	alphaStart -= 0.1f;
+				if (alphaStart > 0.0f) 	alphaStart -= 0.1f * (Time.deltaTime*20);
 
 				else 
 				{
@@ -84,7 +84,7 @@ public class SelectionMenu : MonoBehaviour
 
 		else
 		{
-			if (alphaBanner < 1.0f) alphaBanner += 0.005f;
+			if (alphaBanner < 1.0f) alphaBanner += 0.05f * (Time.deltaTime*20);
 			else
 			{ 
 				alphaBanner = 1.0f;
@@ -93,7 +93,7 @@ public class SelectionMenu : MonoBehaviour
 
 			if (showOptions)
 			{
-				if (alphaOptions < 1.0f) alphaOptions += 0.005f;
+				if (alphaOptions < 1.0f) alphaOptions += 0.025f * (Time.deltaTime*5);
 				else alphaOptions = 1.0f;
 
 				if (alphaOptions > 0.2f) menuReady = true;
