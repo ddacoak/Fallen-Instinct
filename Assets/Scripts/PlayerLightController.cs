@@ -23,10 +23,13 @@ public class PlayerLightController : MonoBehaviour {
 	{
 		light = transform.GetComponent<Light> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
+		if (Application.loadedLevelName == "Mall 4")
+			Candil.candil = true;
+
 		Debug.Log (Candil.candil);
 		if (Candil.candil == true) 
 		{
