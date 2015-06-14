@@ -29,7 +29,7 @@ public class EnemyAI : MonoBehaviour
 	public int life = 300;
 	public int lifeMemory;
 	private bool dead = false;
-	private int deadCounter = 0;
+	private float deadCounter = 0;
 	private bool stunned = false;
 	private int stunnedCounter = 0;
 	//-------------
@@ -59,6 +59,8 @@ public class EnemyAI : MonoBehaviour
 
 	void Update () 
 	{
+		Debug.Log (deadCounter);
+
 		if (modifyPosCorrect) {
 			transform.position = new Vector3 (transform.position.x,
                                   			  transform.position.y,
@@ -201,14 +203,14 @@ public class EnemyAI : MonoBehaviour
 
 		if (life <= 0)
 		{
-			deadCounter++;
+			deadCounter += Time.deltaTime;
 			valorCambio = 5;
 			if(!dead) Instantiate(bloodExplosionPs, new Vector3 (transform.position.x, 
 			                                                     transform.position.y,
 			                                                     -1), 
 			                      								 Quaternion.Euler(0, 0, 0));
 			dead = true;
-			if (deadCounter >= 36)
+			if (deadCounter >= 0.6)
 				Destroy (this.gameObject);
 		}
 		lifeMemory = life;
