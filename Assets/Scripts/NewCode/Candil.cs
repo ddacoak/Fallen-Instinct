@@ -9,11 +9,11 @@ public class Candil : MonoBehaviour
 	public GameObject text;
 	public static bool candil = false;
 
-	public static int oilCounter = 200;
+	public static int oilCounter = 100;
 
 	void Update () 
 	{
-		//Debug.Log(oilCounter);
+		Debug.Log(oilCounter);
 		float viewDistance = Vector3.Distance(player.transform.position, transform.position);
 
 		if (viewDistance <= range) 
