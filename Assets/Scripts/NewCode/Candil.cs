@@ -9,7 +9,7 @@ public class Candil : MonoBehaviour
 	public GameObject text;
 	public static bool candil = false;
 
-	public static int fullCharge = 10000;
+	public static int fullCharge = 5000;
 	public static int oilCounter = fullCharge;
 
 	void Update () 
@@ -28,10 +28,5 @@ public class Candil : MonoBehaviour
 
 		if (PlayerLightController.enabled == true)
 			oilCounter--;
-
-		if(oilCounter <= 0)
-		{
-			playerLight.SetActive(false);
-		}
 	}
 }

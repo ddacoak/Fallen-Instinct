@@ -34,6 +34,7 @@ public class EnemyAI : MonoBehaviour
 	private float deadCounter = 0;
 	private bool stunned = false;
 	private int stunnedCounter = 0;
+	public AudioClip xof;
 	//-------------
 
 	//CEPO
@@ -232,6 +233,7 @@ public class EnemyAI : MonoBehaviour
 
 			stunned = true;
 
+			audio.PlayOneShot(xof, 1f);
 
 			switch (NewPlayerMovement.lookingTo)
 			{

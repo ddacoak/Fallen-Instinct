@@ -49,16 +49,6 @@ public class PlayerLightController : MonoBehaviour {
 			randomAlpha = Random.Range (objectiveAlpha * (100 - lightOscilation) /100, objectiveAlpha * (100 + lightOscilation) /100);
 			if(enabled) if (randomAlpha < minimumLight) randomAlpha = minimumLight;
 			light.intensity = Mathf.Lerp (light.intensity, randomAlpha, lightFadeSpeed);
-
-			if (enabled == true)
-				Candil.oilCounter--;
-
-			/*if (Candil.oilCounter <= 0) 
-			{
-				Candil.oilCounter = Candil.fullCharge;
-				enabled = false;
-				Candil.candil = false;
-			}*/
 		}
 	}
 }

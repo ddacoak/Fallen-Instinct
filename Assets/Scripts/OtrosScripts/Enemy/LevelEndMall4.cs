@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LevelEndMall4 : MonoBehaviour 
 {
-	private float range = 1f;
+	private float range = 2f;
 	public GameObject player;
 
 	void Update () {
