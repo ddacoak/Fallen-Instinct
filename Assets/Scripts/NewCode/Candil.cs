@@ -9,7 +9,7 @@ public class Candil : MonoBehaviour
 	public GameObject text;
 	public static bool candil = false;
 
-	public static int fullCharge = 100;
+	public static int fullCharge = 10000;
 	public static int oilCounter = fullCharge;
 
 	void Update () 
