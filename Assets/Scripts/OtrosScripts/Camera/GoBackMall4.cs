@@ -10,6 +10,8 @@ public class GoBackMall4 : MonoBehaviour
 			Application.LoadLevel ("Mall 4");
 			NewPlayerMovement.dead = false;
 			NewPlayerMovement.life = NewPlayerMovement.maxLife;
+			Candil.oilCounter = Candil.fullCharge;
+			PlayerLightController.enabled = false;
 		}
 	}
 }
