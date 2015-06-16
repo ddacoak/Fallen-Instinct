@@ -11,6 +11,14 @@ public class Candil : MonoBehaviour
 
 	public static int fullCharge = 5000;
 	public static int oilCounter = fullCharge;
+	
+	public AudioSource lightsFlickering;
+
+
+	void Start () 
+	{
+
+	}
 
 	void Update () 
 	{
@@ -23,6 +31,7 @@ public class Candil : MonoBehaviour
 				candil = true;
 				text.SetActive(true);
 				this.gameObject.SetActive(false);
+				lightsFlickering.GetComponent<AudioSource>().volume = 0;
 			}
 		}
 

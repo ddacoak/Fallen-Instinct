@@ -30,7 +30,7 @@ public class PlayerLightController : MonoBehaviour {
 		if (Application.loadedLevelName == "Mall 4")
 			Candil.candil = true;
 
-		Debug.Log (Candil.candil);
+		//Debug.Log (Candil.candil);
 		if (Candil.candil == true) 
 		{
 			gotIt = true;

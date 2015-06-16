@@ -26,11 +26,15 @@ public class EnemyControllerMall3 : MonoBehaviour
 			leftGlass.SetActive (true);
 			rightGlass.SetActive (true);
 			extraRoom.SetActive (true);
-			light1.SetActive(false);
-			light2.SetActive(false);
-			light3.SetActive(false);
-			light4.SetActive(false);
-			light5.SetActive(false);
+
+		}
+		if (BreakGlass.lightsOff) 
+		{
+			light1.SetActive (false);
+			light2.SetActive (false);
+			light3.SetActive (false);
+			light4.SetActive (false);
+			light5.SetActive (false);
 		}
 	}
 }
