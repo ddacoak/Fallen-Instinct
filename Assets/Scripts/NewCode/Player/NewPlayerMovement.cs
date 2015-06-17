@@ -14,6 +14,8 @@ public class NewPlayerMovement : MonoBehaviour
 	public GameObject blackPlane;
 	
 	public AudioClip attack;
+	public AudioClip walk;
+	public AudioClip run;
 	AudioSource audio;
 
 	//MOVEMENT
@@ -23,6 +25,11 @@ public class NewPlayerMovement : MonoBehaviour
 	public float speedWalk = 3.5f;
 	public float speedSneak = 1f;
 	public float speedRun = 8f;
+
+	private bool isMoving = false;
+
+	private bool runAudio = false;
+	private bool walkRun = true;
 
 	private Rigidbody2D rigidBody;
 	//-------------
@@ -64,6 +71,8 @@ public class NewPlayerMovement : MonoBehaviour
 		anim = GetComponent<Animator> ();
 		audio = GetComponent<AudioSource>();
 
+		audio.clip = walk;
+
 		blackPlane.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, 1);
 
 		movement = Vector3.zero;
@@ -87,13 +96,35 @@ public class NewPlayerMovement : MonoBehaviour
 		//MOVEMENT
 		//-------------
 		Movement();
-	
-		if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
+
+		if (Input.GetKey (KeyCode.C) || Input.GetKey (KeyCode.LeftShift)) 
+		{
 			speed = speedRun;
+		}
 		else if (Input.GetKey(KeyCode.V))
 			speed = speedSneak;
 		else
+		{
 			speed = speedWalk;
+		}
+
+
+
+		if (Input.GetKey (KeyCode.C)|| Input.GetKey (KeyCode.LeftShift))
+		{
+			audio.clip = run;
+		}else
+			audio.clip = walk;
+
+		if (isMoving == true)
+		{
+			audio.Play ();
+		}
+
+		if (isMoving == false)
+		{
+			audio.Stop ();
+		}
 		//-------------
 
 		//ATTACK
@@ -147,13 +178,12 @@ public class NewPlayerMovement : MonoBehaviour
 
 	void Movement()
 	{
-		bool isMoving = true;
-		
 		// Calculates the module of the speed
 		float root = Mathf.Sqrt(speed * speed / 2);
 
 		if (Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.A)) 
 		{
+			isMoving = true;
 			rigidBody.velocity = (new Vector2 (-root, root));
 			movementDirection = MOVEMENTDIRECTION.UP;
 
@@ -163,6 +193,7 @@ public class NewPlayerMovement : MonoBehaviour
 
 		} else if (Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.D)) 
 		{
+			isMoving = true;
 			rigidBody.velocity = (new Vector2 (root, root));
 			movementDirection = MOVEMENTDIRECTION.UP;
 
@@ -172,6 +203,7 @@ public class NewPlayerMovement : MonoBehaviour
 
 		} else if (Input.GetKey (KeyCode.S) && Input.GetKey (KeyCode.A)) 
 		{
+			isMoving = true;
 			rigidBody.velocity = (new Vector2 (-root, -root));
 			movementDirection = MOVEMENTDIRECTION.DOWN;
 
@@ -181,6 +213,7 @@ public class NewPlayerMovement : MonoBehaviour
 
 		} else if (Input.GetKey (KeyCode.S) && Input.GetKey (KeyCode.D)) 
 		{
+			isMoving = true;
 			rigidBody.velocity = (new Vector2 (root, -root));
 			movementDirection = MOVEMENTDIRECTION.DOWN;
 
@@ -190,6 +223,7 @@ public class NewPlayerMovement : MonoBehaviour
 
 		} else if (Input.GetKey (KeyCode.W)) 
 		{
+			isMoving = true;
 			rigidBody.velocity = (new Vector2 (0, speed));
 			movementDirection = MOVEMENTDIRECTION.UP;
 
@@ -199,6 +233,7 @@ public class NewPlayerMovement : MonoBehaviour
 
 		} else if (Input.GetKey (KeyCode.A)) 
 		{
+			isMoving = true;
 			rigidBody.velocity = (new Vector2 (-speed, 0));
 			movementDirection = MOVEMENTDIRECTION.LEFT;
 
@@ -208,6 +243,7 @@ public class NewPlayerMovement : MonoBehaviour
 
 		} else if (Input.GetKey (KeyCode.S)) 
 		{
+			isMoving = true;
 			rigidBody.velocity = (new Vector2 (0, -speed));
 			movementDirection = MOVEMENTDIRECTION.DOWN;
 
@@ -217,6 +253,7 @@ public class NewPlayerMovement : MonoBehaviour
 
 		} else if (Input.GetKey (KeyCode.D)) 
 		{
+			isMoving = true;
 			rigidBody.velocity = (new Vector2 (speed, 0));
 			movementDirection = MOVEMENTDIRECTION.RIGHT;
 

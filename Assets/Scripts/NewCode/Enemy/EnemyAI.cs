@@ -107,6 +107,8 @@ public class EnemyAI : MonoBehaviour
 
 		if (stunned == true)
 		{
+			audio.PlayOneShot(xof, 1f);
+
 			stunnedCounter++;
 
 			if (player.transform.position.x >= transform.position.x)
@@ -232,8 +234,6 @@ public class EnemyAI : MonoBehaviour
 			life -= 75;
 
 			stunned = true;
-
-			audio.PlayOneShot(xof, 1f);
 
 			switch (NewPlayerMovement.lookingTo)
 			{
