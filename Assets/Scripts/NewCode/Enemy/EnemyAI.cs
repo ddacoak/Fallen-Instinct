@@ -35,12 +35,14 @@ public class EnemyAI : MonoBehaviour
 	private bool stunned = false;
 	private int stunnedCounter = 0;
 	public AudioClip xof;
+	public bool playXof = true;
 	//-------------
 
 	//CEPO
 	//-------------
 	public AudioClip cepo;
 	AudioSource audio;
+	public GameObject deathAudio;
 
 	private bool trapped = false;
 	private bool modifyEnemy = false;
@@ -107,7 +109,10 @@ public class EnemyAI : MonoBehaviour
 
 		if (stunned == true)
 		{
-			audio.PlayOneShot(xof, 1f);
+			if(playXof){
+				audio.PlayOneShot(xof, 1f);
+				playXof = false;
+			}
 
 			stunnedCounter++;
 
@@ -123,6 +128,7 @@ public class EnemyAI : MonoBehaviour
 			if (stunnedCounter >= 20) 
 			{
 				stunned = false;
+				playXof = true;
 
 				stunnedCounter = 0;
 			}
@@ -130,7 +136,10 @@ public class EnemyAI : MonoBehaviour
 		}
 		//-------------
 
-		if (dead) valorCambio = 5;
+		if (dead) { 
+			valorCambio = 5;
+
+		}
 		anim.SetInteger("Transition", valorCambio);
 	}
 
@@ -216,12 +225,16 @@ public class EnemyAI : MonoBehaviour
 		{
 			deadCounter += Time.deltaTime;
 			valorCambio = 5;
-			if(!dead) Instantiate(bloodExplosionPs, new Vector3 (transform.position.x, 
+			if(!dead)
+			{ 
+				Instantiate(bloodExplosionPs, new Vector3 (transform.position.x, 
 			                                                     transform.position.y,
 			                                                     -1), 
 			                      								 Quaternion.Euler(0, 0, 0));
+				deathAudio.GetComponent<AudioSource>().Play();
+			}
 			dead = true;
-			if (deadCounter >= 0.6)
+			if (deadCounter >= 0.666666667f)
 				Destroy (this.gameObject);
 		}
 		lifeMemory = life;
@@ -265,5 +278,6 @@ public class EnemyAI : MonoBehaviour
 		trapped = true;
 		life -= 50;
 		Instantiate(bloodPs, new Vector3 (transform.position.x, transform.position.y + 1.2f, -1), Quaternion.Euler(0, 0, 0));
+
 	}
 }

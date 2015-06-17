@@ -14,9 +14,12 @@ public class NewPlayerMovement : MonoBehaviour
 	public GameObject blackPlane;
 	
 	public AudioClip attack;
-	public AudioClip walk;
-	public AudioClip run;
 	AudioSource audio;
+	public GameObject walkAudio;
+	public GameObject runAudio;
+
+	private bool walking = false;
+	private bool running = false; 
 
 	//MOVEMENT
 	//-------------
@@ -27,9 +30,6 @@ public class NewPlayerMovement : MonoBehaviour
 	public float speedRun = 8f;
 
 	private bool isMoving = false;
-
-	public GameObject walking;
-	public GameObject running;
 
 	private Rigidbody2D rigidBody;
 	//-------------
@@ -71,8 +71,6 @@ public class NewPlayerMovement : MonoBehaviour
 		anim = GetComponent<Animator> ();
 		audio = GetComponent<AudioSource>();
 
-		audio.clip = walk;
-
 		blackPlane.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, 1);
 
 		movement = Vector3.zero;
@@ -88,6 +86,22 @@ public class NewPlayerMovement : MonoBehaviour
 		transform.position = new Vector3 (transform.position.x,
 		                                  transform.position.y,
 		                                  transform.position.y / 100.0f - 1.0f);
+
+
+		if (walking) {
+			walkAudio.GetComponent<AudioSource>().volume = 1;
+		}
+		else walkAudio.GetComponent<AudioSource>().volume = 0;
+
+		if (running) {
+			runAudio.GetComponent<AudioSource>().volume = 1;
+		}
+		else runAudio.GetComponent<AudioSource>().volume = 0;
+
+
+		Debug.Log (walking);
+		Debug.Log (running);
+
 
 		attackPosition = this.gameObject.transform.position;
 
@@ -108,23 +122,6 @@ public class NewPlayerMovement : MonoBehaviour
 			speed = speedWalk;
 		}
 
-
-
-		if (Input.GetKey (KeyCode.C)|| Input.GetKey (KeyCode.LeftShift))
-		{
-			audio.clip = run;
-		}else
-			audio.clip = walk;
-
-		/*if (isMoving == true)
-		{
-			audio.Play ();
-		}
-
-		if (isMoving == false)
-		{
-			audio.Stop ();
-		}*/
 		//-------------
 
 		//ATTACK
@@ -184,88 +181,130 @@ public class NewPlayerMovement : MonoBehaviour
 		if (Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.A)) 
 		{
 			isMoving = true;
+			walking = true;
 			rigidBody.velocity = (new Vector2 (-root, root));
 			movementDirection = MOVEMENTDIRECTION.UP;
 
 			valorCambio = 11;
 			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
+			{
 				valorCambio = 12;
+				walking = false;
+				running = true;
+			}
 
 		} else if (Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.D)) 
 		{
 			isMoving = true;
+			walking = true;
 			rigidBody.velocity = (new Vector2 (root, root));
 			movementDirection = MOVEMENTDIRECTION.UP;
 
 			valorCambio = 11;
 			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
+			{
 				valorCambio = 12;
+				walking = false;
+				running = true;
+			}
 
 		} else if (Input.GetKey (KeyCode.S) && Input.GetKey (KeyCode.A)) 
 		{
 			isMoving = true;
+			walking = true;
 			rigidBody.velocity = (new Vector2 (-root, -root));
 			movementDirection = MOVEMENTDIRECTION.DOWN;
 
 			valorCambio = 1;
 			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
+			{
 				valorCambio = 2;
+				walking = false;
+				running = true;
+			}
 
 		} else if (Input.GetKey (KeyCode.S) && Input.GetKey (KeyCode.D)) 
 		{
 			isMoving = true;
+			walking = true;
 			rigidBody.velocity = (new Vector2 (root, -root));
 			movementDirection = MOVEMENTDIRECTION.DOWN;
 
 			valorCambio = 1;
 			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
+			{
 				valorCambio = 2;
+				walking = false;
+				running = true;
+			}
 
 		} else if (Input.GetKey (KeyCode.W)) 
 		{
 			isMoving = true;
+			walking = true;
 			rigidBody.velocity = (new Vector2 (0, speed));
 			movementDirection = MOVEMENTDIRECTION.UP;
 
 			valorCambio = 11;
 			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
+			{
 				valorCambio = 12;
+				walking = false;
+				running = true;
+			}
 
 		} else if (Input.GetKey (KeyCode.A)) 
 		{
 			isMoving = true;
+			walking = true;
 			rigidBody.velocity = (new Vector2 (-speed, 0));
 			movementDirection = MOVEMENTDIRECTION.LEFT;
 
 			valorCambio = 21;
 			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
+			{
 				valorCambio = 22;
+				walking = false;
+				running = true;
+			}
 
 		} else if (Input.GetKey (KeyCode.S)) 
 		{
 			isMoving = true;
+			walking = true;
 			rigidBody.velocity = (new Vector2 (0, -speed));
 			movementDirection = MOVEMENTDIRECTION.DOWN;
 
 			valorCambio = 1;
 			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
+			{
 				valorCambio = 2;
+				walking = false;
+				running = true;
+			}
 
 		} else if (Input.GetKey (KeyCode.D)) 
 		{
 			isMoving = true;
+			walking = true;
 			rigidBody.velocity = (new Vector2 (speed, 0));
 			movementDirection = MOVEMENTDIRECTION.RIGHT;
 
 			valorCambio = 31;
 			if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftShift))
+			{
 				valorCambio = 32;
+				walking = false;
+				running = true;
+			}
 
 		} else 
 		{
 			rigidBody.velocity = Vector2.zero;
 			
 			isMoving = false;
+			walking = false;
+			running = false;
 			movementDirection = MOVEMENTDIRECTION.NONE;
 
 			switch (lookingTo)
