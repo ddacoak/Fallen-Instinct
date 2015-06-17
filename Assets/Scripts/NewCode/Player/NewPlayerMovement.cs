@@ -28,8 +28,8 @@ public class NewPlayerMovement : MonoBehaviour
 
 	private bool isMoving = false;
 
-	private bool runAudio = false;
-	private bool walkRun = true;
+	public GameObject walking;
+	public GameObject running;
 
 	private Rigidbody2D rigidBody;
 	//-------------
@@ -116,7 +116,7 @@ public class NewPlayerMovement : MonoBehaviour
 		}else
 			audio.clip = walk;
 
-		if (isMoving == true)
+		/*if (isMoving == true)
 		{
 			audio.Play ();
 		}
@@ -124,7 +124,7 @@ public class NewPlayerMovement : MonoBehaviour
 		if (isMoving == false)
 		{
 			audio.Stop ();
-		}
+		}*/
 		//-------------
 
 		//ATTACK
